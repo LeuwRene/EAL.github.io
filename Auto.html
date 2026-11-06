@@ -37,48 +37,56 @@
     
     <style>
         .group:hover .dropdown-menu { display: block; }
-        
         .hero-gradient-overlay {
-            background: linear-gradient(90deg, rgba(15, 37, 55, 0.96) 0%, rgba(15, 37, 55, 0.85) 55%, rgba(15, 37, 55, 0.60) 100%);
+            background: linear-gradient(90deg, rgba(15, 37, 55, 0.95) 0%, rgba(15, 37, 55, 0.85) 50%, rgba(15, 37, 55, 0.70) 100%);
         }
-
         @keyframes waPulse {
             0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
             70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
         .wa-float-btn { animation: waPulse 2s infinite; }
+
+        /* Animación suave para el acordeón de Preguntas Frecuentes */
+        .faq-answer-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .faq-answer-container.open {
+            max-height: 300px;
+        }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 font-sans antialiased overflow-x-hidden selection:bg-eal-gold selection:text-white flex flex-col min-h-screen">
 
-    <!-- MAIN NAVIGATION BAR -->
+    <!-- MAIN NAVIGATION BAR UNIFICADO EXACTO -->
     <header class="bg-eal-navy border-b border-eal-gold/30 text-white sticky top-0 z-50 shadow-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
             <!-- BRAND LOGO -->
-            <a href="index.html" class="flex items-center gap-3.5 group">
-                <div class="w-11 h-11 rounded-xl border-2 border-eal-gold flex items-center justify-center bg-eal-navy text-eal-gold font-serif font-bold text-xl shadow-lg group-hover:scale-105 transition-transform">
+            <a href="index.html" class="flex items-center gap-3 group shrink-0">
+                <div class="w-10 h-10 rounded-xl border-2 border-eal-gold flex items-center justify-center bg-eal-navy text-eal-gold font-serif font-bold text-lg shadow-lg group-hover:scale-105 transition-transform">
                     EAL
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-serif text-2xl font-bold tracking-wider text-white group-hover:text-eal-gold transition-colors">EAL</span>
-                    <span class="text-[9px] tracking-[0.25em] text-eal-gold font-bold uppercase" data-i18n="nav.subtitle">Corredor de Seguros</span>
+                    <span class="font-serif text-xl font-bold tracking-wider text-white group-hover:text-eal-gold transition-colors leading-none">EAL</span>
+                    <span class="text-[8px] tracking-[0.2em] text-eal-gold font-bold uppercase mt-0.5" data-i18n="nav.subtitle">Corredor de Seguros</span>
                 </div>
             </a>
 
-            <!-- NAV LINKS -->
-            <nav class="hidden lg:flex items-center space-x-1 bg-eal-navy/60 p-1.5 rounded-xl border border-eal-gold/20 shadow-inner text-xs font-semibold tracking-wide uppercase">
-                <a href="index.html#inicio" class="text-slate-200 hover:text-eal-gold px-3.5 py-2 rounded-lg transition hover:bg-white/5" data-i18n="nav.home">INICIO</a>
+            <!-- NAV LINKS (MISMOS PADDING Y TAMAÑOS EXACTOS) -->
+            <nav class="hidden lg:flex items-center space-x-1 bg-eal-navy/60 px-2 py-1.5 rounded-xl border border-eal-gold/25 shadow-inner text-[11px] font-semibold tracking-wider uppercase">
+                <a href="index.html" class="text-slate-200 hover:text-eal-gold px-3 py-2 rounded-lg transition hover:bg-white/5" data-i18n="nav.home">INICIO</a>
                 
-                <!-- DROPDOWN: NUESTROS PRODUCTOS -->
+                <!-- DROPDOWN: PRODUCTOS -->
                 <div class="relative group">
-                    <a href="index.html#productos" class="text-eal-gold font-bold px-3.5 py-2 rounded-lg transition hover:bg-white/5 flex items-center gap-1.5">
+                    <a href="index.html#productos" class="text-eal-gold font-bold px-3 py-2 rounded-lg transition hover:bg-white/5 flex items-center gap-1.5">
                         <span data-i18n="nav.products">NUESTROS PRODUCTOS</span> 
-                        <i class="fa-solid fa-chevron-down text-[10px] text-eal-gold"></i>
+                        <i class="fa-solid fa-chevron-down text-[9px] text-eal-gold"></i>
                     </a>
                     <div class="dropdown-menu hidden absolute left-0 mt-1 w-64 bg-eal-navy border border-eal-gold/40 rounded-xl shadow-2xl overflow-hidden z-50 py-2">
-                        <a href="seguro-auto.html" class="block px-4 py-2.5 text-xs font-bold text-eal-gold hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="prod.auto">Auto</a>
+                        <a href="Auto.html" class="block px-4 py-2.5 text-xs font-bold text-eal-gold hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="prod.auto">Auto</a>
                         <a href="#" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="prod.health">Salud</a>
                         <a href="#" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="prod.life">Vida</a>
                         <a href="#" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="prod.home">Hogar y Contenido</a>
@@ -87,12 +95,13 @@
                     </div>
                 </div>
 
-                <a href="index.html#nosotros" class="text-slate-200 hover:text-eal-gold px-3.5 py-2 rounded-lg transition hover:bg-white/5" data-i18n="nav.about">SOBRE NOSOTROS</a>
+                <a href="index.html#nosotros" class="text-slate-200 hover:text-eal-gold px-3 py-2 rounded-lg transition hover:bg-white/5" data-i18n="nav.about">SOBRE NOSOTROS</a>
                 
+                <!-- DROPDOWN: ATENCIÓN AL CLIENTE -->
                 <div class="relative group">
-                    <a href="#" class="text-slate-200 hover:text-eal-gold px-3.5 py-2 rounded-lg transition hover:bg-white/5 flex items-center gap-1.5">
+                    <a href="#" class="text-slate-200 hover:text-eal-gold px-3 py-2 rounded-lg transition hover:bg-white/5 flex items-center gap-1.5">
                         <span data-i18n="nav.customerService">Atención al cliente</span> 
-                        <i class="fa-solid fa-chevron-down text-[10px] text-eal-gold"></i>
+                        <i class="fa-solid fa-chevron-down text-[9px] text-eal-gold"></i>
                     </a>
                     <div class="dropdown-menu hidden absolute left-0 mt-1 w-52 bg-eal-navy border border-eal-gold/40 rounded-xl shadow-2xl overflow-hidden z-50 py-2">
                         <a href="#" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="cs.claims">Reclamos</a>
@@ -100,34 +109,72 @@
                         <a href="#" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="cs.conditions">Condiciones generales</a>
                     </div>
                 </div>
+
+                <!-- DROPDOWN: LÍNEA DE ASEGURADORAS -->
+                <div class="relative group">
+                    <a href="#" class="text-slate-200 hover:text-eal-gold px-3 py-2 rounded-lg transition hover:bg-white/5 flex items-center gap-1.5">
+                        <span data-i18n="nav.support">Línea de aseguradoras</span>
+                        <i class="fa-solid fa-chevron-down text-[9px] text-eal-gold"></i>
+                    </a>
+                    <div class="dropdown-menu hidden absolute right-0 mt-1 w-[550px] bg-eal-navy border border-eal-gold/40 rounded-2xl shadow-2xl p-5 z-50">
+                        <div class="mb-3 pb-2 border-b border-eal-gold/20">
+                            <h4 class="font-serif font-bold text-sm text-eal-gold" data-i18n="support.title">Contacta a tu aseguradora</h4>
+                            <p class="text-[11px] text-slate-300" data-i18n="support.subtitle">Números de emergencia y atención directa con las principales aseguradoras.</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-white/5 border border-white/10 p-3 rounded-xl flex items-center justify-between hover:bg-white/10 transition">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-8 bg-white border border-slate-200 rounded flex items-center justify-center font-bold text-sky-600 text-[10px]">SURA</div>
+                                    <div>
+                                        <span class="block text-[10px] font-bold text-slate-400 uppercase">SURA Seguros</span>
+                                        <a href="tel:2050700" class="text-white font-bold text-xs hover:text-eal-gold transition">205-0700</a>
+                                        <span class="text-slate-400 text-[10px]">/</span>
+                                        <a href="tel:63287872" class="text-slate-200 font-semibold text-[10px] hover:text-eal-gold transition">6328-7872</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-white/5 border border-white/10 p-3 rounded-xl flex items-center justify-between hover:bg-white/10 transition">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-8 bg-white border border-slate-200 rounded flex items-center justify-center font-bold text-blue-900 text-[10px]">ASSA</div>
+                                    <div>
+                                        <span class="block text-[10px] font-bold text-slate-400 uppercase">ASSA Compañía</span>
+                                        <a href="tel:3002424" class="text-white font-bold text-xs hover:text-eal-gold transition">300-2424</a>
+                                        <span class="text-slate-400 text-[10px]">/</span>
+                                        <a href="tel:66012772" class="text-slate-200 font-semibold text-[10px] hover:text-eal-gold transition">6601-2772</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </nav>
 
             <!-- ACCIONES -->
-            <div class="flex items-center space-x-3">
+            <div class="flex items-center space-x-2.5 shrink-0">
                 <a id="topbar-book-btn" 
                    href="https://wa.me/50767920669?text=Hola%20Eduardo,%20quisiera%20cotizar%20un%20Seguro%20de%20Auto" 
                    target="_blank" 
                    rel="noopener noreferrer" 
-                   class="bg-eal-gold hover:bg-eal-goldHover text-eal-navy px-3.5 py-2.5 rounded-xl font-extrabold text-[11px] uppercase tracking-wider flex items-center gap-2 transition-all shadow-md hover:scale-105">
-                    <i class="fa-regular fa-calendar-check text-sm"></i>
+                   class="bg-eal-gold hover:bg-eal-goldHover text-eal-navy px-3 py-2 rounded-xl font-extrabold text-[10px] uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-md hover:scale-105">
+                    <i class="fa-regular fa-calendar-check text-xs"></i>
                     <span id="topbar-book-text" data-i18n="topbar.book">RESERVAR REUNIÓN</span>
                 </a>
 
                 <div class="relative">
-                    <button onclick="toggleLangDropdown()" id="langDropdownBtn" class="bg-eal-navy hover:bg-eal-navy/80 text-white text-xs font-bold border border-eal-gold/50 rounded-xl px-3 py-2.5 flex items-center gap-2 transition cursor-pointer shadow-sm">
+                    <button onclick="toggleLangDropdown()" id="langDropdownBtn" class="bg-eal-navy hover:bg-eal-navy/80 text-white text-xs font-bold border border-eal-gold/50 rounded-xl px-2.5 py-2 flex items-center gap-1.5 transition cursor-pointer shadow-sm">
                         <span id="currentLangFlag" class="inline-flex items-center">
-                            <svg class="w-5 h-3.5 rounded shadow-sm object-cover" viewBox="0 0 750 500" xmlns="http://www.w3.org/2000/svg"><rect width="750" height="500" fill="#aa151b"/><rect width="750" height="250" y="125" fill="#f1bf00"/></svg>
+                            <svg class="w-4 h-3 rounded shadow-sm object-cover" viewBox="0 0 750 500" xmlns="http://www.w3.org/2000/svg"><rect width="750" height="500" fill="#aa151b"/><rect width="750" height="250" y="125" fill="#f1bf00"/></svg>
                         </span> 
                         <span id="currentLangText">ES</span> 
-                        <i class="fa-solid fa-chevron-down text-[10px] text-eal-gold"></i>
+                        <i class="fa-solid fa-chevron-down text-[9px] text-eal-gold"></i>
                     </button>
                     <div id="langDropdownMenu" class="hidden absolute right-0 mt-2 w-32 bg-eal-navy border border-eal-gold/40 rounded-xl shadow-2xl overflow-hidden z-50">
                         <button onclick="changeLanguage('es', 'ES')" class="w-full text-left px-3.5 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy flex items-center gap-2.5 transition cursor-pointer">
-                            <svg class="w-5 h-3.5 rounded shadow-sm object-cover" viewBox="0 0 750 500" xmlns="http://www.w3.org/2000/svg"><rect width="750" height="500" fill="#aa151b"/><rect width="750" height="250" y="125" fill="#f1bf00"/></svg> 
+                            <svg class="w-4 h-3 rounded shadow-sm object-cover" viewBox="0 0 750 500" xmlns="http://www.w3.org/2000/svg"><rect width="750" height="500" fill="#aa151b"/><rect width="750" height="250" y="125" fill="#f1bf00"/></svg> 
                             <span>ESPAÑOL</span>
                         </button>
                         <button onclick="changeLanguage('en', 'EN')" class="w-full text-left px-3.5 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy flex items-center gap-2.5 transition border-t border-eal-gold/20 cursor-pointer">
-                            <svg class="w-5 h-3.5 rounded shadow-sm object-cover" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="300" fill="#012169"/><path d="M0,0 L600,300 M600,0 L0,300" stroke="#fff" stroke-width="60"/><path d="M300,0 V300 M0,150 H600" stroke="#fff" stroke-width="100"/><path d="M300,0 V300 M0,150 H600" stroke="#C8102E" stroke-width="60"/></svg> 
+                            <svg class="w-4 h-3 rounded shadow-sm object-cover" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="300" fill="#012169"/><path d="M0,0 L600,300 M600,0 L0,300" stroke="#fff" stroke-width="60"/><path d="M300,0 V300 M0,150 H600" stroke="#fff" stroke-width="100"/><path d="M300,0 V300 M0,150 H600" stroke="#C8102E" stroke-width="60"/></svg> 
                             <span>ENGLISH</span>
                         </button>
                     </div>
@@ -135,9 +182,8 @@
             </div>
         </div>
     </header>
-
-    <!-- HERO SECTION DE AUTO CON GRADIENTE AZUL OSCURO RESTAURADO -->
-    <section class="relative min-h-[calc(100vh-80px)] flex items-center justify-start overflow-hidden bg-eal-navy">
+    <!-- HERO SECTION -->
+    <section class="relative min-h-[calc(100vh-80px)] flex items-center overflow-hidden bg-eal-navy py-12">
         <div class="absolute inset-0 z-0 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=1920&auto=format&fit=crop" 
                  alt="Seguro de Auto EAL" 
@@ -145,33 +191,64 @@
             <div class="absolute inset-0 hero-gradient-overlay z-10"></div>
         </div>
 
-        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto py-16">
-            <div class="max-w-2xl text-left space-y-6">
-                <span class="inline-block px-4 py-1.5 rounded-full bg-eal-gold/20 border border-eal-gold text-eal-gold text-xs font-bold uppercase tracking-widest" data-i18n="auto.badge">
-                    Protección Vial en Panamá
-                </span>
+        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 
-                <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight font-serif">
-                    <span class="block" data-i18n="auto.title1">Seguro de</span>
-                    <span class="block text-eal-gold italic font-normal" data-i18n="auto.title2">Auto.</span>
-                </h1>
+                <!-- COLUMNA IZQUIERDA -->
+                <div class="lg:col-span-6 space-y-6 text-left">
+                    <span class="inline-block px-4 py-1.5 rounded-full bg-eal-gold/20 border border-eal-gold text-eal-gold text-xs font-bold uppercase tracking-widest" data-i18n="auto.badge">
+                        Protección Vial en Panamá
+                    </span>
+                    
+                    <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight font-serif">
+                        <span class="block" data-i18n="auto.title1">Seguro de</span>
+                        <span class="block text-eal-gold italic font-normal" data-i18n="auto.title2">Auto.</span>
+                    </h1>
 
-                <p class="text-slate-100 text-sm sm:text-lg font-medium leading-relaxed max-w-xl">
-                    <span data-i18n="auto.desc1">En Panamá ocurre un accidente de tránsito aproximadamente</span> <strong class="text-eal-gold" data-i18n="auto.descBold">cada 10 minutos</strong>. 
-                    <span data-i18n="auto.desc2">Tu seguro de auto es más que una póliza: es la tranquilidad de contar con respaldo ante cualquier imprevisto.</span>
-                    <strong class="block mt-2 text-white" data-i18n="auto.desc3">Protege tu vehículo, tu patrimonio y tu tranquilidad.</strong>
-                </p>
+                    <p class="text-slate-200 text-base sm:text-lg font-medium leading-relaxed max-w-lg" data-i18n="auto.mainSub">
+                        Respaldo integral frente a colisiones, robos y emergencias en carretera. Conduce con total confianza en Panamá.
+                    </p>
 
-                <div class="flex flex-wrap items-center gap-4 pt-4">
-                    <a href="#cotizar" class="bg-eal-gold hover:bg-eal-goldHover text-eal-navy px-7 py-3.5 rounded-xl font-extrabold text-xs tracking-wide uppercase shadow-xl transition-all hover:scale-105 flex items-center gap-2">
-                        <span data-i18n="auto.btnQuote">Cotizar Póliza Online</span> <i class="fa-solid fa-arrow-down"></i>
-                    </a>
+                    <div class="pt-2">
+                        <a href="#cotizar" class="bg-eal-gold hover:bg-eal-goldHover text-eal-navy px-8 py-4 rounded-xl font-extrabold text-xs tracking-wide uppercase shadow-2xl transition-all hover:scale-105 inline-flex items-center gap-2">
+                            <span data-i18n="auto.btnQuote">Cotizar Póliza Online</span> <i class="fa-solid fa-arrow-down"></i>
+                        </a>
+                    </div>
                 </div>
+
+                <!-- COLUMNA DERECHA: TARJETA DE ESTADÍSTICA -->
+                <div class="lg:col-span-6">
+                    <div class="bg-eal-navy/90 border border-eal-gold/50 backdrop-blur-md rounded-3xl overflow-hidden shadow-2xl">
+                        <div class="h-48 w-full overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Tránsito Panamá" 
+                                 class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-eal-navy to-transparent"></div>
+                            <span class="absolute bottom-3 left-4 bg-red-600 text-white font-extrabold text-[10px] uppercase px-3 py-1 rounded-full flex items-center gap-1.5 shadow">
+                                <i class="fa-solid fa-triangle-exclamation"></i> Dato Importante
+                            </span>
+                        </div>
+
+                        <div class="p-6 sm:p-8 space-y-4">
+                            <p class="text-slate-100 text-sm sm:text-base leading-relaxed">
+                                <span data-i18n="auto.desc1">En Panamá ocurre un accidente de tránsito aproximadamente</span> 
+                                <strong class="text-eal-gold font-bold text-lg" data-i18n="auto.descBold">cada 10 minutos</strong>. 
+                                <span data-i18n="auto.desc2">Tu seguro de auto es más que una póliza: es la tranquilidad de contar con respaldo ante cualquier imprevisto.</span>
+                            </p>
+                            <div class="pt-3 border-t border-eal-gold/30">
+                                <p class="text-white font-serif font-bold text-base sm:text-lg text-eal-gold" data-i18n="auto.desc3">
+                                    Protege tu vehículo, tu patrimonio y tu tranquilidad.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- PLANES DE SEGURO (SPLIT LAYOUT) -->
+    <!-- PLANES DE COBERTURA (LADO A LADO) -->
     <section class="py-16 bg-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
@@ -180,28 +257,11 @@
                 <p class="text-slate-600 text-sm mt-2" data-i18n="plans.subtitle">Explora las opciones de seguros de vehículo disponibles en Panamá.</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
                 
-                <!-- COLUMNA IZQUIERDA: IMAGEN FIJA -->
-                <div class="lg:col-span-5 lg:sticky lg:top-28">
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-300 group">
-                        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80" 
-                             alt="Vehículo Protegido" 
-                             class="w-full h-[450px] object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-eal-navy/90 via-eal-navy/30 to-transparent"></div>
-                        <div class="absolute bottom-6 left-6 right-6 text-white">
-                            <span class="text-eal-gold text-xs font-bold uppercase tracking-widest block mb-1" data-i18n="plans.cardBadge">EAL Coberturas</span>
-                            <h3 class="text-xl font-bold font-serif" data-i18n="plans.cardTitle">Respaldo Garantizado 24/7</h3>
-                            <p class="text-xs text-slate-300 mt-1" data-i18n="plans.cardSub">Asistencia en carretera, grúa y gestiones de reclamo inmediatas.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- COLUMNA DERECHA: TARJETAS DE PLANES -->
-                <div class="lg:col-span-7 space-y-8">
-                    
-                    <!-- PLAN 1: DAT -->
-                    <div class="bg-eal-navy text-white rounded-3xl p-6 sm:p-8 border border-eal-gold/30 shadow-xl relative overflow-hidden">
+                <!-- PLAN 1: DAT -->
+                <div class="bg-eal-navy text-white rounded-3xl p-6 sm:p-8 border border-eal-gold/30 shadow-xl flex flex-col justify-between relative overflow-hidden">
+                    <div>
                         <div class="flex items-center justify-between mb-4">
                             <div class="w-12 h-12 rounded-2xl bg-eal-gold/20 border border-eal-gold flex items-center justify-center text-eal-gold text-xl">
                                 <i class="fa-solid fa-shield-halved"></i>
@@ -228,17 +288,19 @@
                                 <span data-i18n="plan1.li3">Una alternativa económica para protegerte ante imprevistos.</span>
                             </li>
                         </ul>
-
-                        <div class="pt-4 border-t border-white/10 flex items-center justify-between">
-                            <span class="text-xs text-slate-400" data-i18n="plans.fastQuote">Cotización inmediata</span>
-                            <a href="#cotizar" onclick="selectPlanInForm('DAT')" class="bg-eal-gold hover:bg-eal-goldHover text-eal-navy font-bold text-xs uppercase px-5 py-2.5 rounded-xl transition" data-i18n="plan1.btn">
-                                Cotizar DAT
-                            </a>
-                        </div>
                     </div>
 
-                    <!-- PLAN 2: COBERTURA COMPLETA -->
-                    <div class="bg-eal-navy text-white rounded-3xl p-6 sm:p-8 border border-eal-gold/40 shadow-xl relative overflow-hidden">
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between mt-auto">
+                        <span class="text-xs text-slate-400" data-i18n="plans.fastQuote">Cotización inmediata</span>
+                        <a href="#cotizar" onclick="selectPlanInForm('DAT')" class="bg-eal-gold hover:bg-eal-goldHover text-eal-navy font-bold text-xs uppercase px-5 py-2.5 rounded-xl transition" data-i18n="plan1.btn">
+                            Cotizar DAT
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PLAN 2: COBERTURA COMPLETA -->
+                <div class="bg-eal-navy text-white rounded-3xl p-6 sm:p-8 border border-eal-gold/40 shadow-xl flex flex-col justify-between relative overflow-hidden">
+                    <div>
                         <div class="flex items-center justify-between mb-4">
                             <div class="w-12 h-12 rounded-2xl bg-eal-gold/20 border border-eal-gold flex items-center justify-center text-eal-gold text-xl">
                                 <i class="fa-solid fa-car-burst"></i>
@@ -274,15 +336,154 @@
                                 <span data-i18n="plan2.li5">Algunos planes ofrecen exoneración del deducible.</span>
                             </li>
                         </ul>
-
-                        <div class="pt-4 border-t border-white/10 flex items-center justify-between">
-                            <span class="text-xs text-slate-400" data-i18n="plan2.fullProt">Protección total</span>
-                            <a href="#cotizar" onclick="selectPlanInForm('Completa')" class="bg-eal-gold hover:bg-eal-goldHover text-eal-navy font-bold text-xs uppercase px-5 py-2.5 rounded-xl transition" data-i18n="plan2.btn">
-                                Cotizar Completa
-                            </a>
-                        </div>
                     </div>
 
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between mt-auto">
+                        <span class="text-xs text-slate-400" data-i18n="plan2.fullProt">Protección total</span>
+                        <a href="#cotizar" onclick="selectPlanInForm('Completa')" class="bg-eal-gold hover:bg-eal-goldHover text-eal-navy font-bold text-xs uppercase px-5 py-2.5 rounded-xl transition" data-i18n="plan2.btn">
+                            Cotizar Completa
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE BENEFICIOS CON ICONOS -->
+    <section class="py-12 bg-white border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h3 class="text-xs font-extrabold tracking-widest text-eal-navy uppercase" data-i18n="benefits.badge">Ventajas Exclusivas EAL</h3>
+                <h4 class="text-2xl sm:text-3xl font-bold font-serif text-eal-navy mt-1" data-i18n="benefits.title">Beneficios incluidos en tu póliza</h4>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="bg-slate-50 border border-slate-200 p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-eal-navy text-eal-gold flex items-center justify-center text-xl shadow">
+                        <i class="fa-solid fa-truck-pickup"></i>
+                    </div>
+                    <h5 class="font-bold text-sm text-eal-navy mb-1" data-i18n="benefit1.title">Asistencia de Grúa</h5>
+                    <p class="text-slate-600 text-xs" data-i18n="benefit1.desc">Servicio de arrastre vial disponible 24/7 en todo el país.</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-eal-navy text-eal-gold flex items-center justify-center text-xl shadow">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <h5 class="font-bold text-sm text-eal-navy mb-1" data-i18n="benefit2.title">Asistencia Legal</h5>
+                    <p class="text-slate-600 text-xs" data-i18n="benefit2.desc">Abogado en sitio para asesoría inmediata tras colisión.</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-eal-navy text-eal-gold flex items-center justify-center text-xl shadow">
+                        <i class="fa-solid fa-wrench"></i>
+                    </div>
+                    <h5 class="font-bold text-sm text-eal-navy mb-1" data-i18n="benefit3.title">Talleres Certificados</h5>
+                    <p class="text-slate-600 text-xs" data-i18n="benefit3.desc">Red preferencial de talleres con garantía en reparaciones.</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-eal-navy text-eal-gold flex items-center justify-center text-xl shadow">
+                        <i class="fa-solid fa-car-side"></i>
+                    </div>
+                    <h5 class="font-bold text-sm text-eal-navy mb-1" data-i18n="benefit4.title">Auto Sustituto</h5>
+                    <p class="text-slate-600 text-xs" data-i18n="benefit4.desc">Vehículo temporal mientras tu auto se encuentra en taller.</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-eal-navy text-eal-gold flex items-center justify-center text-xl shadow">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h5 class="font-bold text-sm text-eal-navy mb-1" data-i18n="benefit5.title">Gestión de Reclamos</h5>
+                    <p class="text-slate-600 text-xs" data-i18n="benefit5.desc">Acompañamiento personal de principio a fin con tu aseguradora.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES -->
+    <section class="py-20 bg-slate-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="mb-10 text-left">
+                <h2 class="text-3xl sm:text-4xl font-bold text-eal-navy font-sans tracking-tight" data-i18n="faq.title">Preguntas frecuentes</h2>
+            </div>
+
+            <div class="space-y-3">
+                <!-- FAQ 1 -->
+                <div class="rounded-xl overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(1)" class="w-full text-left bg-eal-navy hover:bg-eal-navy/95 text-white p-4 sm:p-5 font-semibold text-base sm:text-lg flex items-center justify-between gap-4 transition cursor-pointer">
+                        <span class="flex items-center gap-3">
+                            <span id="faqSign1" class="text-xl font-bold text-eal-gold">+</span>
+                            <span data-i18n="faq1.q">¿Qué es el deducible?</span>
+                        </span>
+                        <i id="faqIcon1" class="fa-solid fa-chevron-down text-eal-gold text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div id="faqAns1" class="faq-answer-container bg-slate-200/90 text-slate-800">
+                        <div class="p-6 text-sm sm:text-base leading-relaxed" data-i18n="faq1.a">
+                            Es el monto que debes asumir al presentar un reclamo sujeto a deducible. Por ejemplo, si tu deducible es de $500 y la reparación cuesta $2,000, tú pagas $500 y la aseguradora cubre los $1,500 restantes, siempre que el daño esté cubierto por la póliza.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="rounded-xl overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(2)" class="w-full text-left bg-eal-navy hover:bg-eal-navy/95 text-white p-4 sm:p-5 font-semibold text-base sm:text-lg flex items-center justify-between gap-4 transition cursor-pointer">
+                        <span class="flex items-center gap-3">
+                            <span id="faqSign2" class="text-xl font-bold text-eal-gold">+</span>
+                            <span data-i18n="faq2.q">¿Qué debo hacer en caso de una colisión o si necesito asistencia vial?</span>
+                        </span>
+                        <i id="faqIcon2" class="fa-solid fa-chevron-down text-eal-gold text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div id="faqAns2" class="faq-answer-container bg-slate-200/90 text-slate-800">
+                        <div class="p-6 text-sm sm:text-base leading-relaxed" data-i18n="faq2.a">
+                            Contacta a tu corredor de seguros y/o al servicio de asistencia de tu aseguradora. En caso de una colisión, si no hay acuerdo entre las partes, hay personas heridas o alguno de los vehículos no puede movilizarse por sus propios medios, también deberás contactar a las autoridades de tránsito.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="rounded-xl overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(3)" class="w-full text-left bg-eal-navy hover:bg-eal-navy/95 text-white p-4 sm:p-5 font-semibold text-base sm:text-lg flex items-center justify-between gap-4 transition cursor-pointer">
+                        <span class="flex items-center gap-3">
+                            <span id="faqSign3" class="text-xl font-bold text-eal-gold">+</span>
+                            <span data-i18n="faq3.q">Si compro un auto de segunda mano, ¿me sirve el seguro del dueño anterior?</span>
+                        </span>
+                        <i id="faqIcon3" class="fa-solid fa-chevron-down text-eal-gold text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div id="faqAns3" class="faq-answer-container bg-slate-200/90 text-slate-800">
+                        <div class="p-6 text-sm sm:text-base leading-relaxed" data-i18n="faq3.a">
+                            No debes asumir que la póliza del propietario anterior te cubre. Al realizar el traspaso, debes gestionar tu propio seguro cuanto antes, ya que la póliza anterior no se transfiere automáticamente.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="rounded-xl overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(4)" class="w-full text-left bg-eal-navy hover:bg-eal-navy/95 text-white p-4 sm:p-5 font-semibold text-base sm:text-lg flex items-center justify-between gap-4 transition cursor-pointer">
+                        <span class="flex items-center gap-3">
+                            <span id="faqSign4" class="text-xl font-bold text-eal-gold">+</span>
+                            <span data-i18n="faq4.q">¿Por qué me conviene contratar a través de un corredor de seguros?</span>
+                        </span>
+                        <i id="faqIcon4" class="fa-solid fa-chevron-down text-eal-gold text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div id="faqAns4" class="faq-answer-container bg-slate-200/90 text-slate-800">
+                        <div class="p-6 text-sm sm:text-base leading-relaxed" data-i18n="faq4.a">
+                            Porque puedes pagar el mismo precio y contar con alguien de tu lado cuando más lo necesitas. A diferencia de contratar directamente con la aseguradora, con un banco o con la agencia que te vende el vehículo, un corredor de seguros independiente te ayuda a comparar opciones, gestionar renovaciones y te acompaña durante los reclamos. Con EAL Seguros, no estás solo cuando necesitas utilizar tu póliza.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="rounded-xl overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(5)" class="w-full text-left bg-eal-navy hover:bg-eal-navy/95 text-white p-4 sm:p-5 font-semibold text-base sm:text-lg flex items-center justify-between gap-4 transition cursor-pointer">
+                        <span class="flex items-center gap-3">
+                            <span id="faqSign5" class="text-xl font-bold text-eal-gold">+</span>
+                            <span data-i18n="faq5.q">¿Por qué algunas aseguradoras ofrecen un 50% de descuento en el deducible para mujeres?</span>
+                        </span>
+                        <i id="faqIcon5" class="fa-solid fa-chevron-down text-eal-gold text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div id="faqAns5" class="faq-answer-container bg-slate-200/90 text-slate-800">
+                        <div class="p-6 text-sm sm:text-base leading-relaxed" data-i18n="faq5.a">
+                            Porque, según las estadísticas, las mujeres tienen accidentes más frecuentes, pero menos graves, mientras que los hombres tienden a tener accidentes de mayor severidad y costo.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -427,7 +628,7 @@
         </div>
     </footer>
 
-    <!-- SCRIPT DE IDIOMAS Y TRADUCCIONES COMPLETAS -->
+    <!-- SCRIPT DE IDIOMAS Y FUNCIONALIDAD -->
     <script>
         const i18n = {
             es: {
@@ -437,6 +638,7 @@
                 "nav.products": "NUESTROS PRODUCTOS",
                 "nav.about": "SOBRE NOSOTROS",
                 "nav.customerService": "Atención al cliente",
+                "nav.support": "Línea de aseguradoras",
                 "cs.claims": "Reclamos",
                 "cs.providers": "Redes de proveedores",
                 "cs.conditions": "Condiciones generales",
@@ -449,6 +651,7 @@
                 "auto.badge": "Protección Vial en Panamá",
                 "auto.title1": "Seguro de",
                 "auto.title2": "Auto.",
+                "auto.mainSub": "Respaldo integral frente a colisiones, robos y emergencias en carretera. Conduce con total confianza en Panamá.",
                 "auto.desc1": "En Panamá ocurre un accidente de tránsito aproximadamente",
                 "auto.descBold": "cada 10 minutos",
                 "auto.desc2": ". Tu seguro de auto es más que una póliza: es la tranquilidad de contar con respaldo ante cualquier imprevisto.",
@@ -456,9 +659,6 @@
                 "auto.btnQuote": "Cotizar Póliza Online",
                 "plans.title": "Planes de Cobertura Diseñados para Ti",
                 "plans.subtitle": "Explora las opciones de seguros de vehículo disponibles en Panamá.",
-                "plans.cardBadge": "EAL Coberturas",
-                "plans.cardTitle": "Respaldo Garantizado 24/7",
-                "plans.cardSub": "Asistencia en carretera, grúa y gestiones de reclamo inmediatas.",
                 "plan1.badge": "Desde $120 / año",
                 "plan1.title": "Seguro de Daños a Terceros (DAT)",
                 "plan1.desc": "La protección básica para conducir con tranquilidad y cumplir con las regulaciones de tránsito.",
@@ -478,6 +678,29 @@
                 "plan2.li5": "Algunos planes ofrecen exoneración del deducible.",
                 "plan2.fullProt": "Protección total",
                 "plan2.btn": "Cotizar Completa",
+                "benefits.badge": "Ventajas Exclusivas EAL",
+                "benefits.title": "Beneficios incluidos en tu póliza",
+                "benefit1.title": "Asistencia de Grúa",
+                "benefit1.desc": "Servicio de arrastre vial disponible 24/7 en todo el país.",
+                "benefit2.title": "Asistencia Legal",
+                "benefit2.desc": "Abogado en sitio para asesoría inmediata tras colisión.",
+                "benefit3.title": "Talleres Certificados",
+                "benefit3.desc": "Red preferencial de talleres con garantía en reparaciones.",
+                "benefit4.title": "Auto Sustituto",
+                "benefit4.desc": "Vehículo temporal mientras tu auto se encuentra en taller.",
+                "benefit5.title": "Gestión de Reclamos",
+                "benefit5.desc": "Acompañamiento personal de principio a fin con tu aseguradora.",
+                "faq.title": "Preguntas frecuentes",
+                "faq1.q": "¿Qué es el deducible?",
+                "faq1.a": "Es el monto que debes asumir al presentar un reclamo sujeto a deducible. Por ejemplo, si tu deducible es de $500 y la reparación cuesta $2,000, tú pagas $500 y la aseguradora cubre los $1,500 restantes, siempre que el daño esté cubierto por la póliza.",
+                "faq2.q": "¿Qué debo hacer en caso de una colisión o si necesito asistencia vial?",
+                "faq2.a": "Contacta a tu corredor de seguros y/o al servicio de asistencia de tu aseguradora. En caso de una colisión, si no hay acuerdo entre las partes, hay personas heridas o alguno de los vehículos no puede movilizarse por sus propios medios, también deberás contactar a las autoridades de tránsito.",
+                "faq3.q": "Si compro un auto de segunda mano, ¿me sirve el seguro del dueño anterior?",
+                "faq3.a": "No debes asumir que la póliza del propietario anterior te cubre. Al realizar el traspaso, debes gestionar tu propio seguro cuanto antes, ya que la póliza anterior no se transfiere automáticamente.",
+                "faq4.q": "¿Por qué me conviene contratar a través de un corredor de seguros?",
+                "faq4.a": "Porque puedes pagar el mismo precio y contar con alguien de tu lado cuando más lo necesitas. A diferencia de contratar directamente con la aseguradora, con un banco o con la agencia que te vende el vehículo, un corredor de seguros independiente te ayuda a comparar opciones, gestionar renovaciones y te acompaña durante los reclamos. Con EAL Seguros, no estás solo cuando necesitas utilizar tu póliza.",
+                "faq5.q": "¿Por qué algunas aseguradoras ofrecen un 50% de descuento en el deducible para mujeres?",
+                "faq5.a": "Porque, según las estadísticas, las mujeres tienen accidentes más frecuentes, pero menos graves, mientras que los hombres tienden a tener accidentes de mayor severidad y costo.",
                 "form.mainTitle": "Cotiza tu seguro online",
                 "form.title": "Habla con un agente",
                 "form.subtitle": "Contáctanos para ayudarte a conseguir el mejor seguro de auto de Panamá al mejor precio.",
@@ -501,6 +724,7 @@
                 "nav.products": "PRODUCTS",
                 "nav.about": "ABOUT US",
                 "nav.customerService": "Customer Service",
+                "nav.support": "Insurance Line",
                 "cs.claims": "Claims",
                 "cs.providers": "Provider Networks",
                 "cs.conditions": "General Conditions",
@@ -513,6 +737,7 @@
                 "auto.badge": "Roadside Protection in Panama",
                 "auto.title1": "Auto",
                 "auto.title2": "Insurance.",
+                "auto.mainSub": "Comprehensive protection against collisions, theft, and roadside emergencies. Drive with full confidence in Panama.",
                 "auto.desc1": "In Panama, a traffic accident occurs approximately",
                 "auto.descBold": "every 10 minutes",
                 "auto.desc2": ". Your car insurance is more than a policy: it is the peace of mind of having backup against any unforeseen event.",
@@ -520,9 +745,6 @@
                 "auto.btnQuote": "Get Online Quote",
                 "plans.title": "Coverage Plans Designed for You",
                 "plans.subtitle": "Explore the vehicle insurance options available in Panama.",
-                "plans.cardBadge": "EAL Coverages",
-                "plans.cardTitle": "Guaranteed 24/7 Support",
-                "plans.cardSub": "Roadside assistance, towing, and immediate claims handling.",
                 "plan1.badge": "From $120 / year",
                 "plan1.title": "Third-Party Liability Insurance (DAT)",
                 "plan1.desc": "Basic protection to drive with peace of mind and comply with traffic regulations.",
@@ -542,6 +764,29 @@
                 "plan2.li5": "Some plans offer deductible waiver.",
                 "plan2.fullProt": "Full protection",
                 "plan2.btn": "Quote Comprehensive",
+                "benefits.badge": "Exclusive EAL Advantages",
+                "benefits.title": "Benefits included in your policy",
+                "benefit1.title": "Towing Assistance",
+                "benefit1.desc": "24/7 roadside towing service nationwide.",
+                "benefit2.title": "Legal Assistance",
+                "benefit2.desc": "On-site attorney for immediate advice after a collision.",
+                "benefit3.title": "Certified Workshops",
+                "benefit3.desc": "Preferred network of repair shops with guaranteed work.",
+                "benefit4.title": "Replacement Car",
+                "benefit4.desc": "Temporary vehicle while yours is at the shop.",
+                "benefit5.title": "Claims Management",
+                "benefit5.desc": "Personal guidance from start to finish with your insurer.",
+                "faq.title": "Frequently Asked Questions",
+                "faq1.q": "What is a deductible?",
+                "faq1.a": "It is the amount you must pay when filing a claim subject to a deductible. For example, if your deductible is $500 and the repair costs $2,000, you pay $500 and the insurance company covers the remaining $1,500, provided the damage is covered by the policy.",
+                "faq2.q": "What should I do in case of a collision or if I need roadside assistance?",
+                "faq2.a": "Contact your insurance broker and/or your insurance company's assistance service. In case of a collision, if there is no agreement between the parties, there are injuries, or any of the vehicles cannot be moved under their own power, you must also contact traffic authorities.",
+                "faq3.q": "If I buy a secondhand car, does the previous owner's insurance cover me?",
+                "faq3.a": "You should not assume that the previous owner's policy covers you. When transferring ownership, you must arrange your own insurance as soon as possible, as the previous policy is not automatically transferred.",
+                "faq4.q": "Why is it beneficial to hire through an insurance broker?",
+                "faq4.a": "Because you can pay the same price and have someone on your side when you need it most. Unlike dealing directly with an insurer, a bank, or the car dealership, an independent insurance broker helps you compare options, manage renewals, and supports you during claims. With EAL Seguros, you are never alone when you need to use your policy.",
+                "faq5.q": "Why do some insurance companies offer a 50% discount on deductibles for women?",
+                "faq5.a": "Because statistics show that women have more frequent but less severe accidents, whereas men tend to have accidents of greater severity and cost.",
                 "form.mainTitle": "Quote your insurance online",
                 "form.title": "Talk to an agent",
                 "form.subtitle": "Contact us to help you get the best auto insurance in Panama at the best price.",
@@ -560,19 +805,26 @@
             }
         };
 
-        let currentLang = 'es';
-        const flagES = `<svg class="w-5 h-3.5 rounded shadow-sm object-cover" viewBox="0 0 750 500" xmlns="http://www.w3.org/2000/svg"><rect width="750" height="500" fill="#aa151b"/><rect width="750" height="250" y="125" fill="#f1bf00"/></svg>`;
-        const flagEN = `<svg class="w-5 h-3.5 rounded shadow-sm object-cover" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="300" fill="#012169"/><path d="M0,0 L600,300 M600,0 L0,300" stroke="#fff" stroke-width="60"/><path d="M300,0 V300 M0,150 H600" stroke="#fff" stroke-width="100"/><path d="M300,0 V300 M0,150 H600" stroke="#C8102E" stroke-width="60"/></svg>`;
+        const flagES = `<svg class="w-4 h-3 rounded shadow-sm object-cover" viewBox="0 0 750 500" xmlns="http://www.w3.org/2000/svg"><rect width="750" height="500" fill="#aa151b"/><rect width="750" height="250" y="125" fill="#f1bf00"/></svg>`;
+        const flagEN = `<svg class="w-4 h-3 rounded shadow-sm object-cover" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="300" fill="#012169"/><path d="M0,0 L600,300 M600,0 L0,300" stroke="#fff" stroke-width="60"/><path d="M300,0 V300 M0,150 H600" stroke="#fff" stroke-width="100"/><path d="M300,0 V300 M0,150 H600" stroke="#C8102E" stroke-width="60"/></svg>`;
 
         function toggleLangDropdown() {
             document.getElementById('langDropdownMenu').classList.toggle('hidden');
         }
 
         function changeLanguage(lang, text) {
-            currentLang = lang;
-            document.getElementById('currentLangFlag').innerHTML = (lang === 'es') ? flagES : flagEN;
-            document.getElementById('currentLangText').textContent = text;
-            document.getElementById('langDropdownMenu').classList.add('hidden');
+            localStorage.setItem('eal_preferred_lang', lang);
+            applyLanguage(lang, text || (lang === 'es' ? 'ES' : 'EN'));
+        }
+
+        function applyLanguage(lang, text) {
+            const flagContainer = document.getElementById('currentLangFlag');
+            const textContainer = document.getElementById('currentLangText');
+            const menu = document.getElementById('langDropdownMenu');
+
+            if (flagContainer) flagContainer.innerHTML = (lang === 'es') ? flagES : flagEN;
+            if (textContainer) textContainer.textContent = text;
+            if (menu) menu.classList.add('hidden');
 
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -582,17 +834,35 @@
             });
         }
 
+        function toggleFaq(id) {
+            const ans = document.getElementById(`faqAns${id}`);
+            const icon = document.getElementById(`faqIcon${id}`);
+            const sign = document.getElementById(`faqSign${id}`);
+
+            const isOpen = ans.classList.contains('open');
+
+            if (isOpen) {
+                ans.classList.remove('open');
+                icon.classList.remove('rotate-180');
+                if (sign) sign.textContent = '+';
+            } else {
+                ans.classList.add('open');
+                icon.classList.add('rotate-180');
+                if (sign) sign.textContent = '−';
+            }
+        }
+
         function selectPlanInForm(planType) {
             const select = document.getElementById('formTipoPlan');
-            if(planType === 'DAT') {
-                select.value = "Daños a Terceros (DAT)";
-            } else if(planType === 'Completa') {
-                select.value = "Cobertura Completa";
+            if (select) {
+                if (planType === 'DAT') select.value = "Daños a Terceros (DAT)";
+                else if (planType === 'Completa') select.value = "Cobertura Completa";
             }
         }
 
         function handleQuoteSubmit(e) {
             e.preventDefault();
+            const currentLang = localStorage.getItem('eal_preferred_lang') || 'es';
             const nombre = document.getElementById('formNombre').value;
             const celular = document.getElementById('formCelular').value;
             const email = document.getElementById('formEmail').value;
@@ -604,6 +874,11 @@
             
             window.open(`https://wa.me/50767920669?text=${encodeURIComponent(text)}`, '_blank');
         }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('eal_preferred_lang') || 'es';
+            applyLanguage(savedLang, savedLang === 'es' ? 'ES' : 'EN');
+        });
     </script>
 </body>
 </html>
