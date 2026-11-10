@@ -533,63 +533,42 @@
     <section id="redes" class="pt-14 pb-16 sm:pt-16 sm:pb-20 bg-slate-100 scroll-mt-24 flex-1">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="animate-fade-up delay-1 text-center max-w-3xl mx-auto mb-10">
-                <p class="text-xs font-extrabold tracking-widest text-eal-navy uppercase" data-i18n="c.21">Redes de Proveedores</p>
-                <h1 class="text-3xl sm:text-4xl font-extrabold text-eal-navy font-serif mt-1" data-i18n="c.22">Selecciona la red que necesitas
+                <p class="text-xs font-extrabold tracking-widest text-eal-navy uppercase" data-i18n="c.18">Redes de Proveedores</p>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-eal-navy font-serif mt-1" data-i18n="c.19">Selecciona la red que necesitas
                         <span class="sr-only" data-i18n="seo.h1">— redes de proveedores de seguros en Panamá</span></h1>
                 <div class="w-20 h-1 bg-eal-gold rounded-full mx-auto mt-4"></div>
-                <p class="text-slate-600 text-sm sm:text-base mt-4" data-i18n="c.23">Haz clic en una red para ver las aseguradoras disponibles.</p>
+                <p class="text-slate-600 text-sm sm:text-base mt-4" data-i18n="c.20">Haz clic en una red para ver las aseguradoras disponibles.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <button type="button" onclick="openNetwork('auto')" class="reveal reveal-d1 group text-left bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 flex flex-col cursor-pointer">
-                    <div class="relative h-56 overflow-hidden bg-eal-navy">
-                        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=900&q=80" alt="Red de Auto de aseguradoras en Panamá" loading="lazy" class="img-zoom w-full h-full object-cover" onerror="this.style.display='none'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-eal-navy via-eal-navy/30 to-transparent"></div>
-                        <div class="absolute bottom-5 left-5 flex items-center gap-3">
-                            <span class="w-14 h-14 rounded-2xl bg-eal-gold text-eal-navy flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition"><i class="fa-solid fa-car-side"></i></span>
-                            <h3 class="text-2xl font-bold font-serif text-white" data-i18n="c.15">Red de Auto</h3>
-                        </div>
-                    </div>
-                    <div class="p-6 flex flex-col flex-1">
-                        <p class="text-slate-600 text-sm leading-relaxed flex-1" data-i18n="c.16">Talleres, agencias y proveedores autorizados para la reparación y asistencia de tu vehículo.</p>
-                        <span class="mt-5 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-eal-navy group-hover:text-eal-goldHover transition">
-                            <span data-i18n="net.cta">Ver aseguradoras</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
-                        </span>
+                <button type="button" onclick="openNetwork('auto')" aria-label="Auto - Talleres Autorizados" class="reveal reveal-d1 group relative h-80 rounded-3xl overflow-hidden border border-slate-200 bg-eal-navy shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer text-left">
+                    <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=900&q=80" alt="Auto - Talleres Autorizados en Panamá" loading="lazy" class="img-zoom absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-eal-navy via-eal-navy/40 to-transparent"></div>
+                    <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    <div class="absolute bottom-6 left-6 right-6 flex items-center gap-4">
+                        <span class="w-14 h-14 shrink-0 rounded-2xl bg-eal-gold text-eal-navy flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition"><i class="fa-solid fa-car-side"></i></span>
+                        <h2 class="text-xl sm:text-2xl font-bold font-serif text-white leading-snug" data-i18n="c.15">Auto - Talleres Autorizados</h2>
                     </div>
                 </button>
-                <button type="button" onclick="openNetwork('salud')" class="reveal reveal-d2 group text-left bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 flex flex-col cursor-pointer">
-                    <div class="relative h-56 overflow-hidden bg-eal-navy">
-                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=900&q=80" alt="Red de Salud de aseguradoras en Panamá" loading="lazy" class="img-zoom w-full h-full object-cover" onerror="this.style.display='none'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-eal-navy via-eal-navy/30 to-transparent"></div>
-                        <div class="absolute bottom-5 left-5 flex items-center gap-3">
-                            <span class="w-14 h-14 rounded-2xl bg-eal-gold text-eal-navy flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition"><i class="fa-solid fa-hospital"></i></span>
-                            <h3 class="text-2xl font-bold font-serif text-white" data-i18n="c.17">Red de Salud</h3>
-                        </div>
-                    </div>
-                    <div class="p-6 flex flex-col flex-1">
-                        <p class="text-slate-600 text-sm leading-relaxed flex-1" data-i18n="c.18">Hospitales, clínicas, laboratorios y médicos dentro de la red de tu aseguradora.</p>
-                        <span class="mt-5 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-eal-navy group-hover:text-eal-goldHover transition">
-                            <span data-i18n="net.cta">Ver aseguradoras</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
-                        </span>
+                <button type="button" onclick="openNetwork('salud')" aria-label="Salud - Redes de Hospitales y Médicos" class="reveal reveal-d2 group relative h-80 rounded-3xl overflow-hidden border border-slate-200 bg-eal-navy shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer text-left">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=900&q=80" alt="Salud - Redes de Hospitales y Médicos en Panamá" loading="lazy" class="img-zoom absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-eal-navy via-eal-navy/40 to-transparent"></div>
+                    <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    <div class="absolute bottom-6 left-6 right-6 flex items-center gap-4">
+                        <span class="w-14 h-14 shrink-0 rounded-2xl bg-eal-gold text-eal-navy flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition"><i class="fa-solid fa-hospital"></i></span>
+                        <h2 class="text-xl sm:text-2xl font-bold font-serif text-white leading-snug" data-i18n="c.16">Salud - Redes de Hospitales y Médicos</h2>
                     </div>
                 </button>
-                <button type="button" onclick="openNetwork('mascotas')" class="reveal reveal-d3 group text-left bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 flex flex-col cursor-pointer">
-                    <div class="relative h-56 overflow-hidden bg-eal-navy">
-                        <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=900&q=80" alt="Red de Mascotas de aseguradoras en Panamá" loading="lazy" class="img-zoom w-full h-full object-cover" onerror="this.style.display='none'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-eal-navy via-eal-navy/30 to-transparent"></div>
-                        <div class="absolute bottom-5 left-5 flex items-center gap-3">
-                            <span class="w-14 h-14 rounded-2xl bg-eal-gold text-eal-navy flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition"><i class="fa-solid fa-paw"></i></span>
-                            <h3 class="text-2xl font-bold font-serif text-white" data-i18n="c.19">Red de Mascotas</h3>
-                        </div>
-                    </div>
-                    <div class="p-6 flex flex-col flex-1">
-                        <p class="text-slate-600 text-sm leading-relaxed flex-1" data-i18n="c.20">Veterinarias afiliadas para la atención y el cuidado de tu perro o gato.</p>
-                        <span class="mt-5 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-eal-navy group-hover:text-eal-goldHover transition">
-                            <span data-i18n="net.cta">Ver aseguradoras</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
-                        </span>
+                <button type="button" onclick="openNetwork('mascotas')" aria-label="Red de Mascotas" class="reveal reveal-d3 group relative h-80 rounded-3xl overflow-hidden border border-slate-200 bg-eal-navy shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer text-left">
+                    <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=900&q=80" alt="Red de Mascotas en Panamá" loading="lazy" class="img-zoom absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-eal-navy via-eal-navy/40 to-transparent"></div>
+                    <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    <div class="absolute bottom-6 left-6 right-6 flex items-center gap-4">
+                        <span class="w-14 h-14 shrink-0 rounded-2xl bg-eal-gold text-eal-navy flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition"><i class="fa-solid fa-paw"></i></span>
+                        <h2 class="text-xl sm:text-2xl font-bold font-serif text-white leading-snug" data-i18n="c.17">Red de Mascotas</h2>
                     </div>
                 </button>
             </div>
-            <p class="reveal text-xs italic text-slate-500 mt-8 text-center flex items-center justify-center gap-2"><i class="fa-solid fa-circle-info text-eal-gold"></i><span data-i18n="c.24">Las redes de proveedores son administradas por cada aseguradora y pueden cambiar sin previo aviso.</span></p>
+            <p class="reveal text-xs italic text-slate-500 mt-8 text-center flex items-center justify-center gap-2"><i class="fa-solid fa-circle-info text-eal-gold"></i><span data-i18n="c.21">Las redes de proveedores son administradas por cada aseguradora y pueden cambiar sin previo aviso.</span></p>
         </div>
     </section>
 
@@ -599,7 +578,7 @@
             <div class="bg-eal-navy px-6 py-5 flex items-center gap-4 border-b-4 border-eal-gold">
                 <span id="netModalIcon" class="w-14 h-14 shrink-0 rounded-2xl bg-eal-gold text-eal-navy flex items-center justify-center text-2xl"></span>
                 <div class="flex-1 min-w-0">
-                    <p class="text-[10px] font-extrabold uppercase tracking-widest text-eal-gold" data-i18n="c.27">Selecciona tu aseguradora</p>
+                    <p class="text-[10px] font-extrabold uppercase tracking-widest text-eal-gold" data-i18n="c.24">Selecciona tu aseguradora</p>
                     <h3 id="netModalName" class="text-xl sm:text-2xl font-serif font-bold text-white truncate"></h3>
                 </div>
                 <button type="button" onclick="closeNetwork()" class="w-10 h-10 rounded-full bg-white/10 hover:bg-eal-gold hover:text-eal-navy text-white flex items-center justify-center transition cursor-pointer" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
@@ -751,20 +730,16 @@
                 "c.12": "Redes de",
                 "c.13": "proveedores.",
                 "c.14": "Encuentra los talleres, hospitales y veterinarias afiliados a tu aseguradora. Elige la red que necesitas y luego tu compañía de seguros.",
-                "c.15": "Red de Auto",
-                "c.16": "Talleres, agencias y proveedores autorizados para la reparación y asistencia de tu vehículo.",
-                "c.17": "Red de Salud",
-                "c.18": "Hospitales, clínicas, laboratorios y médicos dentro de la red de tu aseguradora.",
-                "c.19": "Red de Mascotas",
-                "c.20": "Veterinarias afiliadas para la atención y el cuidado de tu perro o gato.",
-                "net.cta": "Ver aseguradoras",
-                "c.21": "Redes de Proveedores",
-                "c.22": "Selecciona la red que necesitas",
-                "c.23": "Haz clic en una red para ver las aseguradoras disponibles.",
-                "c.24": "Las redes de proveedores son administradas por cada aseguradora y pueden cambiar sin previo aviso.",
-                "c.25": "¿No encuentras un proveedor o necesitas una recomendación? En EAL Seguros te orientamos.",
-                "c.26": "Verifica con tu aseguradora que el proveedor esté dentro de la red antes de recibir el servicio.",
-                "c.27": "Selecciona tu aseguradora"
+                "c.15": "Auto - Talleres Autorizados",
+                "c.16": "Salud - Redes de Hospitales y Médicos",
+                "c.17": "Red de Mascotas",
+                "c.18": "Redes de Proveedores",
+                "c.19": "Selecciona la red que necesitas",
+                "c.20": "Haz clic en una red para ver las aseguradoras disponibles.",
+                "c.21": "Las redes de proveedores son administradas por cada aseguradora y pueden cambiar sin previo aviso.",
+                "c.22": "¿No encuentras un proveedor o necesitas una recomendación? En EAL Seguros te orientamos.",
+                "c.23": "Verifica con tu aseguradora que el proveedor esté dentro de la red antes de recibir el servicio.",
+                "c.24": "Selecciona tu aseguradora"
             },
             "en": {
                 "topbar.book": "BOOK A MEETING",
@@ -824,20 +799,16 @@
                 "c.12": "Provider",
                 "c.13": "networks.",
                 "c.14": "Find the repair shops, hospitals and vets affiliated with your insurer. Choose the network you need and then your insurance company.",
-                "c.15": "Auto Network",
-                "c.16": "Authorized repair shops, dealerships and providers for your vehicle's repair and assistance.",
-                "c.17": "Health Network",
-                "c.18": "Hospitals, clinics, labs and doctors within your insurer's network.",
-                "c.19": "Pet Network",
-                "c.20": "Affiliated veterinary clinics for the care of your dog or cat.",
-                "net.cta": "See insurers",
-                "c.21": "Provider Networks",
-                "c.22": "Select the network you need",
-                "c.23": "Click on a network to see the available insurers.",
-                "c.24": "Provider networks are managed by each insurer and may change without notice.",
-                "c.25": "Can't find a provider or need a recommendation? At EAL Seguros we'll guide you.",
-                "c.26": "Check with your insurer that the provider is in-network before receiving the service.",
-                "c.27": "Select your insurer"
+                "c.15": "Auto - Authorized Repair Shops",
+                "c.16": "Health - Hospital & Doctor Networks",
+                "c.17": "Pet Network",
+                "c.18": "Provider Networks",
+                "c.19": "Select the network you need",
+                "c.20": "Click on a network to see the available insurers.",
+                "c.21": "Provider networks are managed by each insurer and may change without notice.",
+                "c.22": "Can't find a provider or need a recommendation? At EAL Seguros we'll guide you.",
+                "c.23": "Check with your insurer that the provider is in-network before receiving the service.",
+                "c.24": "Select your insurer"
             }
         };
 
@@ -899,61 +870,36 @@
         // Si una aseguradora no tiene esa red, borra su línea y no aparecerá.
         // ==========================================================
         const REDES_PROVEEDORES = {
-            auto: {   // Red de Auto
+            auto: {   // Auto - Talleres Autorizados
                 "Acerta": "#",
                 "Aliados": "#",
                 "Ancón": "#",
                 "ASSA": "#",
-                "Blue Cross": "#",
-                "Bupa": "#",
                 "Fedpa": "#",
                 "Internacional de Seguros": "#",
                 "Mapfre": "#",
-                "Palig": "#",
-                "Sagicor": "#",
                 "SURA": "#",
-                "UniVivir": "#",
-                "VUMI": "#",
-                "WorldWide Medical": "#",
             },
-            salud: {   // Red de Salud
+            salud: {   // Salud - Redes de Hospitales y Médicos
                 "Acerta": "#",
                 "Aliados": "#",
                 "Ancón": "#",
                 "ASSA": "#",
                 "Blue Cross": "#",
-                "Bupa": "#",
-                "Fedpa": "#",
-                "Internacional de Seguros": "#",
                 "Mapfre": "#",
                 "Palig": "#",
-                "Sagicor": "#",
                 "SURA": "#",
                 "UniVivir": "#",
                 "VUMI": "#",
                 "WorldWide Medical": "#",
             },
             mascotas: {   // Red de Mascotas
-                "Acerta": "#",
-                "Aliados": "#",
-                "Ancón": "#",
-                "ASSA": "#",
-                "Blue Cross": "#",
-                "Bupa": "#",
-                "Fedpa": "#",
-                "Internacional de Seguros": "#",
-                "Mapfre": "#",
-                "Palig": "#",
-                "Sagicor": "#",
                 "SURA": "#",
-                "UniVivir": "#",
-                "VUMI": "#",
-                "WorldWide Medical": "#",
             },
         };
 
         const INS_LOGOS = {"Acerta": "acerta.png", "Aliados": "Aliados.png", "Ancón": "Ancon.png", "ASSA": "assa.png", "Blue Cross": "Blue.png", "Bupa": "bupa.png", "Fedpa": "fedpa.png", "Internacional de Seguros": "is.png", "Mapfre": "mapfre.png", "Palig": "Palig.png", "Sagicor": "sagicor.png", "SURA": "sura.svg", "UniVivir": "univivir.png", "VUMI": "vumi.png", "WorldWide Medical": "world.png"};
-        const NET_INFO = {"auto": {"icon": "fa-solid fa-car-side", "es": "Red de Auto", "en": "Auto Network"}, "salud": {"icon": "fa-solid fa-hospital", "es": "Red de Salud", "en": "Health Network"}, "mascotas": {"icon": "fa-solid fa-paw", "es": "Red de Mascotas", "en": "Pet Network"}};
+        const NET_INFO = {"auto": {"icon": "fa-solid fa-car-side", "es": "Auto - Talleres Autorizados", "en": "Auto - Authorized Repair Shops"}, "salud": {"icon": "fa-solid fa-hospital", "es": "Salud - Redes de Hospitales y Médicos", "en": "Health - Hospital & Doctor Networks"}, "mascotas": {"icon": "fa-solid fa-paw", "es": "Red de Mascotas", "en": "Pet Network"}};
         let lastFocus = null;
 
         function openNetwork(key) {
