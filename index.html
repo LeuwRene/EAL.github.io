@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EAL Corredor de Seguros | Panamá</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -14,11 +14,11 @@
                 extend: {
                     colors: {
                         eal: {
-                            navy: '#0F2537',        
-                            gold: '#C5A059',        
-                            goldHover: '#B08C46',   
-                            goldLight: '#F5EFE0',   
-                            yellowBadge: '#D4AF37'  
+                            navy: '#0F2537',
+                            gold: '#C5A059',
+                            goldHover: '#B08C46',
+                            goldLight: '#F5EFE0',
+                            yellowBadge: '#D4AF37'
                         }
                     },
                     fontFamily: {
@@ -29,14 +29,25 @@
             }
         }
     </script>
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
-        .group:hover .dropdown-menu { display: block; }
+        /* Submenús del header: zona de paso invisible + pequeño retraso al cerrar,
+           para que no se cierren al bajar el mouse hacia las opciones */
+        nav .relative.group { padding-bottom: 10px; margin-bottom: -10px; }
+        .group .dropdown-menu {
+            display: block; visibility: hidden; opacity: 0; transform: translateY(8px);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.3s;
+            transition-delay: 0.25s;
+        }
+        .group:hover .dropdown-menu, .group:focus-within .dropdown-menu {
+            visibility: visible; opacity: 1; transform: translateY(0);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
+        }
         .hero-gradient-overlay {
             background: linear-gradient(90deg, rgba(15, 37, 55, 0.95) 0%, rgba(15, 37, 55, 0.85) 50%, rgba(15, 37, 55, 0.70) 100%);
         }
@@ -57,159 +68,344 @@
     width: max-content;
     animation: marquee 35s linear infinite;
 }
+        /* ===== ANIMACIONES ===== */
+        /* Zoom lento del fondo de la portada */
+        @keyframes heroZoom { from { transform: scale(1); } to { transform: scale(1.12); } }
+        .hero-zoom { animation: heroZoom 18s ease-in-out infinite alternate; will-change: transform; }
+        /* Cambio suave entre imágenes de fondo (index) */
+        .hero-slide { opacity: 0; transition: opacity 2.5s ease-in-out; }
+        .hero-slide.active { opacity: 1; }
+        /* Entrada de textos al cargar la página */
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeLeft { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+        .animate-fade-up { opacity: 0; animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        .animate-fade-left { opacity: 0; animation: fadeLeft 1s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.5s; }
+        .delay-4 { animation-delay: 0.7s; }
+        .delay-5 { animation-delay: 0.9s; }
+        /* Latido suave de la etiqueta "Dato importante" */
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.55); }
+            50% { transform: scale(1.06); box-shadow: 0 0 0 10px rgba(197, 160, 89, 0); }
+        }
+        .badge-pulse { animation: badgePulse 2.4s ease-in-out infinite; }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-zoom, .badge-pulse { animation: none; }
+            .animate-fade-up, .animate-fade-left { animation: none; opacity: 1; }
+        }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 font-sans antialiased overflow-x-hidden selection:bg-eal-gold selection:text-white flex flex-col min-h-screen">
 
-    <!-- MAIN NAVIGATION BAR (IDÉNTICO AL DE AUTO) -->
-<!-- MAIN NAVIGATION BAR UNIFICADO EXACTO -->
-    <header class="bg-eal-navy border-b border-eal-gold/30 text-white sticky top-0 z-50 shadow-xl">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            
-            <!-- BRAND LOGO -->
-            <a href="index.html" class="flex items-center gap-3 group shrink-0">
-                <div class="w-10 h-10 rounded-xl border-2 border-eal-gold flex items-center justify-center bg-eal-navy text-eal-gold font-serif font-bold text-lg shadow-lg group-hover:scale-105 transition-transform">
-                    EAL
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-serif text-xl font-bold tracking-wider text-white group-hover:text-eal-gold transition-colors leading-none">EAL</span>
-                    <span class="text-[8px] tracking-[0.2em] text-eal-gold font-bold uppercase mt-0.5" data-i18n="nav.subtitle">Corredor de Seguros</span>
-                </div>
-            </a>
+ <!-- MAIN NAVIGATION BAR UNIFICADO CON MENÚ MÓVIL -->
+<header class="bg-eal-navy border-b border-eal-gold/30 text-white sticky top-0 z-50 shadow-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
 
-            <!-- NAV LINKS (MISMOS PADDING Y TAMAÑOS EXACTOS) -->
-            <nav class="hidden lg:flex items-center space-x-1 bg-eal-navy/60 px-2 py-1.5 rounded-xl border border-eal-gold/25 shadow-inner text-[11px] font-semibold tracking-wider uppercase">
-                <a href="index.html" class="text-slate-200 hover:text-eal-gold px-3 py-2 rounded-lg transition hover:bg-white/5" data-i18n="nav.home">INICIO</a>
-                
-                <!-- DROPDOWN: PRODUCTOS -->
-                <div class="relative group">
-                    <a href="#productos" class="text-slate-200 hover:text-eal-gold px-3 py-2 rounded-lg transition hover:bg-white/5 flex items-center gap-1.5">
-                        <span data-i18n="nav.products">NUESTROS PRODUCTOS</span> 
-                        <i class="fa-solid fa-chevron-down text-[9px] text-eal-gold"></i>
-                    </a>
-                    <div class="dropdown-menu hidden absolute left-0 mt-1 w-64 bg-eal-navy border border-eal-gold/40 rounded-xl shadow-2xl overflow-hidden z-50 py-2">
-                        <a href="Auto.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="prod.auto">Auto</a>
-                        <a href="#" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="prod.health">Salud</a>
-                        <a href="#" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="prod.life">Vida</a>
-                        <a href="#" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="prod.home">Hogar y Contenido</a>
-                        <a href="#" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="prod.pet">Mascotas</a>
-                        <a href="#" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="prod.travel">Viajero</a>
-                    </div>
-                </div>
+        <!-- BRAND LOGO -->
+        <a href="index.html" class="flex items-center gap-3 group shrink-0">
+            <div class="w-10 h-10 rounded-xl border-2 border-eal-gold flex items-center justify-center bg-eal-navy text-eal-gold font-serif font-bold text-lg shadow-lg group-hover:scale-105 transition-transform">
+                EAL
+            </div>
+            <div class="flex flex-col">
+                <span class="font-serif text-xl font-bold tracking-wider text-white group-hover:text-eal-gold transition-colors leading-none">EAL</span>
+                <span class="text-[8px] tracking-[0.2em] text-eal-gold font-bold uppercase mt-0.5" data-i18n="nav.subtitle">Corredor de Seguros</span>
+            </div>
+        </a>
 
-                <a href="#nosotros" class="text-slate-200 hover:text-eal-gold px-3 py-2 rounded-lg transition hover:bg-white/5" data-i18n="nav.about">SOBRE NOSOTROS</a>
-                
-                <!-- DROPDOWN: ATENCIÓN AL CLIENTE -->
-                <div class="relative group">
-                    <a href="#" class="text-slate-200 hover:text-eal-gold px-3 py-2 rounded-lg transition hover:bg-white/5 flex items-center gap-1.5">
-                        <span data-i18n="nav.customerService">Atención al cliente</span> 
-                        <i class="fa-solid fa-chevron-down text-[9px] text-eal-gold"></i>
-                    </a>
-                    <div class="dropdown-menu hidden absolute left-0 mt-1 w-52 bg-eal-navy border border-eal-gold/40 rounded-xl shadow-2xl overflow-hidden z-50 py-2">
-                        <a href="#" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="cs.claims">Reclamos</a>
-                        <a href="#" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="cs.providers">Redes de proveedores</a>
-                        <a href="#" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="cs.conditions">Condiciones generales</a>
-                    </div>
-                </div>
+        <!-- NAV LINKS PARA COMPUTADORAS (Escritorio) -->
+        <nav class="hidden lg:flex items-center space-x-1 bg-eal-navy/60 px-2 py-1.5 rounded-xl border border-eal-gold/25 shadow-inner text-[11px] font-semibold tracking-wider uppercase">
+            <a href="index.html" class="text-eal-gold bg-white/5 px-3 py-2 rounded-lg transition hover:bg-white/5 hover:text-eal-gold" data-i18n="nav.home">INICIO</a>
 
-                <!-- DROPDOWN: LÍNEA DE ASEGURADORAS -->
-                <div class="relative group">
-                    <a href="#" class="text-slate-200 hover:text-eal-gold px-3 py-2 rounded-lg transition hover:bg-white/5 flex items-center gap-1.5">
-                        <span data-i18n="nav.support">Línea de aseguradoras</span>
-                        <i class="fa-solid fa-chevron-down text-[9px] text-eal-gold"></i>
-                    </a>
-                    <div class="dropdown-menu hidden absolute right-0 mt-1 w-[550px] bg-eal-navy border border-eal-gold/40 rounded-2xl shadow-2xl p-5 z-50">
-                        <div class="mb-3 pb-2 border-b border-eal-gold/20">
-                            <h4 class="font-serif font-bold text-sm text-eal-gold" data-i18n="support.title">Contacta a tu aseguradora</h4>
-                            <p class="text-[11px] text-slate-300" data-i18n="support.subtitle">Números de emergencia y atención directa con las principales aseguradoras.</p>
-                        </div>
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="bg-white/5 border border-white/10 p-3 rounded-xl flex items-center justify-between hover:bg-white/10 transition">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-12 h-8 bg-white border border-slate-200 rounded flex items-center justify-center font-bold text-sky-600 text-[10px]">SURA</div>
-                                    <div>
-                                        <span class="block text-[10px] font-bold text-slate-400 uppercase">SURA Seguros</span>
-                                        <a href="tel:2050700" class="text-white font-bold text-xs hover:text-eal-gold transition">205-0700</a>
-                                        <span class="text-slate-400 text-[10px]">/</span>
-                                        <a href="tel:63287872" class="text-slate-200 font-semibold text-[10px] hover:text-eal-gold transition">6328-7872</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bg-white/5 border border-white/10 p-3 rounded-xl flex items-center justify-between hover:bg-white/10 transition">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-12 h-8 bg-white border border-slate-200 rounded flex items-center justify-center font-bold text-blue-900 text-[10px]">ASSA</div>
-                                    <div>
-                                        <span class="block text-[10px] font-bold text-slate-400 uppercase">ASSA Compañía</span>
-                                        <a href="tel:3002424" class="text-white font-bold text-xs hover:text-eal-gold transition">300-2424</a>
-                                        <span class="text-slate-400 text-[10px]">/</span>
-                                        <a href="tel:66012772" class="text-slate-200 font-semibold text-[10px] hover:text-eal-gold transition">6601-2772</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
-            <!-- ACCIONES -->
-            <div class="flex items-center space-x-2.5 shrink-0">
-                <a id="topbar-book-btn" 
-                   href="https://wa.me/50767920669?text=Hola%20Eduardo,%20quisiera%20reservar%20una%20fecha%20con%20usted" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="bg-eal-gold hover:bg-eal-goldHover text-eal-navy px-3 py-2 rounded-xl font-extrabold text-[10px] uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-md hover:scale-105">
-                    <i class="fa-regular fa-calendar-check text-xs"></i>
-                    <span id="topbar-book-text" data-i18n="topbar.book">RESERVAR REUNIÓN</span>
+            <div class="relative group">
+                <a href="index.html#productos" class="text-slate-200 px-3 py-2 rounded-lg transition hover:bg-white/5 hover:text-eal-gold flex items-center gap-1.5">
+                    <span data-i18n="nav.products">NUESTROS PRODUCTOS</span>
+                    <i class="fa-solid fa-chevron-down text-[9px] text-eal-gold"></i>
                 </a>
+                <div class="dropdown-menu hidden absolute left-0 mt-1 w-64 bg-eal-navy border border-eal-gold/40 rounded-xl shadow-2xl overflow-hidden z-50 py-2">
+                    <a href="Auto.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="prod.auto">Seguro de Auto</a>
+                    <a href="Salud.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="prod.health">Seguro de Salud</a>
+                    <a href="Vida.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="prod.life">Seguro de Vida</a>
+                    <a href="Hogar.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="prod.home">Seguro de Hogar y Contenido</a>
+                    <a href="Mascotas.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="prod.pet">Seguro de Mascotas</a>
+                    <a href="Viaje.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="prod.travel">Seguro de Viaje</a>
+                </div>
+            </div>
 
-                <div class="relative">
-                    <button onclick="toggleLangDropdown()" id="langDropdownBtn" class="bg-eal-navy hover:bg-eal-navy/80 text-white text-xs font-bold border border-eal-gold/50 rounded-xl px-2.5 py-2 flex items-center gap-1.5 transition cursor-pointer shadow-sm">
-                        <span id="currentLangFlag" class="inline-flex items-center">
-                            <svg class="w-4 h-3 rounded shadow-sm object-cover" viewBox="0 0 750 500" xmlns="http://www.w3.org/2000/svg"><rect width="750" height="500" fill="#aa151b"/><rect width="750" height="250" y="125" fill="#f1bf00"/></svg>
-                        </span> 
-                        <span id="currentLangText">ES</span> 
-                        <i class="fa-solid fa-chevron-down text-[9px] text-eal-gold"></i>
-                    </button>
-                    <div id="langDropdownMenu" class="hidden absolute right-0 mt-2 w-32 bg-eal-navy border border-eal-gold/40 rounded-xl shadow-2xl overflow-hidden z-50">
-                        <button onclick="changeLanguage('es', 'ES')" class="w-full text-left px-3.5 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy flex items-center gap-2.5 transition cursor-pointer">
-                            <svg class="w-4 h-3 rounded shadow-sm object-cover" viewBox="0 0 750 500" xmlns="http://www.w3.org/2000/svg"><rect width="750" height="500" fill="#aa151b"/><rect width="750" height="250" y="125" fill="#f1bf00"/></svg> 
-                            <span>ESPAÑOL</span>
-                        </button>
-                        <button onclick="changeLanguage('en', 'EN')" class="w-full text-left px-3.5 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy flex items-center gap-2.5 transition border-t border-eal-gold/20 cursor-pointer">
-                            <svg class="w-4 h-3 rounded shadow-sm object-cover" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="300" fill="#012169"/><path d="M0,0 L600,300 M600,0 L0,300" stroke="#fff" stroke-width="60"/><path d="M300,0 V300 M0,150 H600" stroke="#fff" stroke-width="100"/><path d="M300,0 V300 M0,150 H600" stroke="#C8102E" stroke-width="60"/></svg> 
-                            <span>ENGLISH</span>
-                        </button>
+            <a href="SobreNosotros.html" class="text-slate-200 px-3 py-2 rounded-lg transition hover:bg-white/5 hover:text-eal-gold" data-i18n="nav.about">SOBRE NOSOTROS</a>
+
+            <div class="relative group">
+                <a href="Reclamos.html" class="text-slate-200 px-3 py-2 rounded-lg transition hover:bg-white/5 hover:text-eal-gold flex items-center gap-1.5">
+                    <span data-i18n="nav.customerService">Atención al cliente</span>
+                    <i class="fa-solid fa-chevron-down text-[9px] text-eal-gold"></i>
+                </a>
+                <div class="dropdown-menu hidden absolute left-0 mt-1 w-56 bg-eal-navy border border-eal-gold/40 rounded-xl shadow-2xl overflow-hidden z-50 py-2">
+                    <a href="Reclamos.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="cs.claims">Reclamos</a>
+                    <a href="Redes.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="cs.providers">Redes de proveedores</a>
+                    <a href="Condiciones.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="cs.conditions">Condiciones generales</a>
+                </div>
+            </div>
+
+            <div class="relative group">
+                <a href="#" onclick="return false;" class="text-slate-200 px-3 py-2 rounded-lg transition hover:bg-white/5 hover:text-eal-gold flex items-center gap-1.5">
+                    <span data-i18n="nav.support">Línea de aseguradoras</span>
+                    <i class="fa-solid fa-chevron-down text-[9px] text-eal-gold"></i>
+                </a>
+                <div class="dropdown-menu hidden absolute right-0 mt-1 w-[760px] max-w-[92vw] bg-eal-navy border border-eal-gold/40 rounded-2xl shadow-2xl p-4 z-50">
+                    <div class="mb-3 pb-2 border-b border-eal-gold/20 flex items-center justify-between">
+                        <h4 class="font-serif font-bold text-sm text-eal-gold normal-case tracking-normal" data-i18n="support.title">Contacta a tu aseguradora</h4>
+                        <span class="text-[10px] text-slate-400 normal-case tracking-normal" data-i18n="support.legend">Teléfono / Celular</span>
+                    </div>
+                    <div class="grid grid-cols-2 xl:grid-cols-3 gap-2.5">
+                        <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
+                                <img src="Imagenes/sura.svg" alt="SURA" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>SURA</span>'">
+                            </div>
+                            <div class="min-w-0 normal-case tracking-normal">
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">SURA</span>
+                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3333312" class="hover:text-eal-gold">333-3312</a> <span class="text-eal-gold">/</span> <a href="tel:62977443" class="hover:text-eal-gold">6297-7443</a></span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
+                                <img src="Imagenes/mapfre.png" alt="Mapfre" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Mapfre</span>'">
+                            </div>
+                            <div class="min-w-0 normal-case tracking-normal">
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Mapfre</span>
+                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3021100" class="hover:text-eal-gold">302-1100</a> <span class="text-eal-gold">/</span> <a href="tel:65123380" class="hover:text-eal-gold">6512-3380</a></span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
+                                <img src="Imagenes/assa.png" alt="ASSA" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>ASSA</span>'">
+                            </div>
+                            <div class="min-w-0 normal-case tracking-normal">
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">ASSA</span>
+                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3104455" class="hover:text-eal-gold">310-4455</a> <span class="text-eal-gold">/</span> <a href="tel:66231190" class="hover:text-eal-gold">6623-1190</a></span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
+                                <img src="Imagenes/bupa.png" alt="Bupa" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Bupa</span>'">
+                            </div>
+                            <div class="min-w-0 normal-case tracking-normal">
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Bupa</span>
+                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3402210" class="hover:text-eal-gold">340-2210</a> <span class="text-eal-gold">/</span> <a href="tel:66884521" class="hover:text-eal-gold">6688-4521</a></span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
+                                <img src="Imagenes/Palig.png" alt="Palig" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Palig</span>'">
+                            </div>
+                            <div class="min-w-0 normal-case tracking-normal">
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Palig</span>
+                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3775560" class="hover:text-eal-gold">377-5560</a> <span class="text-eal-gold">/</span> <a href="tel:61459087" class="hover:text-eal-gold">6145-9087</a></span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
+                                <img src="Imagenes/is.png" alt="Internacional de Seguros" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Internacional</span>'">
+                            </div>
+                            <div class="min-w-0 normal-case tracking-normal">
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Internacional de Seguros</span>
+                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3238800" class="hover:text-eal-gold">323-8800</a> <span class="text-eal-gold">/</span> <a href="tel:62903365" class="hover:text-eal-gold">6290-3365</a></span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
+                                <img src="Imagenes/sagicor.png" alt="Sagicor" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Sagicor</span>'">
+                            </div>
+                            <div class="min-w-0 normal-case tracking-normal">
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Sagicor</span>
+                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3621450" class="hover:text-eal-gold">362-1450</a> <span class="text-eal-gold">/</span> <a href="tel:67342218" class="hover:text-eal-gold">6734-2218</a></span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
+                                <img src="Imagenes/vumi.png" alt="VUMI" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>VUMI</span>'">
+                            </div>
+                            <div class="min-w-0 normal-case tracking-normal">
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">VUMI</span>
+                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3907720" class="hover:text-eal-gold">390-7720</a> <span class="text-eal-gold">/</span> <a href="tel:64558812" class="hover:text-eal-gold">6455-8812</a></span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
+                                <img src="Imagenes/world.png" alt="WorldWide Medical" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>WorldWide</span>'">
+                            </div>
+                            <div class="min-w-0 normal-case tracking-normal">
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">WorldWide Medical</span>
+                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3156630" class="hover:text-eal-gold">315-6630</a> <span class="text-eal-gold">/</span> <a href="tel:65784409" class="hover:text-eal-gold">6578-4409</a></span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
+                                <img src="Imagenes/acerta.png" alt="Acerta" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Acerta</span>'">
+                            </div>
+                            <div class="min-w-0 normal-case tracking-normal">
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Acerta</span>
+                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3862290" class="hover:text-eal-gold">386-2290</a> <span class="text-eal-gold">/</span> <a href="tel:68125576" class="hover:text-eal-gold">6812-5576</a></span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
+                                <img src="Imagenes/fedpa.png" alt="Fedpa" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Fedpa</span>'">
+                            </div>
+                            <div class="min-w-0 normal-case tracking-normal">
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Fedpa</span>
+                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3517740" class="hover:text-eal-gold">351-7740</a> <span class="text-eal-gold">/</span> <a href="tel:63096624" class="hover:text-eal-gold">6309-6624</a></span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
+                                <img src="Imagenes/univivir.png" alt="UniVivir" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>UniVivir</span>'">
+                            </div>
+                            <div class="min-w-0 normal-case tracking-normal">
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">UniVivir</span>
+                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3684410" class="hover:text-eal-gold">368-4410</a> <span class="text-eal-gold">/</span> <a href="tel:69571132" class="hover:text-eal-gold">6957-1132</a></span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
+                                <img src="Imagenes/Blue.png" alt="Blue Cross" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Blue</span>'">
+                            </div>
+                            <div class="min-w-0 normal-case tracking-normal">
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Blue Cross</span>
+                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3299910" class="hover:text-eal-gold">329-9910</a> <span class="text-eal-gold">/</span> <a href="tel:64762285" class="hover:text-eal-gold">6476-2285</a></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </nav>
+
+        <!-- ACCIONES DERECHA + BOTÓN HAMBURGUESA MÓVIL -->
+        <div class="flex items-center space-x-2 shrink-0">
+            <a id="topbar-book-btn"
+               href="https://wa.me/50767920669?text=Hola%20Eduardo,%20quisiera%20reservar%20una%20fecha%20con%20usted"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="hidden sm:flex bg-eal-gold hover:bg-eal-goldHover text-eal-navy px-3 py-2 rounded-xl font-extrabold text-[10px] uppercase tracking-wider items-center gap-1.5 transition-all shadow-md">
+                <i class="fa-regular fa-calendar-check text-xs"></i>
+                <span id="topbar-book-text" data-i18n="topbar.book">RESERVAR</span>
+            </a>
+
+            <!-- Selector de Idioma -->
+            <div class="relative">
+                <button onclick="toggleLangDropdown()" id="langDropdownBtn" class="bg-eal-navy hover:bg-eal-navy/80 text-white text-xs font-bold border border-eal-gold/50 rounded-xl px-2.5 py-2 flex items-center gap-1.5 transition cursor-pointer">
+                    <span id="currentLangFlag" class="inline-flex items-center">
+                        <svg class="w-4 h-3 rounded shadow-sm object-cover" viewBox="0 0 750 500" xmlns="http://www.w3.org/2000/svg"><rect width="750" height="500" fill="#aa151b"/><rect width="750" height="250" y="125" fill="#f1bf00"/></svg>
+                    </span>
+                    <span id="currentLangText">ES</span>
+                    <i class="fa-solid fa-chevron-down text-[9px] text-eal-gold"></i>
+                </button>
+                <div id="langDropdownMenu" class="hidden absolute right-0 mt-2 w-32 bg-eal-navy border border-eal-gold/40 rounded-xl shadow-2xl overflow-hidden z-50">
+                    <button onclick="changeLanguage('es', 'ES')" class="w-full text-left px-3.5 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy flex items-center gap-2.5 transition cursor-pointer">ESPAÑOL</button>
+                    <button onclick="changeLanguage('en', 'EN')" class="w-full text-left px-3.5 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy flex items-center gap-2.5 transition border-t border-eal-gold/20 cursor-pointer">ENGLISH</button>
+                </div>
+            </div>
+
+            <!-- BOTÓN MENÚ HAMBURGUESA (Solo visible en celulares/tablets) -->
+            <button onclick="toggleMobileMenu()" class="lg:hidden text-eal-gold text-xl p-2 focus:outline-none cursor-pointer">
+                <i id="mobileMenuIcon" class="fa-solid fa-bars"></i>
+            </button>
         </div>
-    </header>
+    </div>
+
+<!-- MENÚ DESPLEGABLE MÓVIL INTERACTIVO -->
+<div id="mobileMenu" class="hidden lg:hidden bg-eal-navy border-t border-eal-gold/30 px-6 py-5 space-y-4 shadow-2xl max-h-[calc(100vh-80px)] overflow-y-auto">
+
+    <a href="index.html" class="block text-eal-gold font-semibold text-sm hover:text-eal-gold transition" data-i18n="nav.home">INICIO</a>
+
+    <div class="border-b border-white/10 pb-3">
+        <button onclick="toggleMobileSubmenu('mobProducts', 'iconProducts')" class="w-full flex items-center justify-between text-white font-bold text-xs uppercase tracking-wider py-1 focus:outline-none cursor-pointer">
+            <span data-i18n="nav.products">NUESTROS PRODUCTOS</span>
+            <i id="iconProducts" class="fa-solid fa-chevron-down text-[10px] text-eal-gold transition-transform duration-300"></i>
+        </button>
+        <div id="mobProducts" class="hidden pl-3 mt-2 space-y-2 border-l-2 border-eal-gold/40">
+            <a href="Auto.html" class="block text-slate-200 hover:text-eal-gold text-xs py-1" data-i18n="prod.auto">Seguro de Auto</a>
+            <a href="Salud.html" class="block text-slate-200 hover:text-eal-gold text-xs py-1" data-i18n="prod.health">Seguro de Salud</a>
+            <a href="Vida.html" class="block text-slate-200 hover:text-eal-gold text-xs py-1" data-i18n="prod.life">Seguro de Vida</a>
+            <a href="Hogar.html" class="block text-slate-200 hover:text-eal-gold text-xs py-1" data-i18n="prod.home">Seguro de Hogar y Contenido</a>
+            <a href="Mascotas.html" class="block text-slate-200 hover:text-eal-gold text-xs py-1" data-i18n="prod.pet">Seguro de Mascotas</a>
+            <a href="Viaje.html" class="block text-slate-200 hover:text-eal-gold text-xs py-1" data-i18n="prod.travel">Seguro de Viaje</a>
+        </div>
+    </div>
+
+    <a href="SobreNosotros.html" class="block text-white font-semibold text-sm hover:text-eal-gold transition" data-i18n="nav.about">SOBRE NOSOTROS</a>
+
+    <div class="border-b border-white/10 pb-3">
+        <button onclick="toggleMobileSubmenu('mobCS', 'iconCS')" class="w-full flex items-center justify-between text-white font-bold text-xs uppercase tracking-wider py-1 focus:outline-none cursor-pointer">
+            <span data-i18n="nav.customerService">Atención al cliente</span>
+            <i id="iconCS" class="fa-solid fa-chevron-down text-[10px] text-eal-gold transition-transform duration-300"></i>
+        </button>
+        <div id="mobCS" class="hidden pl-3 mt-2 space-y-2 border-l-2 border-eal-gold/40">
+            <a href="Reclamos.html" class="block text-slate-200 hover:text-eal-gold text-xs py-1" data-i18n="cs.claims">Reclamos</a>
+            <a href="Redes.html" class="block text-slate-200 hover:text-eal-gold text-xs py-1" data-i18n="cs.providers">Redes de proveedores</a>
+            <a href="Condiciones.html" class="block text-slate-200 hover:text-eal-gold text-xs py-1" data-i18n="cs.conditions">Condiciones generales</a>
+        </div>
+    </div>
+
+    <div class="border-b border-white/10 pb-3">
+        <button onclick="toggleMobileSubmenu('mobSupport', 'iconSupport')" class="w-full flex items-center justify-between text-white font-bold text-xs uppercase tracking-wider py-1 focus:outline-none cursor-pointer">
+            <span data-i18n="nav.support">Línea de aseguradoras</span>
+            <i id="iconSupport" class="fa-solid fa-chevron-down text-[10px] text-eal-gold transition-transform duration-300"></i>
+        </button>
+        <div id="mobSupport" class="hidden pl-3 mt-2 space-y-2 border-l-2 border-eal-gold/40 text-xs text-slate-300">
+            <div class="py-1"><strong class="text-white">SURA:</strong> <a href="tel:3333312" class="hover:text-eal-gold">333-3312</a> / <a href="tel:62977443" class="hover:text-eal-gold">6297-7443</a></div>
+            <div class="py-1"><strong class="text-white">Mapfre:</strong> <a href="tel:3021100" class="hover:text-eal-gold">302-1100</a> / <a href="tel:65123380" class="hover:text-eal-gold">6512-3380</a></div>
+            <div class="py-1"><strong class="text-white">ASSA:</strong> <a href="tel:3104455" class="hover:text-eal-gold">310-4455</a> / <a href="tel:66231190" class="hover:text-eal-gold">6623-1190</a></div>
+            <div class="py-1"><strong class="text-white">Bupa:</strong> <a href="tel:3402210" class="hover:text-eal-gold">340-2210</a> / <a href="tel:66884521" class="hover:text-eal-gold">6688-4521</a></div>
+            <div class="py-1"><strong class="text-white">Palig:</strong> <a href="tel:3775560" class="hover:text-eal-gold">377-5560</a> / <a href="tel:61459087" class="hover:text-eal-gold">6145-9087</a></div>
+            <div class="py-1"><strong class="text-white">Internacional de Seguros:</strong> <a href="tel:3238800" class="hover:text-eal-gold">323-8800</a> / <a href="tel:62903365" class="hover:text-eal-gold">6290-3365</a></div>
+            <div class="py-1"><strong class="text-white">Sagicor:</strong> <a href="tel:3621450" class="hover:text-eal-gold">362-1450</a> / <a href="tel:67342218" class="hover:text-eal-gold">6734-2218</a></div>
+            <div class="py-1"><strong class="text-white">VUMI:</strong> <a href="tel:3907720" class="hover:text-eal-gold">390-7720</a> / <a href="tel:64558812" class="hover:text-eal-gold">6455-8812</a></div>
+            <div class="py-1"><strong class="text-white">WorldWide Medical:</strong> <a href="tel:3156630" class="hover:text-eal-gold">315-6630</a> / <a href="tel:65784409" class="hover:text-eal-gold">6578-4409</a></div>
+            <div class="py-1"><strong class="text-white">Acerta:</strong> <a href="tel:3862290" class="hover:text-eal-gold">386-2290</a> / <a href="tel:68125576" class="hover:text-eal-gold">6812-5576</a></div>
+            <div class="py-1"><strong class="text-white">Fedpa:</strong> <a href="tel:3517740" class="hover:text-eal-gold">351-7740</a> / <a href="tel:63096624" class="hover:text-eal-gold">6309-6624</a></div>
+            <div class="py-1"><strong class="text-white">UniVivir:</strong> <a href="tel:3684410" class="hover:text-eal-gold">368-4410</a> / <a href="tel:69571132" class="hover:text-eal-gold">6957-1132</a></div>
+            <div class="py-1"><strong class="text-white">Blue Cross:</strong> <a href="tel:3299910" class="hover:text-eal-gold">329-9910</a> / <a href="tel:64762285" class="hover:text-eal-gold">6476-2285</a></div>
+        </div>
+    </div>
+
+    <div class="pt-2">
+        <a href="https://wa.me/50767920669?text=Hola%20Eduardo,%20quisiera%20reservar%20una%20fecha%20con%20usted" target="_blank" class="block bg-eal-gold text-eal-navy text-center py-3 rounded-xl font-extrabold text-xs uppercase tracking-wider shadow">
+            <i class="fa-regular fa-calendar-check mr-2"></i> <span data-i18n="topbar.book">RESERVAR REUNIÓN</span>
+        </a>
+    </div>
+</div>
+</header>
 
     <!-- SECCIÓN HERO DE INDEX -->
     <section id="inicio" class="relative min-h-[calc(100vh-80px)] flex items-center overflow-hidden bg-eal-navy py-12">
         <div class="absolute inset-0 z-0 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1920&auto=format&fit=crop" 
-                 alt="EAL Seguros Panamá" 
-                 class="w-full h-full object-cover brightness-95 scale-105">
+            <!-- Fondos que cambian lentamente (auto y salud) con zoom -->
+            <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=1920&auto=format&fit=crop"
+                 alt="Seguro de Auto EAL"
+                 class="hero-slide active hero-zoom absolute inset-0 w-full h-full object-cover brightness-95">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1920&auto=format&fit=crop"
+                 alt="Seguro de Salud EAL"
+                 class="hero-slide hero-zoom absolute inset-0 w-full h-full object-cover brightness-95">
             <div class="absolute inset-0 hero-gradient-overlay z-10"></div>
         </div>
 
         <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
             <div class="max-w-2xl space-y-6 text-left">
-                <span class="inline-block px-4 py-1.5 rounded-full bg-eal-gold/20 border border-eal-gold text-eal-gold text-xs font-bold uppercase tracking-widest" data-i18n="hero.badge">
+                <span class="animate-fade-up delay-1 inline-block px-4 py-1.5 rounded-full bg-eal-gold/20 border border-eal-gold text-eal-gold text-xs font-bold uppercase tracking-widest" data-i18n="hero.badge">
                     Correduría de Seguros Autorizada en Panamá
                 </span>
-                
-                <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight font-serif">
+
+                <h1 class="animate-fade-up delay-2 text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight font-serif">
                     <span class="block" data-i18n="hero.title1">Una inversión</span>
                     <span class="block text-eal-gold italic font-normal" data-i18n="hero.title2">a futuro.</span>
                 </h1>
 
-                <p class="text-slate-200 text-base sm:text-lg font-medium leading-relaxed max-w-xl" data-i18n="hero.subtitle">
+                <p class="animate-fade-up delay-3 text-slate-200 text-base sm:text-lg font-medium leading-relaxed max-w-xl" data-i18n="hero.subtitle">
                     La tranquilidad de vivir protegido, sin trámites ni burocracia. Nos encargamos de toda la gestión y asesoría ante las aseguradoras para que tú solo disfrutes tu día a día.
                 </p>
 
-                <div class="flex flex-wrap gap-4 pt-2">
+                <div class="animate-fade-up delay-4 flex flex-wrap gap-4 pt-2">
                     <a href="#productos" class="bg-eal-gold hover:bg-eal-goldHover text-eal-navy px-8 py-4 rounded-xl font-extrabold text-xs tracking-wide uppercase shadow-2xl transition-all hover:scale-105 inline-flex items-center gap-2">
                         <span data-i18n="hero.btnCoverages">Ver Coberturas</span> <i class="fa-solid fa-arrow-right"></i>
                     </a>
@@ -234,9 +430,9 @@
 
             <!-- SINGLE ROW GRID -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3.5">
-                
+
                 <!-- CARD 1: AUTO -->
-                <a href="https://wa.me/50767920669?text=Hola,%20deseo%20cotizar%20un%20Seguro%20de%20Auto" target="_blank" rel="noopener noreferrer" 
+                <a href="Auto.html"
                    class="card-hover-group relative bg-eal-navy rounded-2xl overflow-hidden shadow-lg border border-slate-700 h-80 flex flex-col justify-end group transition-all hover:-translate-y-2 hover:shadow-2xl">
                     <div class="absolute inset-0 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80" alt="Auto" class="card-zoom-img w-full h-full object-cover">
@@ -253,26 +449,26 @@
                     </div>
                 </a>
 
-                <!-- CARD 2: SALUD Y HOSPITAL -->
-                <a href="https://wa.me/50767920669?text=Hola,%20deseo%20cotizar%20un%20Seguro%20de%20Salud%20y%20Hospital" target="_blank" rel="noopener noreferrer" 
+                <!-- CARD 2: SALUD -->
+                <a href="Salud.html"
                    class="card-hover-group relative bg-eal-navy rounded-2xl overflow-hidden shadow-lg border border-slate-700 h-80 flex flex-col justify-end group transition-all hover:-translate-y-2 hover:shadow-2xl">
                     <div class="absolute inset-0 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="Salud" class="card-zoom-img w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-eal-navy via-eal-navy/40 to-transparent"></div>
                     </div>
                     <div class="relative z-10 p-4 transition-opacity duration-300 group-hover:opacity-0">
-                        <h3 class="text-lg font-bold text-white leading-tight" data-i18n="card2.title">Salud y Hospital</h3>
+                        <h3 class="text-lg font-bold text-white leading-tight" data-i18n="card2.title">Seguro de Salud</h3>
                     </div>
                     <div class="absolute inset-x-0 bottom-0 p-4 bg-eal-navy/95 backdrop-blur-md transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-20 flex flex-col justify-center h-32">
-                        <h3 class="text-sm font-bold text-eal-gold mb-1" data-i18n="card2.title">Salud y Hospital</h3>
+                        <h3 class="text-sm font-bold text-eal-gold mb-1" data-i18n="card2.title">Seguro de Salud</h3>
                         <p class="text-slate-300 text-xs leading-snug" data-i18n="card2.desc">
-                            Acceso directo a clínicas privadas, urgencias médicas y atención especializada.
+                            Planes locales e internacionales con acceso a hospitales, clínicas y especialistas privados.
                         </p>
                     </div>
                 </a>
 
                 <!-- CARD 3: VIDA -->
-                <a href="https://wa.me/50767920669?text=Hola,%20deseo%20cotizar%20un%20Seguro%20de%20Vida" target="_blank" rel="noopener noreferrer" 
+                <a href="Vida.html"
                    class="card-hover-group relative bg-eal-navy rounded-2xl overflow-hidden shadow-lg border border-slate-700 h-80 flex flex-col justify-end group transition-all hover:-translate-y-2 hover:shadow-2xl">
                     <div class="absolute inset-0 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=600&q=80" alt="Vida" class="card-zoom-img w-full h-full object-cover">
@@ -284,61 +480,61 @@
                     <div class="absolute inset-x-0 bottom-0 p-4 bg-eal-navy/95 backdrop-blur-md transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-20 flex flex-col justify-center h-32">
                         <h3 class="text-sm font-bold text-eal-gold mb-1" data-i18n="card3.title">Seguro de Vida</h3>
                         <p class="text-slate-300 text-xs leading-snug" data-i18n="card3.desc">
-                            Protección y respaldo económico a futuro para garantes y familias en todo momento.
+                            Protege el futuro de tu familia, con opciones de devolución de primas.
                         </p>
                     </div>
                 </a>
 
-                <!-- CARD 4: HOGAR E INCENDIO -->
-                <a href="https://wa.me/50767920669?text=Hola,%20deseo%20cotizar%20un%20Seguro%20de%20Hogar%20e%20Incendio" target="_blank" rel="noopener noreferrer" 
+                <!-- CARD 4: HOGAR Y CONTENIDO -->
+                <a href="Hogar.html"
                    class="card-hover-group relative bg-eal-navy rounded-2xl overflow-hidden shadow-lg border border-slate-700 h-80 flex flex-col justify-end group transition-all hover:-translate-y-2 hover:shadow-2xl">
                     <div class="absolute inset-0 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80" alt="Hogar" class="card-zoom-img w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-eal-navy via-eal-navy/40 to-transparent"></div>
                     </div>
                     <div class="relative z-10 p-4 transition-opacity duration-300 group-hover:opacity-0">
-                        <h3 class="text-lg font-bold text-white leading-tight" data-i18n="card4.title">Hogar e Incendio</h3>
+                        <h3 class="text-lg font-bold text-white leading-tight" data-i18n="card4.title">Seguro de Hogar y Contenido</h3>
                     </div>
                     <div class="absolute inset-x-0 bottom-0 p-4 bg-eal-navy/95 backdrop-blur-md transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-20 flex flex-col justify-center h-32">
-                        <h3 class="text-sm font-bold text-eal-gold mb-1" data-i18n="card4.title">Hogar e Incendio</h3>
+                        <h3 class="text-sm font-bold text-eal-gold mb-1" data-i18n="card4.title">Seguro de Hogar y Contenido</h3>
                         <p class="text-slate-300 text-xs leading-snug" data-i18n="card4.desc">
-                            Protección patrimonial para tu residencia, estructura y contenido contra todo riesgo.
+                            Protege la estructura de tu vivienda y tus pertenencias, seas propietario o inquilino.
                         </p>
                     </div>
                 </a>
 
-                <!-- CARD 5: COLECTIVO PYME -->
-                <a href="https://wa.me/50767920669?text=Hola,%20deseo%20cotizar%20un%20Seguro%20Colectivo%20PYME" target="_blank" rel="noopener noreferrer" 
+                <!-- CARD 5: MASCOTAS -->
+                <a href="Mascotas.html"
                    class="card-hover-group relative bg-eal-navy rounded-2xl overflow-hidden shadow-lg border border-slate-700 h-80 flex flex-col justify-end group transition-all hover:-translate-y-2 hover:shadow-2xl">
                     <div class="absolute inset-0 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="PYME" class="card-zoom-img w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=600&q=80" alt="Seguro de Mascotas" class="card-zoom-img w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-eal-navy via-eal-navy/40 to-transparent"></div>
                     </div>
                     <div class="relative z-10 p-4 transition-opacity duration-300 group-hover:opacity-0">
-                        <h3 class="text-lg font-bold text-white leading-tight" data-i18n="card5.title">Colectivo PYME</h3>
+                        <h3 class="text-lg font-bold text-white leading-tight" data-i18n="card5.title">Seguro de Mascotas</h3>
                     </div>
                     <div class="absolute inset-x-0 bottom-0 p-4 bg-eal-navy/95 backdrop-blur-md transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-20 flex flex-col justify-center h-32">
-                        <h3 class="text-sm font-bold text-eal-gold mb-1" data-i18n="card5.title">Colectivo PYME</h3>
+                        <h3 class="text-sm font-bold text-eal-gold mb-1" data-i18n="card5.title">Seguro de Mascotas</h3>
                         <p class="text-slate-300 text-xs leading-snug" data-i18n="card5.desc">
-                            Planes grupales corporativos de vida y salud para el bienestar de tus colaboradores.
+                            Cuida a tu perro o gato ante accidentes y enfermedades, desde B/.5.77 por cuota.
                         </p>
                     </div>
                 </a>
 
-                <!-- CARD 6: RESPONSABILIDAD CIVIL / OTROS -->
-                <a href="https://wa.me/50767920669?text=Hola,%20deseo%20cotizar%20Responsabilidad%20Civil%20u%20Otros%20Seguros" target="_blank" rel="noopener noreferrer" 
+                <!-- CARD 6: VIAJE -->
+                <a href="Viaje.html"
                    class="card-hover-group relative bg-eal-navy rounded-2xl overflow-hidden shadow-lg border border-slate-700 h-80 flex flex-col justify-end group transition-all hover:-translate-y-2 hover:shadow-2xl">
                     <div class="absolute inset-0 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80" alt="Responsabilidad Civil" class="card-zoom-img w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80" alt="Seguro de Viaje" class="card-zoom-img w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-eal-navy via-eal-navy/40 to-transparent"></div>
                     </div>
                     <div class="relative z-10 p-4 transition-opacity duration-300 group-hover:opacity-0">
-                        <h3 class="text-lg font-bold text-white leading-tight" data-i18n="card6.title">Resp. Civil & Otros</h3>
+                        <h3 class="text-lg font-bold text-white leading-tight" data-i18n="card6.title">Seguro de Viaje</h3>
                     </div>
                     <div class="absolute inset-x-0 bottom-0 p-4 bg-eal-navy/95 backdrop-blur-md transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-20 flex flex-col justify-center h-32">
-                        <h3 class="text-sm font-bold text-eal-gold mb-1" data-i18n="card6.title">Resp. Civil & Otros</h3>
+                        <h3 class="text-sm font-bold text-eal-gold mb-1" data-i18n="card6.title">Seguro de Viaje</h3>
                         <p class="text-slate-300 text-xs leading-snug" data-i18n="card6.desc">
-                            Fianzas, cobertura marítima, responsabilidad profesional y pólizas a la medida.
+                            Asistencia médica, pérdida de vuelos y equipaje para viajar tranquilo.
                         </p>
                     </div>
                 </a>
@@ -352,7 +548,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 text-center">
             <h3 class="text-xs sm:text-sm font-extrabold tracking-widest text-eal-navy uppercase" data-i18n="partners.title">Aliados estratégicos en protección</h3>
         </div>
-        
+
         <div class="relative w-full overflow-hidden">
             <!-- Gradientes sutiles a los lados enlazados al fondo slate-100 -->
             <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-slate-100 to-transparent z-10 pointer-events-none"></div>
@@ -360,7 +556,7 @@
 
             <!-- Contenedor del Carrusel Infinito -->
             <div class="animate-marquee flex items-center space-x-12 py-3">
-                
+
                 <!-- BLOQUE 1 DE LOGOS AMPLIADOS -->
                 <div class="flex items-center space-x-16 shrink-0">
                     <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/sura.svg" alt="Sura" class="max-h-16 w-auto object-contain"></div>
@@ -376,7 +572,7 @@
                     <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/fedpa.png" alt="Fedpa" class="max-h-16 w-auto object-contain"></div>
                     <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/univivir.png" alt="UniVivir" class="max-h-16 w-auto object-contain"></div>
                     <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/Blue.png" alt="BLUE" class="max-h-16 w-auto object-contain"></div>
-                               
+
                 </div>
 
                 <!-- BLOQUE 2 DUPLICADO PARA EL EFECTO INFINITO CONTINUO -->
@@ -439,9 +635,9 @@
     </section>
 
     <!-- PERSISTENT FLOATING WHATSAPP BUTTON -->
-    <a href="https://wa.me/50767920669?text=Hola,%20deseo%20asesor%C3%ADa%20con%20EAL" 
-       target="_blank" 
-       rel="noopener noreferrer" 
+    <a href="https://wa.me/50767920669?text=Hola,%20deseo%20asesor%C3%ADa%20con%20EAL"
+       target="_blank"
+       rel="noopener noreferrer"
        aria-label="WhatsApp Directo"
        class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20bd5a] text-white w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-2xl transition-all hover:scale-110 wa-float-btn">
         <i class="fa-brands fa-whatsapp text-2xl sm:text-3xl"></i>
@@ -451,7 +647,7 @@
     <footer id="contacto" class="bg-eal-navy text-white pt-14 pb-10 border-t border-eal-gold/30 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
-                
+
                 <div class="space-y-3">
                     <div class="flex items-center gap-2">
                         <div class="w-9 h-9 rounded-lg border border-eal-gold flex items-center justify-center bg-eal-navy text-eal-gold font-serif font-bold">
@@ -480,7 +676,7 @@
                     <ul class="space-y-2 text-xs text-slate-300">
                         <li><a href="#inicio" class="hover:text-eal-gold transition" data-i18n="nav.home">INICIO</a></li>
                         <li><a href="#productos" class="hover:text-eal-gold transition" data-i18n="nav.products">NUESTROS PRODUCTOS</a></li>
-                        <li><a href="#nosotros" class="hover:text-eal-gold transition" data-i18n="nav.about">SOBRE NOSOTROS</a></li>
+                        <li><a href="SobreNosotros.html" class="hover:text-eal-gold transition" data-i18n="nav.about">SOBRE NOSOTROS</a></li>
                     </ul>
                 </div>
 
@@ -522,29 +718,31 @@
     </footer>
 
     <!-- SCRIPT -->
-<!-- SCRIPT -->
     <script>
         const i18n = {
             es: {
                 "topbar.book": "RESERVAR REUNIÓN",
-                "nav.subtitle": "Corredor de Seguros",
+                "nav.subtitle": "Corredor de Seguros", "support.legend": "Teléfono / Celular",
                 "nav.home": "INICIO",
                 "nav.products": "NUESTROS PRODUCTOS",
                 "nav.about": "SOBRE NOSOTROS",
                 "nav.customerService": "Atención al cliente",
                 "nav.support": "Línea de aseguradoras",
-                "prod.auto": "Auto",
-                "prod.health": "Salud",
-                "prod.life": "Vida",
-                "prod.home": "Hogar y Contenido",
-                "prod.pet": "Mascotas",
-                "prod.travel": "Viajero",
+                "prod.auto": "Seguro de Auto",
+                "prod.health": "Seguro de Salud",
+                "prod.life": "Seguro de Vida",
+                "prod.home": "Seguro de Hogar y Contenido",
+                "prod.pet": "Seguro de Mascotas",
+                "prod.travel": "Seguro de Viaje",
                 "cs.claims": "Reclamos",
                 "cs.providers": "Redes de proveedores",
                 "cs.conditions": "Condiciones generales",
                 "support.title": "Contacta a tu aseguradora",
                 "support.subtitle": "Números de emergencia y atención directa con las principales aseguradoras de Panamá.",
                 "partners.title": "Aliados estratégicos en protección",
+                "hero.badge": "Correduría de Seguros Autorizada en Panamá",
+                "hero.subtitle": "La tranquilidad de vivir protegido, sin trámites ni burocracia. Nos encargamos de toda la gestión y asesoría ante las aseguradoras para que tú solo disfrutes tu día a día.",
+                "hero.btnMeeting": "Agendar Cita",
                 "hero.title1": "Una inversión",
                 "hero.title2": "a futuro.",
                 "hero.boldText": "La tranquilidad de vivir protegido, sin trámites ni burocracia.",
@@ -555,16 +753,16 @@
                 "products.subtitle": "Selecciona tu seguro ideal y descubre nuestras opciones especializadas.",
                 "card1.title": "Seguro de Auto",
                 "card1.desc": "Cobertura completa y daños a terceros con asistencia vial 24/7 en todo Panamá.",
-                "card2.title": "Salud y Hospital",
-                "card2.desc": "Acceso directo a clínicas privadas, urgencias médicas y atención especializada.",
+                "card2.title": "Seguro de Salud",
+                "card2.desc": "Planes locales e internacionales con acceso a hospitales, clínicas y especialistas privados.",
                 "card3.title": "Seguro de Vida",
-                "card3.desc": "Protección y respaldo económico a futuro para garantes y familias en todo momento.",
-                "card4.title": "Hogar e Incendio",
-                "card4.desc": "Protección patrimonial para tu residencia, estructura y contenido contra todo riesgo.",
-                "card5.title": "Colectivo PYME",
-                "card5.desc": "Planes grupales corporativos de vida y salud para el bienestar de tus colaboradores.",
-                "card6.title": "Resp. Civil & Otros",
-                "card6.desc": "Fianzas, cobertura marítima, responsabilidad profesional y pólizas a la medida.",
+                "card3.desc": "Protege el futuro de tu familia, con opciones de devolución de primas.",
+                "card4.title": "Seguro de Hogar y Contenido",
+                "card4.desc": "Protege la estructura de tu vivienda y tus pertenencias, seas propietario o inquilino.",
+                "card5.title": "Seguro de Mascotas",
+                "card5.desc": "Cuida a tu perro o gato ante accidentes y enfermedades, desde B/.5.77 por cuota.",
+                "card6.title": "Seguro de Viaje",
+                "card6.desc": "Asistencia médica, pérdida de vuelos y equipaje para viajar tranquilo.",
                 "about.title": "Más de 15 años brindando tranquilidad real en Panamá.",
                 "about.desc": "En EAL Corredor de Seguros priorizamos el trato humano y personalizado. No vendemos simples pólizas; estructuramos estrategias de protección para tu auto, salud, familia y patrimonio.",
                 "about.stat1": "Reclamos Resueltos a Favor",
@@ -582,24 +780,27 @@
             },
             en: {
                 "topbar.book": "BOOK A MEETING",
-                "nav.subtitle": "Insurance Broker",
+                "nav.subtitle": "Insurance Broker", "support.legend": "Phone / Mobile",
                 "nav.home": "HOME",
                 "nav.products": "PRODUCTS",
                 "nav.about": "ABOUT US",
                 "nav.customerService": "Customer Service",
                 "nav.support": "Insurance Line",
-                "prod.auto": "Car",
-                "prod.health": "Health",
-                "prod.life": "Life",
-                "prod.home": "Home & Renters",
-                "prod.pet": "Pet",
-                "prod.travel": "Travel",
+                "prod.auto": "Auto Insurance",
+                "prod.health": "Health Insurance",
+                "prod.life": "Life Insurance",
+                "prod.home": "Home & Contents Insurance",
+                "prod.pet": "Pet Insurance",
+                "prod.travel": "Travel Insurance",
                 "cs.claims": "Claims",
                 "cs.providers": "Provider Networks",
                 "cs.conditions": "General Conditions",
                 "support.title": "Contact your insurance company",
                 "support.subtitle": "Emergency and direct contact numbers with main insurance companies in Panama.",
                 "partners.title": "Strategic protection partners",
+                "hero.badge": "Authorized Insurance Brokerage in Panama",
+                "hero.subtitle": "The peace of mind of living protected, with no paperwork or red tape. We handle all the management and advice with insurers so you can simply enjoy your day-to-day.",
+                "hero.btnMeeting": "Schedule a Meeting",
                 "hero.title1": "An investment",
                 "hero.title2": "in your future.",
                 "hero.boldText": "The peace of mind of living protected, zero hassle or bureaucracy.",
@@ -610,16 +811,16 @@
                 "products.subtitle": "Choose your ideal policy and discover our specialized options.",
                 "card1.title": "Auto Insurance",
                 "card1.desc": "Comprehensive and third-party liability with 24/7 roadside assistance nationwide.",
-                "card2.title": "Health & Care",
-                "card2.desc": "Direct access to top private clinics, emergency rooms, and medical specialists.",
+                "card2.title": "Health Insurance",
+                "card2.desc": "Local and international plans with access to private hospitals, clinics and specialists.",
                 "card3.title": "Life Insurance",
-                "card3.desc": "Financial backing for your family's future and lender requirements.",
-                "card4.title": "Home & Fire",
-                "card4.desc": "Asset protection for your residential structure and contents against all risks.",
-                "card5.title": "Group Policy",
-                "card5.desc": "Corporate health and life plans for employee wellness and retention.",
-                "card6.title": "Liability & Others",
-                "card6.desc": "Surety bonds, marine coverage, professional liability, and custom policies.",
+                "card3.desc": "Protect your family's future, with return-of-premium options.",
+                "card4.title": "Home & Contents Insurance",
+                "card4.desc": "Protect your home's structure and belongings, whether you own or rent.",
+                "card5.title": "Pet Insurance",
+                "card5.desc": "Care for your dog or cat against accidents and illness, from B/.5.77 per installment.",
+                "card6.title": "Travel Insurance",
+                "card6.desc": "Medical assistance, missed flights and luggage coverage to travel worry-free.",
                 "about.title": "Over 15 years delivering true peace of mind in Panama.",
                 "about.desc": "At EAL Insurance Broker, personal service comes first. We build tailored protection strategies for your auto, health, family, and business.",
                 "about.stat1": "Claims Resolved In Favor",
@@ -648,7 +849,7 @@
                 slides[currentSlide].classList.remove('active');
                 currentSlide = (currentSlide + 1) % slides.length;
                 slides[currentSlide].classList.add('active');
-            }, 5000);
+            }, 7000);
         }
 
         function toggleLangDropdown() {
@@ -667,10 +868,10 @@
         function updateWhatsAppMeetingLink(lang) {
             const btn = document.getElementById('topbar-book-btn');
             if (!btn) return;
-            
+
             const messageES = "Hola Eduardo, quisiera reservar una fecha con usted";
             const messageEN = "Hello Eduardo, I would like to book a meeting with you";
-            
+
             const selectedMsg = lang === 'es' ? messageES : messageEN;
             btn.href = `https://wa.me/50767920669?text=${encodeURIComponent(selectedMsg)}`;
         }
@@ -702,7 +903,7 @@
 
         function handleBooking() {
             const currentLang = localStorage.getItem('eal_preferred_lang') || 'es';
-            const msg = currentLang === 'es' 
+            const msg = currentLang === 'es'
                 ? "Hola Eduardo, quisiera reservar una fecha con usted"
                 : "Hello Eduardo, I would like to book a meeting with you";
             window.open(`https://wa.me/50767920669?text=${encodeURIComponent(msg)}`, '_blank');
@@ -714,6 +915,33 @@
             applyLanguage(savedLang, savedLang === 'es' ? 'ES' : 'EN');
             initHeroCarousel();
         });
+
+        // Abrir / Cerrar el menú hamburguesa principal
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('mobileMenuIcon');
+
+            menu.classList.toggle('hidden');
+
+            if (menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        }
+
+        // Desplegar / Ocultar cada submenú al hacer clic en móvil
+        function toggleMobileSubmenu(submenuId, iconId) {
+            const submenu = document.getElementById(submenuId);
+            const icon = document.getElementById(iconId);
+
+            if (submenu && icon) {
+                submenu.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            }
+        }
     </script>
 </body>
 </html>
