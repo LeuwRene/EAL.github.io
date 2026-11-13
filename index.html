@@ -9,10 +9,12 @@
     <meta name="keywords" content="corredor de seguros Panamá, seguros Panamá, seguro de auto Panamá, seguro de salud Panamá, seguro de vida Panamá, EAL Seguros">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="author" content="EAL Corredor de Seguros">
-    <meta name="theme-color" content="#0F2537">
+    <meta name="theme-color" content="#002157">
     <meta name="geo.region" content="PA-8">
     <meta name="geo.placename" content="Ciudad de Panamá">
     <link rel="canonical" href="https://www.ealseguros.com/">
+    <link rel="icon" type="image/png" href="Imagenes/favicon.png">
+    <link rel="apple-touch-icon" href="Imagenes/logo-eal-circular.png">
     <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="EAL Seguros">
@@ -42,6 +44,7 @@
       "email": "info@ealseguros.com",
       "priceRange": "$$",
       "image": "https://www.ealseguros.com/Imagenes/eduardo-lemos.jpg",
+      "logo": "https://www.ealseguros.com/Imagenes/logo-eal-circular.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Ciudad de Panamá",
@@ -104,11 +107,11 @@
                 extend: {
                     colors: {
                         eal: {
-                            navy: '#0F2537',
-                            gold: '#C5A059',
-                            goldHover: '#B08C46',
-                            goldLight: '#F5EFE0',
-                            yellowBadge: '#D4AF37'
+                            navy: '#002157',
+                            gold: '#C8961E',
+                            goldHover: '#A87A12',
+                            goldLight: '#FBF3DF',
+                            yellowBadge: '#D9A92B'
                         }
                     },
                     fontFamily: {
@@ -139,7 +142,7 @@
             transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
         }
         .hero-gradient-overlay {
-            background: linear-gradient(90deg, rgba(15, 37, 55, 0.95) 0%, rgba(15, 37, 55, 0.85) 50%, rgba(15, 37, 55, 0.70) 100%);
+            background: linear-gradient(90deg, rgba(0, 33, 87, 0.95) 0%, rgba(0, 33, 87, 0.85) 50%, rgba(0, 33, 87, 0.70) 100%);
         }
         @keyframes waPulse {
             0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
@@ -156,7 +159,7 @@
 .animate-marquee {
     display: flex;
     width: max-content;
-    animation: marquee 35s linear infinite;
+    animation: marquee 45s linear infinite;
 }
         /* ===== ANIMACIONES ===== */
         /* Zoom lento del fondo de la portada */
@@ -177,14 +180,18 @@
         .delay-5 { animation-delay: 0.9s; }
         /* Latido suave de la etiqueta "Dato importante" */
         @keyframes badgePulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.55); }
-            50% { transform: scale(1.06); box-shadow: 0 0 0 10px rgba(197, 160, 89, 0); }
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(200, 150, 30, 0.55); }
+            50% { transform: scale(1.06); box-shadow: 0 0 0 10px rgba(200, 150, 30, 0); }
         }
         .badge-pulse { animation: badgePulse 2.4s ease-in-out infinite; }
         @media (prefers-reduced-motion: reduce) {
             .hero-zoom, .badge-pulse { animation: none; }
             .animate-fade-up, .animate-fade-left { animation: none; opacity: 1; }
         }
+        /* Submenú "Paga tu póliza" (se despliega hacia abajo) */
+        .flyout-group .flyout { visibility: hidden; opacity: 0; transform: translateY(8px); transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.3s; transition-delay: 0.25s; }
+        .flyout-group .flyout::before { content: ''; position: absolute; left: 0; right: 0; top: -14px; height: 14px; }
+        .flyout-group:hover .flyout, .flyout-group:focus-within .flyout { visibility: visible; opacity: 1; transform: translateY(0); transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s; }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 font-sans antialiased overflow-x-hidden selection:bg-eal-gold selection:text-white flex flex-col min-h-screen">
@@ -193,19 +200,13 @@
 <header class="bg-eal-navy border-b border-eal-gold/30 text-white sticky top-0 z-50 shadow-xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
 
-        <!-- BRAND LOGO -->
-        <a href="index.html" class="flex items-center gap-3 group shrink-0">
-            <div class="w-10 h-10 rounded-xl border-2 border-eal-gold flex items-center justify-center bg-eal-navy text-eal-gold font-serif font-bold text-lg shadow-lg group-hover:scale-105 transition-transform">
-                EAL
-            </div>
-            <div class="flex flex-col">
-                <span class="font-serif text-xl font-bold tracking-wider text-white group-hover:text-eal-gold transition-colors leading-none">EAL</span>
-                <span class="text-[8px] tracking-[0.2em] text-eal-gold font-bold uppercase mt-0.5" data-i18n="nav.subtitle">Corredor de Seguros</span>
-            </div>
+        <!-- LOGO -->
+        <a href="index.html" class="flex items-center group shrink-0" aria-label="EAL Corredor de Seguros - Inicio">
+            <img src="Imagenes/logo-eal-circular.png" alt="EAL Corredor de Seguros" width="64" height="64" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full ring-2 ring-eal-gold/70 shadow-lg group-hover:scale-105 group-hover:ring-eal-gold transition duration-300">
         </a>
 
         <!-- NAV LINKS PARA COMPUTADORAS (Escritorio) -->
-        <nav class="hidden lg:flex items-center space-x-1 bg-eal-navy/60 px-2 py-1.5 rounded-xl border border-eal-gold/25 shadow-inner text-[11px] font-semibold tracking-wider uppercase">
+        <nav class="hidden lg:flex items-center space-x-1 bg-white/5 px-2 py-1.5 rounded-xl border border-eal-gold/25 shadow-inner text-[11px] font-semibold tracking-wider uppercase">
             <a href="index.html" class="text-eal-gold bg-white/5 px-3 py-2 rounded-lg transition hover:bg-white/5 hover:text-eal-gold" data-i18n="nav.home">INICIO</a>
 
             <div class="relative group">
@@ -230,10 +231,35 @@
                     <span data-i18n="nav.customerService">Atención al cliente</span>
                     <i class="fa-solid fa-chevron-down text-[9px] text-eal-gold"></i>
                 </a>
-                <div class="dropdown-menu hidden absolute left-0 mt-1 w-56 bg-eal-navy border border-eal-gold/40 rounded-xl shadow-2xl overflow-hidden z-50 py-2">
+                <div class="dropdown-menu hidden absolute left-0 mt-1 w-60 bg-eal-navy border border-eal-gold/40 rounded-xl shadow-2xl z-50 py-2">
                     <a href="reclamos-seguros-panama.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="cs.claims">Reclamos</a>
                     <a href="redes-de-proveedores-seguros-panama.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="cs.providers">Redes de proveedores</a>
                     <a href="condiciones-generales-seguros-panama.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="cs.conditions">Condiciones generales</a>
+                    <!-- Paga tu póliza: despliega las aseguradoras a la derecha -->
+                    <div class="flyout-group relative">
+                        <button type="button" class="w-full flex items-center justify-between px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition uppercase tracking-wider cursor-pointer">
+                            <span data-i18n="cs.pay">Paga tu póliza</span>
+                            <i class="fa-solid fa-chevron-down text-[9px]"></i>
+                        </button>
+                        <div class="flyout absolute left-0 top-full mt-2 w-[440px] bg-eal-navy border border-eal-gold/40 rounded-2xl shadow-2xl p-4 z-50">
+                            <div class="mb-3 pb-2 border-b border-eal-gold/20 flex items-center gap-2">
+                                <i class="fa-solid fa-credit-card text-eal-gold"></i>
+                                <h4 class="font-serif font-bold text-sm text-eal-gold normal-case tracking-normal" data-i18n="pay.title">Paga tu póliza en línea</h4>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2.5">
+                            <a href="https://www.iseguros.com/pagosis/" target="_blank" rel="noopener noreferrer" class="group/pay bg-white/5 border border-white/10 hover:border-eal-gold rounded-xl p-3 flex items-center gap-3 transition">
+                                <span class="w-16 h-11 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/is.png" alt="Internacional de Seguros" loading="lazy" class="max-h-8 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Internacional</span>'"></span>
+                                <span class="min-w-0 flex-1 normal-case tracking-normal"><span class="block text-xs font-bold text-white truncate">Internacional de Seguros</span><span class="text-[10px] text-slate-400 group-hover/pay:text-eal-gold" data-i18n="pay.go">Pagar en línea</span></span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-eal-gold text-xs"></i>
+                            </a>
+                            <a href="https://mipago.segurossura.com.pa/" target="_blank" rel="noopener noreferrer" class="group/pay bg-white/5 border border-white/10 hover:border-eal-gold rounded-xl p-3 flex items-center gap-3 transition">
+                                <span class="w-16 h-11 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/sura.svg" alt="SURA" loading="lazy" class="max-h-8 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>SURA</span>'"></span>
+                                <span class="min-w-0 flex-1 normal-case tracking-normal"><span class="block text-xs font-bold text-white truncate">SURA</span><span class="text-[10px] text-slate-400 group-hover/pay:text-eal-gold" data-i18n="pay.go">Pagar en línea</span></span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-eal-gold text-xs"></i>
+                            </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -242,145 +268,114 @@
                     <span data-i18n="nav.support">Líneas de Asistencia</span>
                     <i class="fa-solid fa-chevron-down text-[9px] text-eal-gold"></i>
                 </a>
-                <div class="dropdown-menu hidden absolute right-0 mt-1 w-[760px] max-w-[92vw] bg-eal-navy border border-eal-gold/40 rounded-2xl shadow-2xl p-4 z-50">
+                <div class="dropdown-menu hidden absolute right-0 mt-1 w-[780px] max-w-[92vw] bg-eal-navy border border-eal-gold/40 rounded-2xl shadow-2xl p-4 z-50">
                     <div class="mb-3 pb-2 border-b border-eal-gold/20 flex items-center justify-between">
                         <h4 class="font-serif font-bold text-sm text-eal-gold normal-case tracking-normal" data-i18n="support.title">Contacta a tu aseguradora</h4>
-                        <span class="text-[10px] text-slate-400 normal-case tracking-normal" data-i18n="support.legend">Teléfono / Celular</span>
+                        <span class="text-[10px] text-slate-400 normal-case tracking-normal" data-i18n="support.legend">Teléfono / WhatsApp</span>
                     </div>
                     <div class="grid grid-cols-2 xl:grid-cols-3 gap-2.5">
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
-                                <img src="Imagenes/acerta.png" alt="Acerta" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Acerta</span>'">
-                            </div>
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/acerta.png" alt="Acerta" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Acerta</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
                                 <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Acerta</span>
-                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3862290" class="hover:text-eal-gold">386-2290</a> <span class="text-eal-gold">/</span> <a href="tel:68125576" class="hover:text-eal-gold">6812-5576</a></span>
+                                <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5073073030" class="hover:text-eal-gold">307-3030</a></span>
+                                <a href="https://wa.me/50760063833" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6006-3833</a>
                             </div>
                         </div>
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
-                                <img src="Imagenes/Aliados.png" alt="Aliados" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Aliados</span>'">
-                            </div>
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/Aliados.png" alt="Aliado Seguros" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Aliado</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
-                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Aliados</span>
-                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3456620" class="hover:text-eal-gold">345-6620</a> <span class="text-eal-gold">/</span> <a href="tel:62307718" class="hover:text-eal-gold">6230-7718</a></span>
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Aliado Seguros</span>
+                                <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5073048555" class="hover:text-eal-gold">304-8555</a></span>
+                                
                             </div>
                         </div>
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
-                                <img src="Imagenes/Ancon.png" alt="Ancón" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Ancón</span>'">
-                            </div>
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/Ancon.png" alt="Ancón" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Ancón</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
                                 <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Ancón</span>
-                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3952240" class="hover:text-eal-gold">395-2240</a> <span class="text-eal-gold">/</span> <a href="tel:68713306" class="hover:text-eal-gold">6871-3306</a></span>
+                                <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5073032444" class="hover:text-eal-gold">303-2444</a></span>
+                                <a href="https://wa.me/50762333882" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6233-3882</a>
                             </div>
                         </div>
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
-                                <img src="Imagenes/assa.png" alt="ASSA" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>ASSA</span>'">
-                            </div>
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/assa.png" alt="ASSA" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>ASSA</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
                                 <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">ASSA</span>
-                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3104455" class="hover:text-eal-gold">310-4455</a> <span class="text-eal-gold">/</span> <a href="tel:66231190" class="hover:text-eal-gold">6623-1190</a></span>
+                                <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5073002424" class="hover:text-eal-gold">300-2424</a></span>
+                                <a href="https://wa.me/50766012772" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6601-2772</a>
                             </div>
                         </div>
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
-                                <img src="Imagenes/Blue.png" alt="Blue Cross" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Blue</span>'">
-                            </div>
-                            <div class="min-w-0 normal-case tracking-normal">
-                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Blue Cross</span>
-                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3299910" class="hover:text-eal-gold">329-9910</a> <span class="text-eal-gold">/</span> <a href="tel:64762285" class="hover:text-eal-gold">6476-2285</a></span>
-                            </div>
-                        </div>
-                        <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
-                                <img src="Imagenes/bupa.png" alt="Bupa" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Bupa</span>'">
-                            </div>
-                            <div class="min-w-0 normal-case tracking-normal">
-                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Bupa</span>
-                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3402210" class="hover:text-eal-gold">340-2210</a> <span class="text-eal-gold">/</span> <a href="tel:66884521" class="hover:text-eal-gold">6688-4521</a></span>
-                            </div>
-                        </div>
-                        <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
-                                <img src="Imagenes/fedpa.png" alt="Fedpa" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Fedpa</span>'">
-                            </div>
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/fedpa.png" alt="Fedpa" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Fedpa</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
                                 <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Fedpa</span>
-                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3517740" class="hover:text-eal-gold">351-7740</a> <span class="text-eal-gold">/</span> <a href="tel:63096624" class="hover:text-eal-gold">6309-6624</a></span>
+                                <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5073405425" class="hover:text-eal-gold">340-5425</a></span>
+                                <a href="https://wa.me/50765135555" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6513-5555</a>
                             </div>
                         </div>
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
-                                <img src="Imagenes/is.png" alt="Internacional de Seguros" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Internacional</span>'">
-                            </div>
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/is.png" alt="Internacional de Seguros" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Internacional</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
                                 <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Internacional de Seguros</span>
-                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3238800" class="hover:text-eal-gold">323-8800</a> <span class="text-eal-gold">/</span> <a href="tel:62903365" class="hover:text-eal-gold">6290-3365</a></span>
+                                <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5072652881" class="hover:text-eal-gold">265-2881</a></span>
+                                <a href="https://wa.me/50766662881" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6666-2881</a>
                             </div>
                         </div>
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
-                                <img src="Imagenes/mapfre.png" alt="Mapfre" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Mapfre</span>'">
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/regional.png" alt="La Regional de Seguros" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>La</span>'"></div>
+                            <div class="min-w-0 normal-case tracking-normal">
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">La Regional de Seguros</span>
+                                <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5072820537" class="hover:text-eal-gold">282-0537</a></span>
+                                <a href="https://wa.me/50763005737" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6300-5737</a>
                             </div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/mapfre.png" alt="Mapfre" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Mapfre</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
                                 <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Mapfre</span>
-                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3021100" class="hover:text-eal-gold">302-1100</a> <span class="text-eal-gold">/</span> <a href="tel:65123380" class="hover:text-eal-gold">6512-3380</a></span>
+                                <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5073909090" class="hover:text-eal-gold">390-9090</a></span>
+                                <a href="https://wa.me/50763199457" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6319-9457</a>
                             </div>
                         </div>
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
-                                <img src="Imagenes/Palig.png" alt="Palig" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Palig</span>'">
-                            </div>
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/palig.svg" alt="Pan American Life" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Pan</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
-                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Palig</span>
-                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3775560" class="hover:text-eal-gold">377-5560</a> <span class="text-eal-gold">/</span> <a href="tel:61459087" class="hover:text-eal-gold">6145-9087</a></span>
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Pan American Life</span>
+                                <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5072088000" class="hover:text-eal-gold">208-8000</a></span>
+                                <a href="https://wa.me/50768434729" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6843-4729</a>
                             </div>
                         </div>
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
-                                <img src="Imagenes/sagicor.png" alt="Sagicor" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Sagicor</span>'">
-                            </div>
-                            <div class="min-w-0 normal-case tracking-normal">
-                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Sagicor</span>
-                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3621450" class="hover:text-eal-gold">362-1450</a> <span class="text-eal-gold">/</span> <a href="tel:67342218" class="hover:text-eal-gold">6734-2218</a></span>
-                            </div>
-                        </div>
-                        <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
-                                <img src="Imagenes/sura.svg" alt="SURA" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>SURA</span>'">
-                            </div>
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/sura.svg" alt="SURA" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>SURA</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
                                 <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">SURA</span>
-                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3333312" class="hover:text-eal-gold">333-3312</a> <span class="text-eal-gold">/</span> <a href="tel:62977443" class="hover:text-eal-gold">6297-7443</a></span>
+                                <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5078007872" class="hover:text-eal-gold">800-7872</a></span>
+                                <a href="https://wa.me/50763287872" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6328-7872</a>
                             </div>
                         </div>
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
-                                <img src="Imagenes/univivir.png" alt="UniVivir" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>UniVivir</span>'">
-                            </div>
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/univivir.png" alt="UniVivir" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>UniVivir</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
                                 <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">UniVivir</span>
-                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3684410" class="hover:text-eal-gold">368-4410</a> <span class="text-eal-gold">/</span> <a href="tel:69571132" class="hover:text-eal-gold">6957-1132</a></span>
+                                <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5073803700" class="hover:text-eal-gold">380-3700</a> <span class="text-eal-gold">|</span> <a href="tel:+5073900555" class="hover:text-eal-gold">390-0555</a></span>
+                                
                             </div>
                         </div>
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
-                                <img src="Imagenes/vumi.png" alt="VUMI" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>VUMI</span>'">
-                            </div>
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/vumi.png" alt="VUMI" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>VUMI</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
                                 <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">VUMI</span>
-                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3907720" class="hover:text-eal-gold">390-7720</a> <span class="text-eal-gold">/</span> <a href="tel:64558812" class="hover:text-eal-gold">6455-8812</a></span>
+                                <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5078339569" class="hover:text-eal-gold">833-9569</a></span>
+                                
                             </div>
                         </div>
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5">
-                                <img src="Imagenes/world.png" alt="WorldWide Medical" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>WorldWide</span>'">
-                            </div>
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/world.png" alt="WorldWide Medical" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>WorldWide</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
                                 <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">WorldWide Medical</span>
-                                <span class="text-white font-bold text-xs whitespace-nowrap"><a href="tel:3156630" class="hover:text-eal-gold">315-6630</a> <span class="text-eal-gold">/</span> <a href="tel:65784409" class="hover:text-eal-gold">6578-4409</a></span>
+                                <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5073668300" class="hover:text-eal-gold">366-8300</a></span>
+                                <a href="https://wa.me/50766170446" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6617-0446</a>
                             </div>
                         </div>
                     </div>
@@ -401,7 +396,7 @@
 
             <!-- Selector de Idioma -->
             <div class="relative">
-                <button onclick="toggleLangDropdown()" id="langDropdownBtn" class="bg-eal-navy hover:bg-eal-navy/80 text-white text-xs font-bold border border-eal-gold/50 rounded-xl px-2.5 py-2 flex items-center gap-1.5 transition cursor-pointer">
+                <button onclick="toggleLangDropdown()" id="langDropdownBtn" class="bg-white/5 hover:bg-white/10 text-white text-xs font-bold border border-eal-gold/50 rounded-xl px-2.5 py-2 flex items-center gap-1.5 transition cursor-pointer">
                     <span id="currentLangFlag" class="inline-flex items-center">
                         <svg class="w-4 h-3 rounded shadow-sm object-cover" viewBox="0 0 750 500" xmlns="http://www.w3.org/2000/svg"><rect width="750" height="500" fill="#aa151b"/><rect width="750" height="250" y="125" fill="#f1bf00"/></svg>
                     </span>
@@ -415,7 +410,7 @@
             </div>
 
             <!-- BOTÓN MENÚ HAMBURGUESA (Solo visible en celulares/tablets) -->
-            <button onclick="toggleMobileMenu()" class="lg:hidden text-eal-gold text-xl p-2 focus:outline-none cursor-pointer">
+            <button onclick="toggleMobileMenu()" class="lg:hidden text-eal-gold text-xl p-2 focus:outline-none cursor-pointer" aria-label="Menú">
                 <i id="mobileMenuIcon" class="fa-solid fa-bars"></i>
             </button>
         </div>
@@ -452,6 +447,16 @@
             <a href="reclamos-seguros-panama.html" class="block text-slate-200 hover:text-eal-gold text-xs py-1" data-i18n="cs.claims">Reclamos</a>
             <a href="redes-de-proveedores-seguros-panama.html" class="block text-slate-200 hover:text-eal-gold text-xs py-1" data-i18n="cs.providers">Redes de proveedores</a>
             <a href="condiciones-generales-seguros-panama.html" class="block text-slate-200 hover:text-eal-gold text-xs py-1" data-i18n="cs.conditions">Condiciones generales</a>
+            <div>
+                <button onclick="toggleMobileSubmenu('mobPay', 'iconPay')" class="w-full flex items-center justify-between text-slate-200 hover:text-eal-gold text-xs py-1 focus:outline-none cursor-pointer">
+                    <span data-i18n="cs.pay">Paga tu póliza</span>
+                    <i id="iconPay" class="fa-solid fa-chevron-down text-[9px] text-eal-gold transition-transform duration-300"></i>
+                </button>
+                <div id="mobPay" class="hidden pl-3 mt-1 space-y-1 border-l border-eal-gold/30">
+                <a href="https://www.iseguros.com/pagosis/" target="_blank" rel="noopener noreferrer" class="block text-slate-300 hover:text-eal-gold text-xs py-1"><i class="fa-solid fa-credit-card text-eal-gold mr-1.5"></i>Internacional de Seguros</a>
+                <a href="https://mipago.segurossura.com.pa/" target="_blank" rel="noopener noreferrer" class="block text-slate-300 hover:text-eal-gold text-xs py-1"><i class="fa-solid fa-credit-card text-eal-gold mr-1.5"></i>SURA</a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -461,21 +466,19 @@
             <i id="iconSupport" class="fa-solid fa-chevron-down text-[10px] text-eal-gold transition-transform duration-300"></i>
         </button>
         <div id="mobSupport" class="hidden pl-3 mt-2 space-y-2 border-l-2 border-eal-gold/40 text-xs text-slate-300">
-            <div class="py-1"><strong class="text-white">Acerta:</strong> <a href="tel:3862290" class="hover:text-eal-gold">386-2290</a> / <a href="tel:68125576" class="hover:text-eal-gold">6812-5576</a></div>
-            <div class="py-1"><strong class="text-white">Aliados:</strong> <a href="tel:3456620" class="hover:text-eal-gold">345-6620</a> / <a href="tel:62307718" class="hover:text-eal-gold">6230-7718</a></div>
-            <div class="py-1"><strong class="text-white">Ancón:</strong> <a href="tel:3952240" class="hover:text-eal-gold">395-2240</a> / <a href="tel:68713306" class="hover:text-eal-gold">6871-3306</a></div>
-            <div class="py-1"><strong class="text-white">ASSA:</strong> <a href="tel:3104455" class="hover:text-eal-gold">310-4455</a> / <a href="tel:66231190" class="hover:text-eal-gold">6623-1190</a></div>
-            <div class="py-1"><strong class="text-white">Blue Cross:</strong> <a href="tel:3299910" class="hover:text-eal-gold">329-9910</a> / <a href="tel:64762285" class="hover:text-eal-gold">6476-2285</a></div>
-            <div class="py-1"><strong class="text-white">Bupa:</strong> <a href="tel:3402210" class="hover:text-eal-gold">340-2210</a> / <a href="tel:66884521" class="hover:text-eal-gold">6688-4521</a></div>
-            <div class="py-1"><strong class="text-white">Fedpa:</strong> <a href="tel:3517740" class="hover:text-eal-gold">351-7740</a> / <a href="tel:63096624" class="hover:text-eal-gold">6309-6624</a></div>
-            <div class="py-1"><strong class="text-white">Internacional de Seguros:</strong> <a href="tel:3238800" class="hover:text-eal-gold">323-8800</a> / <a href="tel:62903365" class="hover:text-eal-gold">6290-3365</a></div>
-            <div class="py-1"><strong class="text-white">Mapfre:</strong> <a href="tel:3021100" class="hover:text-eal-gold">302-1100</a> / <a href="tel:65123380" class="hover:text-eal-gold">6512-3380</a></div>
-            <div class="py-1"><strong class="text-white">Palig:</strong> <a href="tel:3775560" class="hover:text-eal-gold">377-5560</a> / <a href="tel:61459087" class="hover:text-eal-gold">6145-9087</a></div>
-            <div class="py-1"><strong class="text-white">Sagicor:</strong> <a href="tel:3621450" class="hover:text-eal-gold">362-1450</a> / <a href="tel:67342218" class="hover:text-eal-gold">6734-2218</a></div>
-            <div class="py-1"><strong class="text-white">SURA:</strong> <a href="tel:3333312" class="hover:text-eal-gold">333-3312</a> / <a href="tel:62977443" class="hover:text-eal-gold">6297-7443</a></div>
-            <div class="py-1"><strong class="text-white">UniVivir:</strong> <a href="tel:3684410" class="hover:text-eal-gold">368-4410</a> / <a href="tel:69571132" class="hover:text-eal-gold">6957-1132</a></div>
-            <div class="py-1"><strong class="text-white">VUMI:</strong> <a href="tel:3907720" class="hover:text-eal-gold">390-7720</a> / <a href="tel:64558812" class="hover:text-eal-gold">6455-8812</a></div>
-            <div class="py-1"><strong class="text-white">WorldWide Medical:</strong> <a href="tel:3156630" class="hover:text-eal-gold">315-6630</a> / <a href="tel:65784409" class="hover:text-eal-gold">6578-4409</a></div>
+            <div class="py-1"><strong class="text-white">Acerta:</strong> <a href="tel:+5073073030" class="hover:text-eal-gold">307-3030</a> &nbsp;<a href="https://wa.me/50760063833" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6006-3833</a></div>
+            <div class="py-1"><strong class="text-white">Aliado Seguros:</strong> <a href="tel:+5073048555" class="hover:text-eal-gold">304-8555</a></div>
+            <div class="py-1"><strong class="text-white">Ancón:</strong> <a href="tel:+5073032444" class="hover:text-eal-gold">303-2444</a> &nbsp;<a href="https://wa.me/50762333882" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6233-3882</a></div>
+            <div class="py-1"><strong class="text-white">ASSA:</strong> <a href="tel:+5073002424" class="hover:text-eal-gold">300-2424</a> &nbsp;<a href="https://wa.me/50766012772" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6601-2772</a></div>
+            <div class="py-1"><strong class="text-white">Fedpa:</strong> <a href="tel:+5073405425" class="hover:text-eal-gold">340-5425</a> &nbsp;<a href="https://wa.me/50765135555" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6513-5555</a></div>
+            <div class="py-1"><strong class="text-white">Internacional de Seguros:</strong> <a href="tel:+5072652881" class="hover:text-eal-gold">265-2881</a> &nbsp;<a href="https://wa.me/50766662881" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6666-2881</a></div>
+            <div class="py-1"><strong class="text-white">La Regional de Seguros:</strong> <a href="tel:+5072820537" class="hover:text-eal-gold">282-0537</a> &nbsp;<a href="https://wa.me/50763005737" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6300-5737</a></div>
+            <div class="py-1"><strong class="text-white">Mapfre:</strong> <a href="tel:+5073909090" class="hover:text-eal-gold">390-9090</a> &nbsp;<a href="https://wa.me/50763199457" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6319-9457</a></div>
+            <div class="py-1"><strong class="text-white">Pan American Life:</strong> <a href="tel:+5072088000" class="hover:text-eal-gold">208-8000</a> &nbsp;<a href="https://wa.me/50768434729" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6843-4729</a></div>
+            <div class="py-1"><strong class="text-white">SURA:</strong> <a href="tel:+5078007872" class="hover:text-eal-gold">800-7872</a> &nbsp;<a href="https://wa.me/50763287872" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6328-7872</a></div>
+            <div class="py-1"><strong class="text-white">UniVivir:</strong> <a href="tel:+5073803700" class="hover:text-eal-gold">380-3700</a> <span class="text-eal-gold">|</span> <a href="tel:+5073900555" class="hover:text-eal-gold">390-0555</a></div>
+            <div class="py-1"><strong class="text-white">VUMI:</strong> <a href="tel:+5078339569" class="hover:text-eal-gold">833-9569</a></div>
+            <div class="py-1"><strong class="text-white">WorldWide Medical:</strong> <a href="tel:+5073668300" class="hover:text-eal-gold">366-8300</a> &nbsp;<a href="https://wa.me/50766170446" target="_blank" rel="noopener noreferrer" class="text-[#25D366] hover:text-white font-bold text-[11px] inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp"></i>6617-0446</a></div>
         </div>
     </div>
 
@@ -503,17 +506,17 @@
         <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
             <div class="max-w-2xl space-y-6 text-left">
                 <span class="animate-fade-up delay-1 inline-block px-4 py-1.5 rounded-full bg-eal-gold/20 border border-eal-gold text-eal-gold text-xs font-bold uppercase tracking-widest" data-i18n="hero.badge">
-                    Correduría de Seguros Autorizada en Panamá
+                    Corredor de seguros autorizado en Panamá
                 </span>
 
                 <h1 class="animate-fade-up delay-2 text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight font-serif">
-                    <span class="block" data-i18n="hero.title1">Una inversión</span>
-                    <span class="block text-eal-gold italic font-normal" data-i18n="hero.title2">a futuro.</span>
+                    <span class="block" data-i18n="hero.title1">Los seguros no tienen</span>
+                    <span class="block text-eal-gold italic font-normal" data-i18n="hero.title2">que ser complicados.</span>
                         <span class="sr-only" data-i18n="seo.h1">Corredor de seguros en Panamá</span>
                 </h1>
 
                 <p class="animate-fade-up delay-3 text-slate-200 text-base sm:text-lg font-medium leading-relaxed max-w-xl" data-i18n="hero.subtitle">
-                    La tranquilidad de vivir protegido, sin trámites ni burocracia. Nos encargamos de toda la gestión y asesoría ante las aseguradoras para que tú solo disfrutes tu día a día.
+                    En EAL hacemos que los seguros sean simples. Te explicamos tus opciones de forma clara, te ayudamos a elegir la cobertura adecuada y te acompañamos cuando más lo necesitas.
                 </p>
 
                 <div class="animate-fade-up delay-4 flex flex-wrap gap-4 pt-2">
@@ -655,96 +658,98 @@
     </section>
 
  <!-- SECTION: CARRUSEL DE ASEGURADORAS ALIADAS -->
-    <section class="py-12 bg-slate-100 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 text-center">
-            <h3 class="text-xs sm:text-sm font-extrabold tracking-widest text-eal-navy uppercase" data-i18n="partners.title">Aliados estratégicos en protección</h3>
+    <section class="py-14 bg-eal-navy relative overflow-hidden">
+        <div class="absolute -top-24 left-1/4 w-96 h-96 rounded-full bg-eal-gold/10 blur-3xl pointer-events-none"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
+            <h2 class="text-xs sm:text-sm font-extrabold tracking-widest text-eal-gold uppercase" data-i18n="partners.title">Aliados estratégicos en protección</h2>
+            <div class="w-16 h-1 bg-eal-gold rounded-full mx-auto mt-3"></div>
         </div>
-
         <div class="relative w-full overflow-hidden">
-            <!-- Gradientes sutiles a los lados enlazados al fondo slate-100 -->
-            <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-slate-100 to-transparent z-10 pointer-events-none"></div>
-            <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-slate-100 to-transparent z-10 pointer-events-none"></div>
-
-            <!-- Contenedor del Carrusel Infinito -->
-            <div class="animate-marquee flex items-center space-x-12 py-3">
-
-                <!-- BLOQUE 1 DE LOGOS AMPLIADOS -->
-                <div class="flex items-center space-x-16 shrink-0">
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/sura.svg" alt="Sura" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/mapfre.png" alt="Mapfre" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/assa.png" alt="ASSA" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/bupa.png" alt="Bupa" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/Palig.png" alt="Palig" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/is.png" alt="IS" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/sagicor.png" alt="Sagicor" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/vumi.png" alt="VUMI" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/world.png" alt="WorldWide" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/acerta.png" alt="Acerta" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/fedpa.png" alt="Fedpa" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/univivir.png" alt="UniVivir" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/Blue.png" alt="BLUE" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/Aliados.png" alt="Aliados Seguros" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/Ancon.png" alt="Aseguradora Ancón" class="max-h-16 w-auto object-contain"></div>
-
+            <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-eal-navy to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-eal-navy to-transparent z-10 pointer-events-none"></div>
+            <div class="animate-marquee flex items-center py-3">
+                <div class="flex items-center gap-6 pr-6 shrink-0">
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/acerta.png" alt="Acerta" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/Aliados.png" alt="Aliado Seguros" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/Ancon.png" alt="Ancón" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/assa.png" alt="ASSA" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/Blue.png" alt="Blue Cross Blue Shield" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/bupa.png" alt="Bupa" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/fedpa.png" alt="Fedpa" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/is.png" alt="Internacional de Seguros" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/regional.png" alt="La Regional de Seguros" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/mapfre.png" alt="Mapfre" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/palig.svg" alt="Pan American Life" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/sagicor.png" alt="Sagicor" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/sura.svg" alt="SURA" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/univivir.png" alt="UniVivir" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/vumi.png" alt="VUMI" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/world.png" alt="WorldWide Medical" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
                 </div>
-
-                <!-- BLOQUE 2 DUPLICADO PARA EL EFECTO INFINITO CONTINUO -->
-                <div class="flex items-center space-x-16 shrink-0" aria-hidden="true">
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/sura.svg" alt="Sura" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/mapfre.png" alt="Mapfre" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/assa.png" alt="ASSA" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/bupa.png" alt="Bupa" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/Palig.png" alt="Palig" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/is.png" alt="IS" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/sagicor.png" alt="Sagicor" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/vumi.png" alt="VUMI" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/world.png" alt="WorldWide" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/acerta.png" alt="Acerta" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/fedpa.png" alt="Fedpa" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/univivir.png" alt="UniVivir" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/Blue.png" alt="BLUE" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/Aliados.png" alt="Aliados Seguros" class="max-h-16 w-auto object-contain"></div>
-                    <div class="h-20 w-48 flex items-center justify-center"><img src="Imagenes/Ancon.png" alt="Aseguradora Ancón" class="max-h-16 w-auto object-contain"></div>
+                <div class="flex items-center gap-6 pr-6 shrink-0" aria-hidden="true">
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/acerta.png" alt="Acerta" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/Aliados.png" alt="Aliado Seguros" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/Ancon.png" alt="Ancón" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/assa.png" alt="ASSA" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/Blue.png" alt="Blue Cross Blue Shield" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/bupa.png" alt="Bupa" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/fedpa.png" alt="Fedpa" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/is.png" alt="Internacional de Seguros" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/regional.png" alt="La Regional de Seguros" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/mapfre.png" alt="Mapfre" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/palig.svg" alt="Pan American Life" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/sagicor.png" alt="Sagicor" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/sura.svg" alt="SURA" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/univivir.png" alt="UniVivir" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/vumi.png" alt="VUMI" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
+                    <div class="h-20 w-44 shrink-0 bg-white rounded-2xl shadow-lg ring-1 ring-white/10 flex items-center justify-center px-5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-eal-gold"><img src="Imagenes/world.png" alt="WorldWide Medical" loading="lazy" class="max-h-12 max-w-full w-auto object-contain"></div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- SECTION: SOBRE NOSOTROS -->
-    <section id="nosotros" class="py-16 bg-slate-100">
+    <!-- SECTION: ¿POR QUÉ ELEGIR EAL SEGUROS? -->
+    <section id="nosotros" class="py-16 sm:py-20 bg-slate-100 scroll-mt-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-eal-navy font-serif" data-i18n="about.title">
-                        Más de 15 años brindando tranquilidad real en Panamá.
-                    </h2>
-                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed" data-i18n="about.desc">
-                        En <strong class="text-eal-navy">EAL Corredor de Seguros</strong> priorizamos el trato humano y personalizado. No vendemos simples pólizas; estructuramos estrategias de protección para tu auto, salud, familia y patrimonio.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4 pt-2">
-                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                            <span class="text-3xl font-extrabold text-eal-gold font-serif">99.4%</span>
-                            <span class="block text-xs font-semibold text-slate-600 mt-1" data-i18n="about.stat1">Reclamos Resueltos a Favor</span>
-                        </div>
-                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                            <span class="text-3xl font-extrabold text-eal-gold font-serif">+15,000</span>
-                            <span class="block text-xs font-semibold text-slate-600 mt-1" data-i18n="about.stat2">Clientes Protegidos</span>
-                        </div>
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-eal-navy font-serif mb-3" data-i18n="why.title">¿Por qué elegir EAL Seguros?</h2>
+                <div class="w-20 h-1 bg-eal-gold rounded-full mx-auto mb-4"></div>
+                <p class="text-slate-600 text-sm sm:text-base leading-relaxed" data-i18n="why.subtitle">Queremos que contratar un seguro sea fácil, claro y sin complicaciones. Por eso, te ofrecemos mucho más que una póliza.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <article class="group relative h-[26rem] rounded-3xl overflow-hidden shadow-lg border border-slate-200 bg-eal-navy transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80" alt="Asesoría gratuita y sin compromiso" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.style.display='none'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-eal-navy via-eal-navy/70 to-eal-navy/10"></div>
+                    <span class="absolute top-5 left-5 w-12 h-12 rounded-2xl bg-eal-gold text-eal-navy font-serif font-bold text-xl flex items-center justify-center shadow-lg">1</span>
+                    <span class="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10 backdrop-blur border border-white/20 text-eal-gold flex items-center justify-center"><i class="fa-solid fa-scale-balanced"></i></span>
+                    <div class="absolute inset-x-0 bottom-0 p-6">
+                        <div class="w-12 h-1 bg-eal-gold rounded-full mb-3 transition-all duration-500 group-hover:w-20"></div>
+                        <h3 class="text-xl sm:text-2xl font-bold font-serif text-white leading-snug" data-i18n="why1.title">Asesoría gratuita y sin compromiso</h3>
+                        <p class="text-slate-200 text-sm leading-relaxed mt-3 lg:max-h-0 lg:opacity-0 lg:mt-0 overflow-hidden transition-all duration-500 lg:group-hover:max-h-60 lg:group-hover:opacity-100 lg:group-hover:mt-3" data-i18n="why1.desc">Comparamos opciones de distintas aseguradoras y te explicamos sus coberturas, beneficios y costos para que tomes una decisión informada.</p>
                     </div>
-                </div>
-
-                <div class="bg-eal-navy text-white p-8 rounded-3xl border border-eal-gold/30 shadow-2xl relative">
-                    <h3 class="text-xl font-bold font-serif text-eal-gold mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-shield-heart"></i> <span data-i18n="about.boxTitle">Gestión de Reclamos sin Complicaciones</span>
-                    </h3>
-                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6" data-i18n="about.boxText">
-                        Ante cualquier siniestro o reclamo, nuestro equipo se encarga directamente del proceso de reclamos con las aseguradoras. Defendemos tus intereses de principio a fin.
-                    </p>
-                    <button onclick="handleBooking()" class="w-full bg-eal-gold hover:bg-eal-goldHover text-eal-navy font-extrabold py-3 px-4 rounded-xl text-xs uppercase tracking-wider shadow transition cursor-pointer">
-                        <i class="fa-regular fa-calendar-check mr-1.5"></i> <span data-i18n="about.boxBtn">RESERVAR CITA DE ASESORÍA</span>
-                    </button>
-                </div>
+                </article>
+                <article class="group relative h-[26rem] rounded-3xl overflow-hidden shadow-lg border border-slate-200 bg-eal-navy transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80" alt="Te guiamos en cada paso" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.style.display='none'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-eal-navy via-eal-navy/70 to-eal-navy/10"></div>
+                    <span class="absolute top-5 left-5 w-12 h-12 rounded-2xl bg-eal-gold text-eal-navy font-serif font-bold text-xl flex items-center justify-center shadow-lg">2</span>
+                    <span class="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10 backdrop-blur border border-white/20 text-eal-gold flex items-center justify-center"><i class="fa-solid fa-route"></i></span>
+                    <div class="absolute inset-x-0 bottom-0 p-6">
+                        <div class="w-12 h-1 bg-eal-gold rounded-full mb-3 transition-all duration-500 group-hover:w-20"></div>
+                        <h3 class="text-xl sm:text-2xl font-bold font-serif text-white leading-snug" data-i18n="why2.title">Te guiamos en cada paso</h3>
+                        <p class="text-slate-200 text-sm leading-relaxed mt-3 lg:max-h-0 lg:opacity-0 lg:mt-0 overflow-hidden transition-all duration-500 lg:group-hover:max-h-60 lg:group-hover:opacity-100 lg:group-hover:mt-3" data-i18n="why2.desc">Te ayudamos durante el proceso de contratación y te entregamos guías prácticas para que sepas cómo utilizar tu seguro. Además, estamos a tu disposición para resolver dudas y ayudarte con cualquier gestión durante la vigencia de tu póliza.</p>
+                    </div>
+                </article>
+                <article class="group relative h-[26rem] rounded-3xl overflow-hidden shadow-lg border border-slate-200 bg-eal-navy transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Apoyo cuando necesitas tu seguro" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.style.display='none'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-eal-navy via-eal-navy/70 to-eal-navy/10"></div>
+                    <span class="absolute top-5 left-5 w-12 h-12 rounded-2xl bg-eal-gold text-eal-navy font-serif font-bold text-xl flex items-center justify-center shadow-lg">3</span>
+                    <span class="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10 backdrop-blur border border-white/20 text-eal-gold flex items-center justify-center"><i class="fa-solid fa-handshake-angle"></i></span>
+                    <div class="absolute inset-x-0 bottom-0 p-6">
+                        <div class="w-12 h-1 bg-eal-gold rounded-full mb-3 transition-all duration-500 group-hover:w-20"></div>
+                        <h3 class="text-xl sm:text-2xl font-bold font-serif text-white leading-snug" data-i18n="why3.title">Apoyo cuando necesitas tu seguro</h3>
+                        <p class="text-slate-200 text-sm leading-relaxed mt-3 lg:max-h-0 lg:opacity-0 lg:mt-0 overflow-hidden transition-all duration-500 lg:group-hover:max-h-60 lg:group-hover:opacity-100 lg:group-hover:mt-3" data-i18n="why3.desc">Te orientamos en el uso de tus coberturas y te ayudamos a gestionar tus reclamos directamente con la aseguradora, defendiendo tus intereses.</p>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -759,41 +764,45 @@
     </a>
 
     <!-- FOOTER INSTITUCIONAL SSRP -->
-    <footer id="contacto" class="bg-eal-navy text-white pt-14 pb-10 border-t border-eal-gold/30 mt-auto">
+    <footer id="contacto" class="bg-eal-navy text-white pt-14 pb-10 border-t-4 border-eal-gold mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
 
-                <div class="space-y-3">
-                    <div class="flex items-center gap-2">
-                        <div class="w-9 h-9 rounded-lg border border-eal-gold flex items-center justify-center bg-eal-navy text-eal-gold font-serif font-bold">
-                            EAL
-                        </div>
-                        <span class="font-serif text-xl font-bold tracking-wider text-white">EAL Corredor</span>
-                    </div>
-                    <p class="text-slate-400 text-xs leading-relaxed" data-i18n="footer.about">
+                <div class="space-y-4">
+                    <a href="index.html" class="inline-block" aria-label="EAL Corredor de Seguros - Inicio">
+                        <img src="Imagenes/logo-eal-horizontal-blanco.png" alt="EAL Corredor de Seguros" width="220" height="73" loading="lazy" class="h-16 w-auto">
+                    </a>
+                    <p class="text-slate-300 text-xs leading-relaxed" data-i18n="footer.about">
                         Firma corredora de seguros en Panamá comprometida con la protección patrimonial y la paz mental de cada uno de nuestros clientes.
                     </p>
-                    <div class="flex items-center space-x-2 pt-2">
-                        <a href="https://instagram.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-full bg-white/10 hover:bg-eal-gold hover:text-eal-navy flex items-center justify-center transition text-xs">
+                    <div class="flex items-center space-x-2 pt-1">
+                        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="w-8 h-8 rounded-full bg-white/10 hover:bg-eal-gold hover:text-eal-navy flex items-center justify-center transition text-xs">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
-                        <a href="https://facebook.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-full bg-white/10 hover:bg-eal-gold hover:text-eal-navy flex items-center justify-center transition text-xs">
+                        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="w-8 h-8 rounded-full bg-white/10 hover:bg-eal-gold hover:text-eal-navy flex items-center justify-center transition text-xs">
                             <i class="fa-brands fa-facebook-f"></i>
                         </a>
-                        <a href="https://wa.me/50767920669" target="_blank" rel="noopener" class="w-8 h-8 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center transition text-xs">
+                        <a href="https://wa.me/50767920669" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-8 h-8 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center transition text-xs">
                             <i class="fa-brands fa-whatsapp"></i>
                         </a>
                     </div>
                 </div>
 
-                <div>
-                    <h4 class="font-bold text-eal-gold text-xs uppercase tracking-wider mb-3" data-i18n="footer.navTitle">Navegación</h4>
-                    <ul class="space-y-2 text-xs text-slate-300">
-                        <li><a href="#inicio" class="hover:text-eal-gold transition" data-i18n="nav.home">INICIO</a></li>
-                        <li><a href="#productos" class="hover:text-eal-gold transition" data-i18n="nav.products">NUESTROS PRODUCTOS</a></li>
+                <nav aria-label="Enlaces del sitio" class="grid grid-cols-2 lg:grid-cols-1 gap-6">
+                    <ul class="space-y-2 text-xs text-slate-300 font-semibold">
+                        <li><a href="index.html" class="hover:text-eal-gold transition" data-i18n="nav.home">INICIO</a></li>
+                        <li><a href="index.html#productos" class="hover:text-eal-gold transition" data-i18n="nav.products">NUESTROS PRODUCTOS</a></li>
                         <li><a href="sobre-nosotros-corredor-de-seguros-panama.html" class="hover:text-eal-gold transition" data-i18n="nav.about">SOBRE NOSOTROS</a></li>
                     </ul>
-                </div>
+                    <div>
+                        <h4 class="font-bold text-eal-gold text-xs uppercase tracking-wider mb-2" data-i18n="nav.customerService">Atención al cliente</h4>
+                        <ul class="space-y-2 text-xs text-slate-300">
+                            <li><a href="reclamos-seguros-panama.html" class="hover:text-eal-gold transition" data-i18n="cs.claims">Reclamos</a></li>
+                            <li><a href="redes-de-proveedores-seguros-panama.html" class="hover:text-eal-gold transition" data-i18n="cs.providers">Redes de proveedores</a></li>
+                            <li><a href="condiciones-generales-seguros-panama.html" class="hover:text-eal-gold transition" data-i18n="cs.conditions">Condiciones generales</a></li>
+                        </ul>
+                    </div>
+                </nav>
 
                 <div>
                     <h4 class="font-bold text-eal-gold text-xs uppercase tracking-wider mb-3" data-i18n="footer.contactTitle">Contacto Directo</h4>
@@ -816,8 +825,9 @@
                 <div>
                     <h4 class="font-bold text-eal-gold text-xs uppercase tracking-wider mb-3" data-i18n="footer.ssrpTitle">Regulación Oficial</h4>
                     <div class="bg-white/5 border border-eal-gold/30 rounded-xl p-3.5 text-center shadow-lg">
-                        <i class="fa-solid fa-shield-halved text-eal-gold text-2xl mb-1"></i>
-                        <span class="block text-xs font-bold text-white uppercase" data-i18n="footer.ssrpSub">Superintendencia de Seguros</span>
+                        <a href="https://www.superseguros.gob.pa/" target="_blank" rel="noopener noreferrer" class="block bg-white rounded-lg p-2 mb-2 hover:ring-2 hover:ring-eal-gold transition" aria-label="Superintendencia de Seguros y Reaseguros de Panamá">
+                            <img src="Imagenes/ssrp.png" alt="SSRP - Superintendencia de Seguros y Reaseguros de Panamá" width="364" height="265" loading="lazy" class="h-20 w-auto mx-auto object-contain">
+                        </a>
                         <p class="text-[10px] text-slate-400 mt-1" data-i18n="footer.ssrpDesc">
                             Regulado por la SSRP de Panamá. Licencia de Corredor Autorizado Nº 104-EAL.
                         </p>
@@ -837,8 +847,7 @@
         const i18n = {
             es: {
                 "topbar.book": "RESERVAR REUNIÓN",
-                "nav.subtitle": "Corredor de Seguros", "seo.h1": "Corredor de seguros en Panamá", "support.legend": "Teléfono / Celular",
-                "nav.home": "INICIO",
+                "nav.subtitle": "Corredor de Seguros", "seo.h1": "Corredor de seguros en Panamá", "pay.go": "Pagar en línea", "pay.title": "Paga tu póliza en línea", "cs.pay": "Paga tu póliza", "support.title": "Contacta a tu aseguradora", "support.legend": "Teléfono / WhatsApp", "hero.badge": "Corredor de seguros autorizado en Panamá", "hero.title1": "Los seguros no tienen", "hero.title2": "que ser complicados.", "hero.subtitle": "En EAL hacemos que los seguros sean simples. Te explicamos tus opciones de forma clara, te ayudamos a elegir la cobertura adecuada y te acompañamos cuando más lo necesitas.", "why.title": "¿Por qué elegir EAL Seguros?", "why.subtitle": "Queremos que contratar un seguro sea fácil, claro y sin complicaciones. Por eso, te ofrecemos mucho más que una póliza.", "why1.title": "Asesoría gratuita y sin compromiso", "why1.desc": "Comparamos opciones de distintas aseguradoras y te explicamos sus coberturas, beneficios y costos para que tomes una decisión informada.", "why2.title": "Te guiamos en cada paso", "why2.desc": "Te ayudamos durante el proceso de contratación y te entregamos guías prácticas para que sepas cómo utilizar tu seguro. Además, estamos a tu disposición para resolver dudas y ayudarte con cualquier gestión durante la vigencia de tu póliza.", "why3.title": "Apoyo cuando necesitas tu seguro", "why3.desc": "Te orientamos en el uso de tus coberturas y te ayudamos a gestionar tus reclamos directamente con la aseguradora, defendiendo tus intereses.", "nav.home": "INICIO",
                 "nav.products": "NUESTROS PRODUCTOS",
                 "nav.about": "SOBRE NOSOTROS",
                 "nav.customerService": "Atención al cliente",
@@ -852,14 +861,9 @@
                 "cs.claims": "Reclamos",
                 "cs.providers": "Redes de proveedores",
                 "cs.conditions": "Condiciones generales",
-                "support.title": "Contacta a tu aseguradora",
                 "support.subtitle": "Números de emergencia y atención directa con las principales aseguradoras de Panamá.",
                 "partners.title": "Aliados estratégicos en protección",
-                "hero.badge": "Correduría de Seguros Autorizada en Panamá",
-                "hero.subtitle": "La tranquilidad de vivir protegido, sin trámites ni burocracia. Nos encargamos de toda la gestión y asesoría ante las aseguradoras para que tú solo disfrutes tu día a día.",
                 "hero.btnMeeting": "Agendar Cita",
-                "hero.title1": "Una inversión",
-                "hero.title2": "a futuro.",
                 "hero.boldText": "La tranquilidad de vivir protegido, sin trámites ni burocracia.",
                 "hero.subText": "Nos encargamos de toda la gestión y asesoría ante las aseguradoras para que tú solo disfrutes tu día a día.",
                 "hero.btnCoverages": "Ver Coberturas",
@@ -895,8 +899,7 @@
             },
             en: {
                 "topbar.book": "BOOK A MEETING",
-                "nav.subtitle": "Insurance Broker", "seo.h1": "Insurance broker in Panama", "support.legend": "Phone / Mobile",
-                "nav.home": "HOME",
+                "nav.subtitle": "Insurance Broker", "seo.h1": "Insurance broker in Panama", "pay.go": "Pay online", "pay.title": "Pay your policy online", "cs.pay": "Pay your policy", "support.title": "Contact your insurance company", "support.legend": "Phone / WhatsApp", "hero.badge": "Authorized insurance broker in Panama", "hero.title1": "Insurance doesn't have", "hero.title2": "to be complicated.", "hero.subtitle": "At EAL we make insurance simple. We explain your options clearly, help you choose the right coverage and stand by you when you need it most.", "why.title": "Why choose EAL Seguros?", "why.subtitle": "We want buying insurance to be easy, clear and hassle-free. That's why we offer you much more than a policy.", "why1.title": "Free, no-obligation advice", "why1.desc": "We compare options from different insurers and explain their coverages, benefits and costs so you can make an informed decision.", "why2.title": "We guide you every step of the way", "why2.desc": "We help you through the purchase process and give you practical guides so you know how to use your insurance. We're also available to answer questions and help with any request while your policy is in force.", "why3.title": "Support when you need your insurance", "why3.desc": "We guide you in using your coverage and help you manage your claims directly with the insurer, defending your interests.", "nav.home": "HOME",
                 "nav.products": "PRODUCTS",
                 "nav.about": "ABOUT US",
                 "nav.customerService": "Customer Service",
@@ -910,14 +913,9 @@
                 "cs.claims": "Claims",
                 "cs.providers": "Provider Networks",
                 "cs.conditions": "General Conditions",
-                "support.title": "Contact your insurance company",
                 "support.subtitle": "Emergency and direct contact numbers with main insurance companies in Panama.",
                 "partners.title": "Strategic protection partners",
-                "hero.badge": "Authorized Insurance Brokerage in Panama",
-                "hero.subtitle": "The peace of mind of living protected, with no paperwork or red tape. We handle all the management and advice with insurers so you can simply enjoy your day-to-day.",
                 "hero.btnMeeting": "Schedule a Meeting",
-                "hero.title1": "An investment",
-                "hero.title2": "in your future.",
                 "hero.boldText": "The peace of mind of living protected, zero hassle or bureaucracy.",
                 "hero.subText": "We handle all insurance claims and negotiations so you can enjoy your day-to-day life.",
                 "hero.btnCoverages": "View Coverages",
