@@ -263,10 +263,6 @@
             .hero-zoom, .badge-pulse { animation: none; }
             .animate-fade-up, .animate-fade-left { animation: none; opacity: 1; }
         }
-        /* Submenú "Paga tu póliza" (se despliega hacia abajo) */
-        .flyout-group .flyout { visibility: hidden; opacity: 0; transform: translateY(8px); transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.3s; transition-delay: 0.25s; }
-        .flyout-group .flyout::before { content: ''; position: absolute; left: 0; right: 0; top: -14px; height: 14px; }
-        .flyout-group:hover .flyout, .flyout-group:focus-within .flyout { visibility: visible; opacity: 1; transform: translateY(0); transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s; }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 font-sans antialiased overflow-x-hidden selection:bg-eal-gold selection:text-white flex flex-col min-h-screen">
@@ -310,31 +306,7 @@
                     <a href="reclamos-seguros-panama.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="cs.claims">Reclamos</a>
                     <a href="redes-de-proveedores-seguros-panama.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="cs.providers">Redes de proveedores</a>
                     <a href="condiciones-generales-seguros-panama.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="cs.conditions">Condiciones generales</a>
-                    <!-- Paga tu póliza: despliega las aseguradoras a la derecha -->
-                    <div class="flyout-group relative">
-                        <button type="button" class="w-full flex items-center justify-between px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition uppercase tracking-wider cursor-pointer">
-                            <span data-i18n="cs.pay">Paga tu póliza</span>
-                            <i class="fa-solid fa-chevron-down text-[9px]"></i>
-                        </button>
-                        <div class="flyout absolute left-0 top-full mt-2 w-[440px] bg-eal-navy border border-eal-gold/40 rounded-2xl shadow-2xl p-4 z-50">
-                            <div class="mb-3 pb-2 border-b border-eal-gold/20 flex items-center gap-2">
-                                <i class="fa-solid fa-credit-card text-eal-gold"></i>
-                                <h4 class="font-serif font-bold text-sm text-eal-gold normal-case tracking-normal" data-i18n="pay.title">Paga tu póliza en línea</h4>
-                            </div>
-                            <div class="grid grid-cols-2 gap-2.5">
-                            <a href="https://www.iseguros.com/pagosis/" target="_blank" rel="noopener noreferrer" class="group/pay bg-white/5 border border-white/10 hover:border-eal-gold rounded-xl p-3 flex items-center gap-3 transition">
-                                <span class="w-16 h-11 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/is.png" alt="Internacional de Seguros" loading="lazy" class="max-h-8 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Internacional</span>'"></span>
-                                <span class="min-w-0 flex-1 normal-case tracking-normal"><span class="block text-xs font-bold text-white truncate">Internacional de Seguros</span><span class="text-[10px] text-slate-400 group-hover/pay:text-eal-gold" data-i18n="pay.go">Pagar en línea</span></span>
-                                <i class="fa-solid fa-arrow-up-right-from-square text-eal-gold text-xs"></i>
-                            </a>
-                            <a href="https://mipago.segurossura.com.pa/" target="_blank" rel="noopener noreferrer" class="group/pay bg-white/5 border border-white/10 hover:border-eal-gold rounded-xl p-3 flex items-center gap-3 transition">
-                                <span class="w-16 h-11 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/sura.svg" alt="SURA" loading="lazy" class="max-h-8 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>SURA</span>'"></span>
-                                <span class="min-w-0 flex-1 normal-case tracking-normal"><span class="block text-xs font-bold text-white truncate">SURA</span><span class="text-[10px] text-slate-400 group-hover/pay:text-eal-gold" data-i18n="pay.go">Pagar en línea</span></span>
-                                <i class="fa-solid fa-arrow-up-right-from-square text-eal-gold text-xs"></i>
-                            </a>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="paga-tu-poliza-seguros-panama.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="cs.pay">Paga tu póliza</a>
                 </div>
             </div>
 
@@ -522,16 +494,7 @@
             <a href="reclamos-seguros-panama.html" class="block text-slate-200 hover:text-eal-gold text-xs py-1" data-i18n="cs.claims">Reclamos</a>
             <a href="redes-de-proveedores-seguros-panama.html" class="block text-slate-200 hover:text-eal-gold text-xs py-1" data-i18n="cs.providers">Redes de proveedores</a>
             <a href="condiciones-generales-seguros-panama.html" class="block text-slate-200 hover:text-eal-gold text-xs py-1" data-i18n="cs.conditions">Condiciones generales</a>
-            <div>
-                <button onclick="toggleMobileSubmenu('mobPay', 'iconPay')" class="w-full flex items-center justify-between text-slate-200 hover:text-eal-gold text-xs py-1 focus:outline-none cursor-pointer">
-                    <span data-i18n="cs.pay">Paga tu póliza</span>
-                    <i id="iconPay" class="fa-solid fa-chevron-down text-[9px] text-eal-gold transition-transform duration-300"></i>
-                </button>
-                <div id="mobPay" class="hidden pl-3 mt-1 space-y-1 border-l border-eal-gold/30">
-                <a href="https://www.iseguros.com/pagosis/" target="_blank" rel="noopener noreferrer" class="block text-slate-300 hover:text-eal-gold text-xs py-1"><i class="fa-solid fa-credit-card text-eal-gold mr-1.5"></i>Internacional de Seguros</a>
-                <a href="https://mipago.segurossura.com.pa/" target="_blank" rel="noopener noreferrer" class="block text-slate-300 hover:text-eal-gold text-xs py-1"><i class="fa-solid fa-credit-card text-eal-gold mr-1.5"></i>SURA</a>
-                </div>
-            </div>
+            <a href="paga-tu-poliza-seguros-panama.html" class="block text-slate-200 hover:text-eal-gold text-xs py-1" data-i18n="cs.pay">Paga tu póliza</a>
         </div>
     </div>
 
@@ -945,6 +908,7 @@
                             <li><a href="reclamos-seguros-panama.html" class="hover:text-eal-gold transition" data-i18n="cs.claims">Reclamos</a></li>
                             <li><a href="redes-de-proveedores-seguros-panama.html" class="hover:text-eal-gold transition" data-i18n="cs.providers">Redes de proveedores</a></li>
                             <li><a href="condiciones-generales-seguros-panama.html" class="hover:text-eal-gold transition" data-i18n="cs.conditions">Condiciones generales</a></li>
+                            <li><a href="paga-tu-poliza-seguros-panama.html" class="hover:text-eal-gold transition" data-i18n="cs.pay">Paga tu póliza</a></li>
                         </ul>
                     </div>
                 </nav>

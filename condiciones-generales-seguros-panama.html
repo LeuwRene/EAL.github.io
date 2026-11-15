@@ -230,10 +230,6 @@
         /* Marco decorativo de la foto */
         @keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
         .float-soft { animation: floatY 5s ease-in-out infinite; }
-        /* Submenú "Paga tu póliza" (se despliega hacia abajo) */
-        .flyout-group .flyout { visibility: hidden; opacity: 0; transform: translateY(8px); transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.3s; transition-delay: 0.25s; }
-        .flyout-group .flyout::before { content: ''; position: absolute; left: 0; right: 0; top: -14px; height: 14px; }
-        .flyout-group:hover .flyout, .flyout-group:focus-within .flyout { visibility: visible; opacity: 1; transform: translateY(0); transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s; }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 font-sans antialiased overflow-x-hidden selection:bg-eal-gold selection:text-white flex flex-col min-h-screen">
@@ -277,31 +273,7 @@
                     <a href="reclamos-seguros-panama.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="cs.claims">Reclamos</a>
                     <a href="redes-de-proveedores-seguros-panama.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="cs.providers">Redes de proveedores</a>
                     <a href="condiciones-generales-seguros-panama.html" class="block px-4 py-2.5 text-xs font-bold text-eal-gold hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="cs.conditions">Condiciones generales</a>
-                    <!-- Paga tu póliza: despliega las aseguradoras a la derecha -->
-                    <div class="flyout-group relative">
-                        <button type="button" class="w-full flex items-center justify-between px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition uppercase tracking-wider cursor-pointer">
-                            <span data-i18n="cs.pay">Paga tu póliza</span>
-                            <i class="fa-solid fa-chevron-down text-[9px]"></i>
-                        </button>
-                        <div class="flyout absolute left-0 top-full mt-2 w-[440px] bg-eal-navy border border-eal-gold/40 rounded-2xl shadow-2xl p-4 z-50">
-                            <div class="mb-3 pb-2 border-b border-eal-gold/20 flex items-center gap-2">
-                                <i class="fa-solid fa-credit-card text-eal-gold"></i>
-                                <h4 class="font-serif font-bold text-sm text-eal-gold normal-case tracking-normal" data-i18n="pay.title">Paga tu póliza en línea</h4>
-                            </div>
-                            <div class="grid grid-cols-2 gap-2.5">
-                            <a href="https://www.iseguros.com/pagosis/" target="_blank" rel="noopener noreferrer" class="group/pay bg-white/5 border border-white/10 hover:border-eal-gold rounded-xl p-3 flex items-center gap-3 transition">
-                                <span class="w-16 h-11 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/is.png" alt="Internacional de Seguros" loading="lazy" class="max-h-8 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Internacional</span>'"></span>
-                                <span class="min-w-0 flex-1 normal-case tracking-normal"><span class="block text-xs font-bold text-white truncate">Internacional de Seguros</span><span class="text-[10px] text-slate-400 group-hover/pay:text-eal-gold" data-i18n="pay.go">Pagar en línea</span></span>
-                                <i class="fa-solid fa-arrow-up-right-from-square text-eal-gold text-xs"></i>
-                            </a>
-                            <a href="https://mipago.segurossura.com.pa/" target="_blank" rel="noopener noreferrer" class="group/pay bg-white/5 border border-white/10 hover:border-eal-gold rounded-xl p-3 flex items-center gap-3 transition">
-                                <span class="w-16 h-11 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/sura.svg" alt="SURA" loading="lazy" class="max-h-8 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>SURA</span>'"></span>
-                                <span class="min-w-0 flex-1 normal-case tracking-normal"><span class="block text-xs font-bold text-white truncate">SURA</span><span class="text-[10px] text-slate-400 group-hover/pay:text-eal-gold" data-i18n="pay.go">Pagar en línea</span></span>
-                                <i class="fa-solid fa-arrow-up-right-from-square text-eal-gold text-xs"></i>
-                            </a>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="paga-tu-poliza-seguros-panama.html" class="block px-4 py-2.5 text-xs font-bold text-white hover:bg-eal-gold hover:text-eal-navy transition" data-i18n="cs.pay">Paga tu póliza</a>
                 </div>
             </div>
 
@@ -489,16 +461,7 @@
             <a href="reclamos-seguros-panama.html" class="block text-slate-200 hover:text-eal-gold text-xs py-1" data-i18n="cs.claims">Reclamos</a>
             <a href="redes-de-proveedores-seguros-panama.html" class="block text-slate-200 hover:text-eal-gold text-xs py-1" data-i18n="cs.providers">Redes de proveedores</a>
             <a href="condiciones-generales-seguros-panama.html" class="block text-eal-gold font-bold hover:text-eal-gold text-xs py-1" data-i18n="cs.conditions">Condiciones generales</a>
-            <div>
-                <button onclick="toggleMobileSubmenu('mobPay', 'iconPay')" class="w-full flex items-center justify-between text-slate-200 hover:text-eal-gold text-xs py-1 focus:outline-none cursor-pointer">
-                    <span data-i18n="cs.pay">Paga tu póliza</span>
-                    <i id="iconPay" class="fa-solid fa-chevron-down text-[9px] text-eal-gold transition-transform duration-300"></i>
-                </button>
-                <div id="mobPay" class="hidden pl-3 mt-1 space-y-1 border-l border-eal-gold/30">
-                <a href="https://www.iseguros.com/pagosis/" target="_blank" rel="noopener noreferrer" class="block text-slate-300 hover:text-eal-gold text-xs py-1"><i class="fa-solid fa-credit-card text-eal-gold mr-1.5"></i>Internacional de Seguros</a>
-                <a href="https://mipago.segurossura.com.pa/" target="_blank" rel="noopener noreferrer" class="block text-slate-300 hover:text-eal-gold text-xs py-1"><i class="fa-solid fa-credit-card text-eal-gold mr-1.5"></i>SURA</a>
-                </div>
-            </div>
+            <a href="paga-tu-poliza-seguros-panama.html" class="block text-slate-200 hover:text-eal-gold text-xs py-1" data-i18n="cs.pay">Paga tu póliza</a>
         </div>
     </div>
 
@@ -543,6 +506,48 @@
                 <p class="text-slate-600 text-sm sm:text-base mt-4" data-i18n="c.3">Haz clic en el logo para consultar o descargar las condiciones generales de tu póliza.</p>
             </div>
             <div class="flex flex-wrap justify-center gap-5">
+                <button type="button" onclick="pickInsurer('Acerta', CONDICIONES_GENERALES['Acerta'], false)" class="reveal reveal-d1 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                    <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    <div class="h-16 w-full flex items-center justify-center">
+                        <img src="Imagenes/acerta.png" alt="Acerta" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Acerta</span>'">
+                    </div>
+                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">Acerta <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
+                </button>
+                <button type="button" onclick="pickInsurer('Aliado Seguros', CONDICIONES_GENERALES['Aliado Seguros'], false)" class="reveal reveal-d2 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                    <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    <div class="h-16 w-full flex items-center justify-center">
+                        <img src="Imagenes/Aliados.png" alt="Aliado Seguros" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Aliado Seguros</span>'">
+                    </div>
+                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">Aliado Seguros <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
+                </button>
+                <button type="button" onclick="pickInsurer('Ancón', CONDICIONES_GENERALES['Ancón'], false)" class="reveal reveal-d3 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                    <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    <div class="h-16 w-full flex items-center justify-center">
+                        <img src="Imagenes/Ancon.png" alt="Ancón" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Ancón</span>'">
+                    </div>
+                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">Ancón <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
+                </button>
+                <button type="button" onclick="pickInsurer('ASSA', CONDICIONES_GENERALES['ASSA'], false)" class="reveal reveal-d1 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                    <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    <div class="h-16 w-full flex items-center justify-center">
+                        <img src="Imagenes/assa.png" alt="ASSA" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>ASSA</span>'">
+                    </div>
+                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">ASSA <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
+                </button>
+                <button type="button" onclick="pickInsurer('Blue Cross Blue Shield', CONDICIONES_GENERALES['Blue Cross Blue Shield'], false)" class="reveal reveal-d2 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                    <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    <div class="h-16 w-full flex items-center justify-center">
+                        <img src="Imagenes/Blue.png" alt="Blue Cross Blue Shield" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Blue Cross Blue Shield</span>'">
+                    </div>
+                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">Blue Cross Blue Shield <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
+                </button>
+                <button type="button" onclick="pickInsurer('Fedpa', CONDICIONES_GENERALES['Fedpa'], false)" class="reveal reveal-d3 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                    <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    <div class="h-16 w-full flex items-center justify-center">
+                        <img src="Imagenes/fedpa.png" alt="Fedpa" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Fedpa</span>'">
+                    </div>
+                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">Fedpa <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
+                </button>
                 <button type="button" onclick="pickInsurer('Internacional de Seguros', CONDICIONES_GENERALES['Internacional de Seguros'], false)" class="reveal reveal-d1 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
                     <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                     <div class="h-16 w-full flex items-center justify-center">
@@ -550,12 +555,33 @@
                     </div>
                     <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">Internacional de Seguros <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
                 </button>
-                <button type="button" onclick="pickInsurer('SURA', CONDICIONES_GENERALES['SURA'], false)" class="reveal reveal-d2 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                <button type="button" onclick="pickInsurer('La Regional de Seguros', CONDICIONES_GENERALES['La Regional de Seguros'], false)" class="reveal reveal-d2 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                    <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    <div class="h-16 w-full flex items-center justify-center">
+                        <img src="Imagenes/regional.png" alt="La Regional de Seguros" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>La Regional de Seguros</span>'">
+                    </div>
+                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">La Regional de Seguros <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
+                </button>
+                <button type="button" onclick="pickInsurer('Pan American Life', CONDICIONES_GENERALES['Pan American Life'], false)" class="reveal reveal-d3 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                    <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    <div class="h-16 w-full flex items-center justify-center">
+                        <img src="Imagenes/palig.png" alt="Pan American Life" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Pan American Life</span>'">
+                    </div>
+                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">Pan American Life <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
+                </button>
+                <button type="button" onclick="pickInsurer('SURA', CONDICIONES_GENERALES['SURA'], false)" class="reveal reveal-d1 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
                     <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                     <div class="h-16 w-full flex items-center justify-center">
                         <img src="Imagenes/sura.svg" alt="SURA" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>SURA</span>'">
                     </div>
                     <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">SURA <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
+                </button>
+                <button type="button" onclick="pickInsurer('UniVivir', CONDICIONES_GENERALES['UniVivir'], false)" class="reveal reveal-d2 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                    <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    <div class="h-16 w-full flex items-center justify-center">
+                        <img src="Imagenes/univivir.png" alt="UniVivir" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>UniVivir</span>'">
+                    </div>
+                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">UniVivir <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
                 </button>
             </div>
             <p class="reveal text-xs italic text-slate-500 mt-8 text-center flex items-center justify-center gap-2"><i class="fa-solid fa-circle-info text-eal-gold"></i><span data-i18n="c.4">Las condiciones generales son publicadas por cada aseguradora y pueden actualizarse sin previo aviso.</span></p>
@@ -576,6 +602,13 @@
             </div>
             <div id="mBody" class="p-5 sm:p-6 overflow-y-auto"></div>
         </div>
+    </div>
+
+    <!-- IMAGEN AMPLIADA -->
+    <div id="imgZoom" class="modal-backdrop fixed inset-0 z-[70] bg-black/90 flex flex-col items-center justify-center p-4 cursor-zoom-out" onclick="closeZoom()" role="dialog" aria-modal="true">
+        <button type="button" onclick="closeZoom()" class="absolute top-4 right-4 w-11 h-11 rounded-full bg-white/10 hover:bg-eal-gold hover:text-eal-navy text-white flex items-center justify-center transition cursor-pointer" aria-label="Cerrar"><i class="fa-solid fa-xmark text-lg"></i></button>
+        <img id="imgZoomImg" src="" alt="" class="modal-panel max-h-[85vh] max-w-full object-contain rounded-2xl shadow-2xl bg-white">
+        <p id="imgZoomCap" class="text-white/90 text-sm font-semibold mt-4 text-center max-w-xl"></p>
     </div>
     <!-- BOTÓN WHATSAPP -->
     <a href="https://wa.me/50767920669?text=Hola,%20deseo%20asesor%C3%ADa%20con%20EAL"
@@ -623,6 +656,7 @@
                             <li><a href="reclamos-seguros-panama.html" class="hover:text-eal-gold transition" data-i18n="cs.claims">Reclamos</a></li>
                             <li><a href="redes-de-proveedores-seguros-panama.html" class="hover:text-eal-gold transition" data-i18n="cs.providers">Redes de proveedores</a></li>
                             <li><a href="condiciones-generales-seguros-panama.html" class="hover:text-eal-gold transition" data-i18n="cs.conditions">Condiciones generales</a></li>
+                            <li><a href="paga-tu-poliza-seguros-panama.html" class="hover:text-eal-gold transition" data-i18n="cs.pay">Paga tu póliza</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -670,7 +704,8 @@
         const i18n = {
             "es": {
                 "topbar.book": "RESERVAR REUNIÓN",
-                "nav.subtitle": "Corredor de Seguros", "seo.h1": "— condiciones generales de seguros en Panamá", "pay.go": "Pagar en línea", "pay.title": "Paga tu póliza en línea", "cs.pay": "Paga tu póliza", "support.title": "Contacta a tu aseguradora", "support.legend": "Teléfono / WhatsApp", "nav.home": "INICIO",
+                "nav.subtitle": "Corredor de Seguros", "seo.h1": "— condiciones generales de seguros en Panamá", "pay.go": "Pagar en línea", "pay.title": "Paga tu póliza en línea", "cs.pay": "Paga tu póliza", "support.title": "Contacta a tu aseguradora", "support.legend": "Teléfono / WhatsApp",
+                "nav.home": "INICIO",
                 "nav.products": "NUESTROS PRODUCTOS",
                 "nav.about": "SOBRE NOSOTROS",
                 "nav.customerService": "Atención al cliente",
@@ -717,7 +752,8 @@
             },
             "en": {
                 "topbar.book": "BOOK A MEETING",
-                "nav.subtitle": "Insurance Broker", "seo.h1": "— general insurance conditions in Panama", "pay.go": "Pay online", "pay.title": "Pay your policy online", "cs.pay": "Pay your policy", "support.title": "Contact your insurance company", "support.legend": "Phone / WhatsApp", "nav.home": "HOME",
+                "nav.subtitle": "Insurance Broker", "seo.h1": "— general insurance conditions in Panama", "pay.go": "Pay online", "pay.title": "Pay your policy online", "cs.pay": "Pay your policy", "support.title": "Contact your insurance company", "support.legend": "Phone / WhatsApp",
+                "nav.home": "HOME",
                 "nav.products": "PRODUCTS",
                 "nav.about": "ABOUT US",
                 "nav.customerService": "Customer Service",
@@ -820,13 +856,105 @@
         // DATOS (generados desde insurers.py / Excel "Trabajo de Rene")
         // ==========================================================
         const CONDICIONES_GENERALES = {
+  "Acerta": {
+    "links": [
+      {
+        "es": "Condiciones generales de todos los productos",
+        "en": "General conditions for all products",
+        "url": "https://acertaseguros.com/formularios-y-condiciones-generales/",
+        "download": false
+      }
+    ]
+  },
+  "Aliado Seguros": {
+    "links": [
+      {
+        "es": "Condiciones generales de todos los productos",
+        "en": "General conditions for all products",
+        "url": "https://aliadoseguros.com/condicionados",
+        "download": false
+      }
+    ]
+  },
+  "Ancón": {
+    "links": [
+      {
+        "es": "Condiciones generales de todos los productos",
+        "en": "General conditions for all products",
+        "url": "https://www.asegurancon.com/condiciones-generales/",
+        "download": false
+      }
+    ]
+  },
+  "ASSA": {
+    "links": [
+      {
+        "es": "Condiciones generales de todos los productos",
+        "en": "General conditions for all products",
+        "url": "https://www.assanet.com/servicio-al-cliente/condiciones-generales/",
+        "download": false
+      }
+    ]
+  },
+  "Blue Cross Blue Shield": {
+    "links": [
+      {
+        "es": "Condiciones generales de todos los productos",
+        "en": "General conditions for all products",
+        "url": "https://www.bcbspma.com/condicionesGenerales.html",
+        "download": false
+      }
+    ]
+  },
+  "Fedpa": {
+    "links": [
+      {
+        "es": "Condiciones generales de automóvil",
+        "en": "Auto insurance general conditions",
+        "url": "https://www.segfedpa.com/site/condiciones-generales-de-automovil/",
+        "download": false
+      }
+    ]
+  },
   "Internacional de Seguros": {
     "links": [
       {
         "es": "Condiciones generales de todos los productos",
         "en": "General conditions for all products",
-        "url": "https://www.iseguros.com/condicionesgenerales.html",
+        "url": "https://www.iseguros.com/condicionesgenerales.html#tab-1/",
         "download": false
+      }
+    ]
+  },
+  "La Regional de Seguros": {
+    "links": [
+      {
+        "es": "Póliza de auto todo riesgo",
+        "en": "Comprehensive auto policy",
+        "url": "https://laregionaldeseguros.com/automovil-poliza-todo-riesgo-de-auto/",
+        "download": false
+      }
+    ]
+  },
+  "Pan American Life": {
+    "links": [
+      {
+        "es": "Plan Essential Health (PDF)",
+        "en": "Essential Health Plan (PDF)",
+        "url": "pdf/condiciones-palig-essential-health.pdf",
+        "download": true
+      },
+      {
+        "es": "Plan Family Care (PDF)",
+        "en": "Family Care Plan (PDF)",
+        "url": "pdf/condiciones-palig-family-care.pdf",
+        "download": true
+      },
+      {
+        "es": "Plan Health Trust (PDF)",
+        "en": "Health Trust Plan (PDF)",
+        "url": "pdf/condiciones-palig-health-trust.pdf",
+        "download": true
       }
     ]
   },
@@ -839,21 +967,9 @@
         "download": true
       },
       {
-        "es": "Seguro de Hogar (PDF)",
-        "en": "Home Insurance (PDF)",
+        "es": "Multiprotección Hogar (PDF)",
+        "en": "Home Multi-protection (PDF)",
         "url": "pdf/condiciones-sura-hogar.pdf",
-        "download": true
-      },
-      {
-        "es": "Incendio Residencial (PDF)",
-        "en": "Residential Fire (PDF)",
-        "url": "pdf/condiciones-sura-incendio-residencial.pdf",
-        "download": true
-      },
-      {
-        "es": "Vida Temporal (PDF)",
-        "en": "Term Life (PDF)",
-        "url": "pdf/condiciones-sura-vida-temporal.pdf",
         "download": true
       },
       {
@@ -863,12 +979,22 @@
         "download": true
       }
     ]
+  },
+  "UniVivir": {
+    "links": [
+      {
+        "es": "Condiciones generales de todos los productos",
+        "en": "General conditions for all products",
+        "url": "https://www.univivir.com.pa/condiciones-generales/",
+        "download": false
+      }
+    ]
   }
 };
         const INS_LOGOS = {"Acerta": "acerta.png", "Aliado Seguros": "Aliados.png", "Ancón": "Ancon.png", "ASSA": "assa.png", "Blue Cross Blue Shield": "Blue.png", "Bupa": "bupa.png", "Fedpa": "fedpa.png", "Internacional de Seguros": "is.png", "La Regional de Seguros": "regional.png", "Mapfre": "mapfre.png", "Pan American Life": "palig.png", "Sagicor": "sagicor.png", "SURA": "sura.svg", "UniVivir": "univivir.png", "VUMI": "vumi.png", "WorldWide Medical": "world.png"};
         const TXT = {
-            es: { list: "Selecciona tu aseguradora", detail: "Condiciones generales", download: "Descargar PDF", open: "Abrir enlace" },
-            en: { list: "Select your insurer", detail: "General conditions", download: "Download PDF", open: "Open link" }
+            es: { list: "Selecciona tu aseguradora", detail: "Condiciones generales", download: "Descargar PDF", open: "Abrir enlace", zoom: "Toca la imagen para ampliarla", step: "Paso", waBtn: "Escríbenos por WhatsApp", waMsg: "Hola Eduardo, quisiera pagar mi póliza de " },
+            en: { list: "Select your insurer", detail: "General conditions", download: "Download PDF", open: "Open link", zoom: "Tap the image to enlarge it", step: "Step", waBtn: "Message us on WhatsApp", waMsg: "Hello Eduardo, I would like to pay my policy with " }
         };
         let lastFocus = null, currentList = null;
         const lang = () => localStorage.getItem('eal_preferred_lang') || 'es';
@@ -884,7 +1010,19 @@
             document.body.style.overflow = '';
             if (lastFocus) lastFocus.focus();
         }
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+        function openZoom(src, cap) {
+            document.getElementById('imgZoomImg').src = src;
+            document.getElementById('imgZoomImg').alt = cap;
+            document.getElementById('imgZoomCap').textContent = cap;
+            document.getElementById('imgZoom').classList.add('open');
+        }
+        function closeZoom() { document.getElementById('imgZoom').classList.remove('open'); }
+        document.addEventListener('keydown', e => {
+            if (e.key !== 'Escape') return;
+            if (document.getElementById('imgZoom').classList.contains('open')) closeZoom(); else closeModal();
+        });
+        // ¿Un solo enlace y nada más que mostrar? -> se abre directo
+        const isDirect = e => e.links.length === 1 && !e.intro && !e.note && !(e.images && e.images.length) && !e.contact;
 
         // Abre un enlace (los PDF se descargan)
         function goLink(link) {
@@ -910,17 +1048,43 @@
                 const attrs = l.download ? `download="${l.url.split('/').pop()}" target="_blank" rel="noopener noreferrer"` : 'target="_blank" rel="noopener noreferrer"';
                 const icon = l.download ? 'fa-file-arrow-down' : 'fa-arrow-up-right-from-square';
                 return `<a href="${l.url}" ${attrs} class="modal-item group flex items-center gap-4 bg-slate-50 hover:bg-eal-navy border border-slate-200 hover:border-eal-gold rounded-2xl p-4 transition" style="animation-delay:${0.08 * i + 0.1}s">
-                    <span class="w-12 h-12 shrink-0 rounded-xl bg-eal-navy group-hover:bg-eal-gold text-eal-gold group-hover:text-eal-navy flex items-center justify-center text-lg transition"><i class="fa-solid ${l.download ? 'fa-file-pdf' : 'fa-link'}"></i></span>
+                    <span class="w-12 h-12 shrink-0 rounded-xl bg-eal-navy group-hover:bg-eal-gold text-eal-gold group-hover:text-eal-navy flex items-center justify-center text-lg transition"><i class="fa-solid ${l.download ? 'fa-file-pdf' : (/en línea|online/i.test(l.es) ? 'fa-credit-card' : (/centro|lugar|recaudo/i.test(l.es) ? 'fa-location-dot' : (/pago/i.test(l.es) ? 'fa-money-check-dollar' : 'fa-link')))}"></i></span>
                     <span class="flex-1 min-w-0"><span class="block font-bold text-eal-navy group-hover:text-white transition">${l[L]}</span><span class="block text-xs text-slate-500 group-hover:text-slate-300 transition">${l.download ? TXT[L].download : TXT[L].open}</span></span>
                     <i class="fa-solid ${icon} text-eal-gold group-hover:translate-x-1 transition"></i>
                 </a>`;
             }).join('');
-            document.getElementById('mBody').innerHTML = intro + `<div class="space-y-3">${links}</div>` + note;
+            let imgs = '';
+            if (entry.images && entry.images.length) {
+                const many = entry.images.length > 1;
+                imgs = `<div class="grid ${many ? 'grid-cols-2' : 'grid-cols-1'} gap-3 sm:gap-5">` + entry.images.map((im, i) => `
+                    <figure class="modal-item flex flex-col" style="animation-delay:${0.12 * i + 0.1}s">
+                        <button type="button" onclick="openZoom('${im.src}', this.dataset.cap)" data-cap="${im[L].replace(/"/g, '&quot;')}" class="group relative flex-1 flex items-center justify-center w-full bg-gradient-to-b from-slate-50 to-slate-100 border border-slate-200 hover:border-eal-gold rounded-2xl p-2 sm:p-4 hover:shadow-xl transition cursor-zoom-in">
+                            ${many ? `<span class="absolute top-2 left-2 sm:top-3 sm:left-3 z-10 bg-eal-gold text-eal-navy text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full shadow">${TXT[L].step} ${i + 1}</span>` : ''}
+                            <img src="${im.src}" alt="${im[L].replace(/"/g, '&quot;')}" loading="lazy" class="w-auto max-w-full ${many ? 'max-h-[48vh]' : 'max-h-[58vh]'} object-contain rounded-xl shadow-md group-hover:scale-[1.02] transition duration-300">
+                            <span class="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 w-9 h-9 rounded-full bg-eal-navy/85 text-white group-hover:bg-eal-gold group-hover:text-eal-navy flex items-center justify-center text-sm transition"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                        </button>
+                        <figcaption class="text-xs sm:text-sm font-semibold text-eal-navy mt-2.5 text-center leading-snug">${im[L]}</figcaption>
+                    </figure>`).join('') + `</div>
+                    <p class="text-[11px] text-slate-400 text-center mt-3 ${entry.links.length ? 'mb-5' : ''} flex items-center justify-center gap-1.5"><i class="fa-solid fa-hand-pointer"></i>${TXT[L].zoom}</p>`;
+            }
+            let contact = '';
+            if (entry.contact) {
+                const msg = encodeURIComponent(TXT[L].waMsg + name + '.');
+                contact = `<div class="modal-item text-center bg-gradient-to-br from-eal-goldLight to-white border border-eal-gold/40 rounded-3xl p-6 sm:p-8" style="animation-delay:.15s">
+                    <img src="Imagenes/logo-eal-circular.png" alt="EAL Corredor de Seguros" class="w-20 h-20 rounded-full ring-2 ring-eal-gold mx-auto shadow-lg">
+                    <p class="text-slate-700 text-sm sm:text-base leading-relaxed mt-4 max-w-md mx-auto">${entry.intro ? entry.intro[L] : ''}</p>
+                    <a href="https://wa.me/50767920669?text=${msg}" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#1da851] text-white font-extrabold text-sm uppercase tracking-wider px-7 py-4 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>${TXT[L].waBtn}
+                    </a>
+                    <p class="mt-4 text-sm font-bold text-eal-navy"><a href="tel:+50767920669" class="hover:text-eal-gold"><i class="fa-solid fa-phone text-eal-gold mr-1.5"></i>+507 6792-0669</a></p>
+                </div>`;
+            }
+            document.getElementById('mBody').innerHTML = (entry.contact ? '' : intro) + imgs + contact + (entry.links.length ? `<div class="space-y-3">${links}</div>` : '') + note;
         }
 
         // Clic en una aseguradora: un solo enlace sin notas -> directo; si no -> detalle
         function pickInsurer(name, entry, withBack) {
-            if (entry.links.length === 1 && !entry.intro && !entry.note) { goLink(entry.links[0]); return; }
+            if (isDirect(entry)) { goLink(entry.links[0]); return; }
             showDetail(name, entry, withBack);
             if (!document.getElementById('insModal').classList.contains('open')) showModal();
         }
@@ -936,7 +1100,7 @@
             document.getElementById('mTitle').textContent = title;
             const names = Object.keys(list);
             document.getElementById('mBody').innerHTML = `<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">` + names.map((n, i) => {
-                const multi = !(list[n].links.length === 1 && !list[n].intro && !list[n].note);
+                const multi = !isDirect(list[n]);
                 const pdf = !multi && list[n].links[0].download;
                 const badge = multi ? '<i class="fa-solid fa-layer-group text-eal-gold"></i>' : (pdf ? '<i class="fa-solid fa-file-arrow-down text-eal-gold"></i>' : '<i class="fa-solid fa-arrow-up-right-from-square text-eal-gold"></i>');
                 return `<button type="button" onclick="pickFromList(${i})" class="modal-item group bg-slate-50 hover:bg-white border border-slate-200 hover:border-eal-gold rounded-2xl p-4 h-32 flex flex-col items-center justify-center gap-3 hover:shadow-xl hover:-translate-y-1 transition cursor-pointer" style="animation-delay:${0.05 * i + 0.1}s">
