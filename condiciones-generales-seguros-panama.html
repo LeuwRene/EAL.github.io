@@ -583,6 +583,20 @@
                     </div>
                     <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">UniVivir <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
                 </button>
+                <button type="button" onclick="pickInsurer('VUMI', CONDICIONES_GENERALES['VUMI'], false)" class="reveal reveal-d3 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                    <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    <div class="h-16 w-full flex items-center justify-center">
+                        <img src="Imagenes/vumi.png" alt="VUMI" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>VUMI</span>'">
+                    </div>
+                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">VUMI <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
+                </button>
+                <button type="button" onclick="pickInsurer('WorldWide Medical', CONDICIONES_GENERALES['WorldWide Medical'], false)" class="reveal reveal-d1 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                    <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    <div class="h-16 w-full flex items-center justify-center">
+                        <img src="Imagenes/world.png" alt="WorldWide Medical" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>WorldWide Medical</span>'">
+                    </div>
+                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">WorldWide Medical <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
+                </button>
             </div>
             <p class="reveal text-xs italic text-slate-500 mt-8 text-center flex items-center justify-center gap-2"><i class="fa-solid fa-circle-info text-eal-gold"></i><span data-i18n="c.4">Las condiciones generales son publicadas por cada aseguradora y pueden actualizarse sin previo aviso.</span></p>
         </div>
@@ -987,6 +1001,38 @@
         "en": "General conditions for all products",
         "url": "https://www.univivir.com.pa/condiciones-generales/",
         "download": false
+      }
+    ]
+  },
+  "VUMI": {
+    "links": [
+      {
+        "es": "Plan Access VIP (PDF)",
+        "en": "Access VIP Plan (PDF)",
+        "url": "pdf/condiciones-vumi-access-vip.pdf",
+        "download": true
+      },
+      {
+        "es": "Plan Special VIP (PDF)",
+        "en": "Special VIP Plan (PDF)",
+        "url": "pdf/condiciones-vumi-special-vip.pdf",
+        "download": true
+      }
+    ]
+  },
+  "WorldWide Medical": {
+    "links": [
+      {
+        "es": "Plan Exclusive International (PDF)",
+        "en": "Exclusive International Plan (PDF)",
+        "url": "pdf/condiciones-worldwide-exclusive-international.pdf",
+        "download": true
+      },
+      {
+        "es": "Plan Security (PDF)",
+        "en": "Security Plan (PDF)",
+        "url": "pdf/condiciones-worldwide-security.pdf",
+        "download": true
       }
     ]
   }
