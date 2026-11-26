@@ -131,8 +131,8 @@
                     colors: {
                         eal: {
                             navy: '#002157',
-                            gold: '#C8961E',
-                            goldHover: '#A87A12',
+                            gold: '#C6A353',
+                            goldHover: '#A98A42',
                             goldLight: '#FBF3DF',
                             yellowBadge: '#D9A92B'
                         }
@@ -202,8 +202,8 @@
         .delay-5 { animation-delay: 0.9s; }
         /* Latido suave de la etiqueta "Dato importante" */
         @keyframes badgePulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(200, 150, 30, 0.55); }
-            50% { transform: scale(1.06); box-shadow: 0 0 0 10px rgba(200, 150, 30, 0); }
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(198, 163, 83, 0.55); }
+            50% { transform: scale(1.06); box-shadow: 0 0 0 10px rgba(198, 163, 83, 0); }
         }
         .badge-pulse { animation: badgePulse 2.4s ease-in-out infinite; }
         @media (prefers-reduced-motion: reduce) {
@@ -215,7 +215,7 @@
         .reveal.visible { opacity: 1; transform: translateY(0); }
         .reveal-d1 { transition-delay: 0.1s; } .reveal-d2 { transition-delay: 0.2s; } .reveal-d3 { transition-delay: 0.3s; }
         .rich strong { color: #002157; font-weight: 700; }
-        .rich-dark strong { color: #C8961E; font-weight: 700; }
+        .rich-dark strong { color: #C6A353; font-weight: 700; }
         .img-zoom { transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
         .group:hover .img-zoom { transform: scale(1.08); }
         @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
@@ -305,7 +305,7 @@
                             </div>
                         </div>
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/Ancon.png" alt="Ancón" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Ancón</span>'"></div>
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/ancon-logo.png" alt="Ancón" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Ancón</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
                                 <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Ancón</span>
                                 <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5073032444" class="hover:text-eal-gold">303-2444</a></span>
@@ -313,7 +313,7 @@
                             </div>
                         </div>
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/assa.png" alt="ASSA" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>ASSA</span>'"></div>
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/assa-logo.png" alt="ASSA" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>ASSA</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
                                 <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">ASSA</span>
                                 <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5073002424" class="hover:text-eal-gold">300-2424</a></span>
@@ -506,96 +506,83 @@
                 <p class="text-slate-600 text-sm sm:text-base mt-4" data-i18n="c.3">Haz clic en el logo para consultar o descargar las condiciones generales de tu póliza.</p>
             </div>
             <div class="flex flex-wrap justify-center gap-5">
-                <button type="button" onclick="pickInsurer('Acerta', CONDICIONES_GENERALES['Acerta'], false)" class="reveal reveal-d1 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                <button type="button" onclick="pickInsurer('Acerta', CONDICIONES_GENERALES['Acerta'], false)" class="reveal reveal-d1 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-40 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
                     <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="Imagenes/acerta.png" alt="Acerta" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Acerta</span>'">
+                    <div class="h-20 w-full flex items-center justify-center">
+                        <img src="Imagenes/acerta.png" alt="Acerta" loading="lazy" class="max-h-[4.5rem] max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Acerta</span>'">
                     </div>
-                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">Acerta <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
                 </button>
-                <button type="button" onclick="pickInsurer('Aliado Seguros', CONDICIONES_GENERALES['Aliado Seguros'], false)" class="reveal reveal-d2 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                <button type="button" onclick="pickInsurer('Aliado Seguros', CONDICIONES_GENERALES['Aliado Seguros'], false)" class="reveal reveal-d2 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-40 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
                     <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="Imagenes/Aliados.png" alt="Aliado Seguros" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Aliado Seguros</span>'">
+                    <div class="h-20 w-full flex items-center justify-center">
+                        <img src="Imagenes/Aliados.png" alt="Aliado Seguros" loading="lazy" class="max-h-[4.5rem] max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Aliado Seguros</span>'">
                     </div>
-                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">Aliado Seguros <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
                 </button>
-                <button type="button" onclick="pickInsurer('Ancón', CONDICIONES_GENERALES['Ancón'], false)" class="reveal reveal-d3 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                <button type="button" onclick="pickInsurer('Ancón', CONDICIONES_GENERALES['Ancón'], false)" class="reveal reveal-d3 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-40 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
                     <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="Imagenes/Ancon.png" alt="Ancón" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Ancón</span>'">
+                    <div class="h-20 w-full flex items-center justify-center">
+                        <img src="Imagenes/ancon-logo.png" alt="Ancón" loading="lazy" class="max-h-[4.5rem] max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Ancón</span>'">
                     </div>
-                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">Ancón <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
                 </button>
-                <button type="button" onclick="pickInsurer('ASSA', CONDICIONES_GENERALES['ASSA'], false)" class="reveal reveal-d1 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                <button type="button" onclick="pickInsurer('ASSA', CONDICIONES_GENERALES['ASSA'], false)" class="reveal reveal-d1 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-40 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
                     <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="Imagenes/assa.png" alt="ASSA" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>ASSA</span>'">
+                    <div class="h-20 w-full flex items-center justify-center">
+                        <img src="Imagenes/assa-logo.png" alt="ASSA" loading="lazy" class="max-h-[4.5rem] max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>ASSA</span>'">
                     </div>
-                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">ASSA <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
                 </button>
-                <button type="button" onclick="pickInsurer('Blue Cross Blue Shield', CONDICIONES_GENERALES['Blue Cross Blue Shield'], false)" class="reveal reveal-d2 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                <button type="button" onclick="pickInsurer('Blue Cross Blue Shield', CONDICIONES_GENERALES['Blue Cross Blue Shield'], false)" class="reveal reveal-d2 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-40 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
                     <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="Imagenes/Blue.png" alt="Blue Cross Blue Shield" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Blue Cross Blue Shield</span>'">
+                    <div class="h-20 w-full flex items-center justify-center">
+                        <img src="Imagenes/Blue.png" alt="Blue Cross Blue Shield" loading="lazy" class="max-h-[4.5rem] max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Blue Cross Blue Shield</span>'">
                     </div>
-                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">Blue Cross Blue Shield <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
                 </button>
-                <button type="button" onclick="pickInsurer('Fedpa', CONDICIONES_GENERALES['Fedpa'], false)" class="reveal reveal-d3 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                <button type="button" onclick="pickInsurer('Fedpa', CONDICIONES_GENERALES['Fedpa'], false)" class="reveal reveal-d3 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-40 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
                     <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="Imagenes/fedpa.png" alt="Fedpa" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Fedpa</span>'">
+                    <div class="h-20 w-full flex items-center justify-center">
+                        <img src="Imagenes/fedpa.png" alt="Fedpa" loading="lazy" class="max-h-[4.5rem] max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Fedpa</span>'">
                     </div>
-                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">Fedpa <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
                 </button>
-                <button type="button" onclick="pickInsurer('Internacional de Seguros', CONDICIONES_GENERALES['Internacional de Seguros'], false)" class="reveal reveal-d1 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                <button type="button" onclick="pickInsurer('Internacional de Seguros', CONDICIONES_GENERALES['Internacional de Seguros'], false)" class="reveal reveal-d1 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-40 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
                     <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="Imagenes/is.png" alt="Internacional de Seguros" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Internacional de Seguros</span>'">
+                    <div class="h-20 w-full flex items-center justify-center">
+                        <img src="Imagenes/is.png" alt="Internacional de Seguros" loading="lazy" class="max-h-[4.5rem] max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Internacional de Seguros</span>'">
                     </div>
-                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">Internacional de Seguros <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
                 </button>
-                <button type="button" onclick="pickInsurer('La Regional de Seguros', CONDICIONES_GENERALES['La Regional de Seguros'], false)" class="reveal reveal-d2 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                <button type="button" onclick="pickInsurer('La Regional de Seguros', CONDICIONES_GENERALES['La Regional de Seguros'], false)" class="reveal reveal-d2 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-40 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
                     <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="Imagenes/regional.png" alt="La Regional de Seguros" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>La Regional de Seguros</span>'">
+                    <div class="h-20 w-full flex items-center justify-center">
+                        <img src="Imagenes/regional.png" alt="La Regional de Seguros" loading="lazy" class="max-h-[4.5rem] max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>La Regional de Seguros</span>'">
                     </div>
-                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">La Regional de Seguros <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
                 </button>
-                <button type="button" onclick="pickInsurer('Pan American Life', CONDICIONES_GENERALES['Pan American Life'], false)" class="reveal reveal-d3 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                <button type="button" onclick="pickInsurer('Pan American Life', CONDICIONES_GENERALES['Pan American Life'], false)" class="reveal reveal-d3 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-40 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
                     <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="Imagenes/palig.png" alt="Pan American Life" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Pan American Life</span>'">
+                    <div class="h-20 w-full flex items-center justify-center">
+                        <img src="Imagenes/palig.png" alt="Pan American Life" loading="lazy" class="max-h-[4.5rem] max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>Pan American Life</span>'">
                     </div>
-                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">Pan American Life <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
                 </button>
-                <button type="button" onclick="pickInsurer('SURA', CONDICIONES_GENERALES['SURA'], false)" class="reveal reveal-d1 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                <button type="button" onclick="pickInsurer('SURA', CONDICIONES_GENERALES['SURA'], false)" class="reveal reveal-d1 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-40 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
                     <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="Imagenes/sura.svg" alt="SURA" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>SURA</span>'">
+                    <div class="h-20 w-full flex items-center justify-center">
+                        <img src="Imagenes/sura.svg" alt="SURA" loading="lazy" class="max-h-[4.5rem] max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>SURA</span>'">
                     </div>
-                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">SURA <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
                 </button>
-                <button type="button" onclick="pickInsurer('UniVivir', CONDICIONES_GENERALES['UniVivir'], false)" class="reveal reveal-d2 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                <button type="button" onclick="pickInsurer('UniVivir', CONDICIONES_GENERALES['UniVivir'], false)" class="reveal reveal-d2 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-40 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
                     <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="Imagenes/univivir.png" alt="UniVivir" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>UniVivir</span>'">
+                    <div class="h-20 w-full flex items-center justify-center">
+                        <img src="Imagenes/univivir.png" alt="UniVivir" loading="lazy" class="max-h-[4.5rem] max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>UniVivir</span>'">
                     </div>
-                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">UniVivir <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
                 </button>
-                <button type="button" onclick="pickInsurer('VUMI', CONDICIONES_GENERALES['VUMI'], false)" class="reveal reveal-d3 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                <button type="button" onclick="pickInsurer('VUMI', CONDICIONES_GENERALES['VUMI'], false)" class="reveal reveal-d3 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-40 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
                     <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="Imagenes/vumi.png" alt="VUMI" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>VUMI</span>'">
+                    <div class="h-20 w-full flex items-center justify-center">
+                        <img src="Imagenes/vumi.png" alt="VUMI" loading="lazy" class="max-h-[4.5rem] max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>VUMI</span>'">
                     </div>
-                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">VUMI <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
                 </button>
-                <button type="button" onclick="pickInsurer('WorldWide Medical', CONDICIONES_GENERALES['WorldWide Medical'], false)" class="reveal reveal-d1 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-48 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
+                <button type="button" onclick="pickInsurer('WorldWide Medical', CONDICIONES_GENERALES['WorldWide Medical'], false)" class="reveal reveal-d1 group relative w-full sm:w-64 bg-white border border-slate-200 rounded-3xl p-5 h-40 flex flex-col items-center justify-center gap-4 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-eal-gold transition duration-300 cursor-pointer overflow-hidden">
                     <span class="absolute inset-x-0 bottom-0 h-1 bg-eal-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                    <div class="h-16 w-full flex items-center justify-center">
-                        <img src="Imagenes/world.png" alt="WorldWide Medical" loading="lazy" class="max-h-14 max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>WorldWide Medical</span>'">
+                    <div class="h-20 w-full flex items-center justify-center">
+                        <img src="Imagenes/world.png" alt="WorldWide Medical" loading="lazy" class="max-h-[4.5rem] max-w-[85%] object-contain group-hover:scale-110 transition duration-300" onerror="this.outerHTML='<span class=&quot;font-serif font-bold text-xl text-eal-navy&quot;>WorldWide Medical</span>'">
                     </div>
-                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy transition flex items-center gap-1.5">WorldWide Medical <i class="fa-solid fa-chevron-right text-eal-gold text-[9px] group-hover:translate-x-1 transition"></i></span>
                 </button>
             </div>
             <p class="reveal text-xs italic text-slate-500 mt-8 text-center flex items-center justify-center gap-2"><i class="fa-solid fa-circle-info text-eal-gold"></i><span data-i18n="c.4">Las condiciones generales son publicadas por cada aseguradora y pueden actualizarse sin previo aviso.</span></p>
@@ -707,7 +694,8 @@
         const i18n = {
             "es": {
                 "topbar.book": "RESERVAR REUNIÓN",
-                "nav.subtitle": "Corredor de Seguros", "seo.h1": "— condiciones generales de seguros en Panamá", "pay.go": "Pagar en línea", "pay.title": "Paga tu póliza en línea", "cs.pay": "Paga tu póliza", "support.title": "Contacta a tu aseguradora", "support.legend": "Teléfono / WhatsApp", "nav.home": "INICIO",
+                "nav.subtitle": "Corredor de Seguros", "seo.h1": "— condiciones generales de seguros en Panamá", "pay.go": "Pagar en línea", "pay.title": "Paga tu póliza en línea", "cs.pay": "Paga tu póliza", "support.title": "Contacta a tu aseguradora", "support.legend": "Teléfono / WhatsApp",
+                "nav.home": "INICIO",
                 "nav.products": "NUESTROS PRODUCTOS",
                 "nav.about": "SOBRE NOSOTROS",
                 "nav.customerService": "Atención al cliente",
@@ -754,7 +742,8 @@
             },
             "en": {
                 "topbar.book": "BOOK A MEETING",
-                "nav.subtitle": "Insurance Broker", "seo.h1": "— general insurance conditions in Panama", "pay.go": "Pay online", "pay.title": "Pay your policy online", "cs.pay": "Pay your policy", "support.title": "Contact your insurance company", "support.legend": "Phone / WhatsApp", "nav.home": "HOME",
+                "nav.subtitle": "Insurance Broker", "seo.h1": "— general insurance conditions in Panama", "pay.go": "Pay online", "pay.title": "Pay your policy online", "cs.pay": "Pay your policy", "support.title": "Contact your insurance company", "support.legend": "Phone / WhatsApp",
+                "nav.home": "HOME",
                 "nav.products": "PRODUCTS",
                 "nav.about": "ABOUT US",
                 "nav.customerService": "Customer Service",
@@ -940,20 +929,20 @@
   "Pan American Life": {
     "links": [
       {
-        "es": "Plan Essential Health (PDF)",
-        "en": "Essential Health Plan (PDF)",
+        "es": "Plan Essential Health",
+        "en": "Essential Health Plan",
         "url": "pdf/condiciones-palig-essential-health.pdf",
         "download": true
       },
       {
-        "es": "Plan Family Care (PDF)",
-        "en": "Family Care Plan (PDF)",
+        "es": "Plan Family Care",
+        "en": "Family Care Plan",
         "url": "pdf/condiciones-palig-family-care.pdf",
         "download": true
       },
       {
-        "es": "Plan Health Trust (PDF)",
-        "en": "Health Trust Plan (PDF)",
+        "es": "Plan Health Trust",
+        "en": "Health Trust Plan",
         "url": "pdf/condiciones-palig-health-trust.pdf",
         "download": true
       }
@@ -962,20 +951,20 @@
   "SURA": {
     "links": [
       {
-        "es": "Seguro de Auto (PDF)",
-        "en": "Auto Insurance (PDF)",
+        "es": "Seguro de Auto",
+        "en": "Auto Insurance",
         "url": "pdf/condiciones-sura-auto.pdf",
         "download": true
       },
       {
-        "es": "Multiprotección Hogar (PDF)",
-        "en": "Home Multi-protection (PDF)",
+        "es": "Multiprotección Hogar",
+        "en": "Home Multi-protection",
         "url": "pdf/condiciones-sura-hogar.pdf",
         "download": true
       },
       {
-        "es": "Seguro de Mascotas (PDF)",
-        "en": "Pet Insurance (PDF)",
+        "es": "Seguro de Mascotas",
+        "en": "Pet Insurance",
         "url": "pdf/condiciones-sura-mascotas.pdf",
         "download": true
       }
@@ -994,14 +983,14 @@
   "VUMI": {
     "links": [
       {
-        "es": "Plan Access VIP (PDF)",
-        "en": "Access VIP Plan (PDF)",
+        "es": "Plan Access VIP",
+        "en": "Access VIP Plan",
         "url": "pdf/condiciones-vumi-access-vip.pdf",
         "download": true
       },
       {
-        "es": "Plan Special VIP (PDF)",
-        "en": "Special VIP Plan (PDF)",
+        "es": "Plan Special VIP",
+        "en": "Special VIP Plan",
         "url": "pdf/condiciones-vumi-special-vip.pdf",
         "download": true
       }
@@ -1010,21 +999,21 @@
   "WorldWide Medical": {
     "links": [
       {
-        "es": "Plan Exclusive International (PDF)",
-        "en": "Exclusive International Plan (PDF)",
+        "es": "Plan Exclusive International",
+        "en": "Exclusive International Plan",
         "url": "pdf/condiciones-worldwide-exclusive-international.pdf",
         "download": true
       },
       {
-        "es": "Plan Security (PDF)",
-        "en": "Security Plan (PDF)",
+        "es": "Plan Security",
+        "en": "Security Plan",
         "url": "pdf/condiciones-worldwide-security.pdf",
         "download": true
       }
     ]
   }
 };
-        const INS_LOGOS = {"Acerta": "acerta.png", "Aliado Seguros": "Aliados.png", "Ancón": "Ancon.png", "ASSA": "assa.png", "Blue Cross Blue Shield": "Blue.png", "Bupa": "bupa.png", "Fedpa": "fedpa.png", "Internacional de Seguros": "is.png", "La Regional de Seguros": "regional.png", "Mapfre": "mapfre.png", "Pan American Life": "palig.png", "Sagicor": "sagicor.png", "SURA": "sura.svg", "UniVivir": "univivir.png", "VUMI": "vumi.png", "WorldWide Medical": "world.png"};
+        const INS_LOGOS = {"Acerta": "acerta.png", "Aliado Seguros": "Aliados.png", "Ancón": "ancon-logo.png", "ASSA": "assa-logo.png", "Blue Cross Blue Shield": "Blue.png", "Bupa": "bupa.png", "Fedpa": "fedpa.png", "Internacional de Seguros": "is.png", "La Regional de Seguros": "regional.png", "Mapfre": "mapfre.png", "Pan American Life": "palig.png", "Sagicor": "sagicor.png", "SURA": "sura.svg", "UniVivir": "univivir.png", "VUMI": "vumi.png", "WorldWide Medical": "world.png"};
         const TXT = {
             es: { list: "Selecciona tu aseguradora", detail: "Condiciones generales", download: "Descargar PDF", open: "Abrir enlace", zoom: "Toca la imagen para ampliarla", step: "Paso", waBtn: "Escríbenos por WhatsApp", waMsg: "Hola Eduardo, quisiera pagar mi póliza de " },
             en: { list: "Select your insurer", detail: "General conditions", download: "Download PDF", open: "Open link", zoom: "Tap the image to enlarge it", step: "Step", waBtn: "Message us on WhatsApp", waMsg: "Hello Eduardo, I would like to pay my policy with " }
@@ -1082,7 +1071,7 @@
                 const icon = l.download ? 'fa-file-arrow-down' : 'fa-arrow-up-right-from-square';
                 return `<a href="${l.url}" ${attrs} class="modal-item group flex items-center gap-4 bg-slate-50 hover:bg-eal-navy border border-slate-200 hover:border-eal-gold rounded-2xl p-4 transition" style="animation-delay:${0.08 * i + 0.1}s">
                     <span class="w-12 h-12 shrink-0 rounded-xl bg-eal-navy group-hover:bg-eal-gold text-eal-gold group-hover:text-eal-navy flex items-center justify-center text-lg transition"><i class="fa-solid ${l.download ? 'fa-file-pdf' : (/en línea|online/i.test(l.es) ? 'fa-credit-card' : (/centro|lugar|recaudo/i.test(l.es) ? 'fa-location-dot' : (/pago/i.test(l.es) ? 'fa-money-check-dollar' : 'fa-link')))}"></i></span>
-                    <span class="flex-1 min-w-0"><span class="block font-bold text-eal-navy group-hover:text-white transition">${l[L]}</span><span class="block text-xs text-slate-500 group-hover:text-slate-300 transition">${l.download ? TXT[L].download : TXT[L].open}</span></span>
+                    <span class="flex-1 min-w-0 font-bold text-eal-navy group-hover:text-white transition">${l[L]}</span>
                     <i class="fa-solid ${icon} text-eal-gold group-hover:translate-x-1 transition"></i>
                 </a>`;
             }).join('');
@@ -1136,9 +1125,8 @@
                 const multi = !isDirect(list[n]);
                 const pdf = !multi && list[n].links[0].download;
                 const badge = multi ? '<i class="fa-solid fa-layer-group text-eal-gold"></i>' : (pdf ? '<i class="fa-solid fa-file-arrow-down text-eal-gold"></i>' : '<i class="fa-solid fa-arrow-up-right-from-square text-eal-gold"></i>');
-                return `<button type="button" onclick="pickFromList(${i})" class="modal-item group bg-slate-50 hover:bg-white border border-slate-200 hover:border-eal-gold rounded-2xl p-4 h-32 flex flex-col items-center justify-center gap-3 hover:shadow-xl hover:-translate-y-1 transition cursor-pointer" style="animation-delay:${0.05 * i + 0.1}s">
-                    <span class="h-12 w-full flex items-center justify-center">${logoTag(n, 'max-h-11 max-w-[85%] object-contain group-hover:scale-110 transition')}</span>
-                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-500 group-hover:text-eal-navy flex items-center gap-1.5 text-center">${n} ${badge}</span>
+                return `<button type="button" onclick="pickFromList(${i})" class="modal-item group bg-slate-50 hover:bg-white border border-slate-200 hover:border-eal-gold rounded-2xl p-4 h-28 flex flex-col items-center justify-center gap-3 hover:shadow-xl hover:-translate-y-1 transition cursor-pointer" style="animation-delay:${0.05 * i + 0.1}s">
+                    <span class="h-16 w-full flex items-center justify-center">${logoTag(n, 'max-h-16 max-w-[85%] object-contain group-hover:scale-110 transition')}</span>
                 </button>`;
             }).join('') + `</div>`;
         }
@@ -1182,8 +1170,8 @@
         // Mensajes de WhatsApp y textos de ejemplo de los formularios en el idioma elegido
         (function () {
             const PH = {
-                es: { name: "Nombre y apellido", phone: "Ej: 6123-4567 o +1 305 555 0100", email: "Correo electrónico", trip: "Ej: Madrid, 10–20 dic" },
-                en: { name: "Full name", phone: "e.g. 6123-4567 or +1 305 555 0100", email: "Email", trip: "e.g. Madrid, Dec 10–20" }
+                es: { name: "Nombre y apellido", phone: "", email: "Correo electrónico", trip: "Ej: Madrid, 10–20 dic" },
+                en: { name: "Full name", phone: "", email: "Email", trip: "e.g. Madrid, Dec 10–20" }
             };
             const WA = [
                 ["Hola Eduardo, quisiera reservar una fecha con usted", "Hello Eduardo, I would like to book a meeting with you"],
@@ -1202,7 +1190,7 @@
                 lang = lang === 'en' ? 'en' : 'es';
                 document.querySelectorAll('[data-i18n-ph]').forEach(el => {
                     const t = PH[lang][el.getAttribute('data-i18n-ph')];
-                    if (t) el.placeholder = t;
+                    if (t !== undefined) el.placeholder = t;
                 });
                 document.querySelectorAll('a[href*="wa.me/"]').forEach(a => {
                     const parts = a.getAttribute('href').split('?text=');

@@ -138,8 +138,8 @@
                     colors: {
                         eal: {
                             navy: '#002157',
-                            gold: '#C8961E',
-                            goldHover: '#A87A12',
+                            gold: '#C6A353',
+                            goldHover: '#A98A42',
                             goldLight: '#FBF3DF',
                             yellowBadge: '#D9A92B'
                         }
@@ -209,8 +209,8 @@
         .delay-5 { animation-delay: 0.9s; }
         /* Latido suave de la etiqueta "Dato importante" */
         @keyframes badgePulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(200, 150, 30, 0.55); }
-            50% { transform: scale(1.06); box-shadow: 0 0 0 10px rgba(200, 150, 30, 0); }
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(198, 163, 83, 0.55); }
+            50% { transform: scale(1.06); box-shadow: 0 0 0 10px rgba(198, 163, 83, 0); }
         }
         .badge-pulse { animation: badgePulse 2.4s ease-in-out infinite; }
         @media (prefers-reduced-motion: reduce) {
@@ -222,7 +222,7 @@
         .reveal.visible { opacity: 1; transform: translateY(0); }
         .reveal-d1 { transition-delay: 0.1s; } .reveal-d2 { transition-delay: 0.2s; } .reveal-d3 { transition-delay: 0.3s; }
         .rich strong { color: #002157; font-weight: 700; }
-        .rich-dark strong { color: #C8961E; font-weight: 700; }
+        .rich-dark strong { color: #C6A353; font-weight: 700; }
         .img-zoom { transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
         .group:hover .img-zoom { transform: scale(1.08); }
         @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
@@ -312,7 +312,7 @@
                             </div>
                         </div>
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/Ancon.png" alt="Ancón" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Ancón</span>'"></div>
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/ancon-logo.png" alt="Ancón" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Ancón</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
                                 <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Ancón</span>
                                 <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5073032444" class="hover:text-eal-gold">303-2444</a></span>
@@ -320,7 +320,7 @@
                             </div>
                         </div>
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/assa.png" alt="ASSA" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>ASSA</span>'"></div>
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/assa-logo.png" alt="ASSA" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>ASSA</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
                                 <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">ASSA</span>
                                 <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5073002424" class="hover:text-eal-gold">300-2424</a></span>
@@ -515,9 +515,6 @@
 
                 <!-- COLUMNA IZQUIERDA -->
                 <div class="lg:col-span-6 space-y-6 text-left">
-                    <span class="animate-fade-up delay-1 inline-block px-4 py-1.5 rounded-full bg-eal-gold/20 border border-eal-gold text-eal-gold text-xs font-bold uppercase tracking-widest" data-i18n="c.7">
-                        Sobre Nosotros
-                    </span>
 
                     <h1 class="animate-fade-up delay-2 text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight font-serif">
                         <span class="block" data-i18n="c.8">Experiencia en la que</span>
@@ -526,7 +523,7 @@
                     </h1>
 
                     <p class="animate-fade-up delay-3 text-slate-200 text-base sm:text-lg font-medium leading-relaxed max-w-lg" data-i18n="c.10">
-                        Servicio con el que puede contar. Acompañamos a personas y familias a tomar decisiones informadas sobre su cobertura de seguros.
+                        Le ayudamos a tomar decisiones informadas sobre sus seguros, con atención personalizada en cada paso.
                     </p>
 
                     <div class="animate-fade-up delay-4 flex flex-wrap gap-4 pt-2">
@@ -543,9 +540,6 @@
                 <div class="lg:col-span-6 animate-fade-left delay-3">
                     <div class="bg-eal-navy/90 border border-eal-gold/50 backdrop-blur-md rounded-3xl overflow-hidden shadow-2xl">
                         <div class="p-6 sm:p-8 space-y-4">
-                            <span class="bg-eal-gold text-eal-navy font-extrabold text-[10px] uppercase px-3 py-1 rounded-full badge-pulse inline-flex items-center gap-1.5 shadow">
-                                <i class="fa-solid fa-award"></i> <span data-i18n="c.5">EAL Seguros</span>
-                            </span>
                             <div class="flex items-center gap-4">
                                 <span class="w-14 h-14 shrink-0 rounded-2xl bg-eal-gold/15 border border-eal-gold/60 text-eal-gold font-serif font-bold text-xl flex items-center justify-center">+10</span>
                                 <p class="text-slate-100 text-sm sm:text-base font-semibold" data-i18n="c.2">Años de experiencia en la industria de seguros</p>
@@ -556,10 +550,7 @@
                             </div>
                             <div class="flex items-center gap-4">
                                 <span class="w-14 h-14 shrink-0 rounded-2xl bg-eal-gold/15 border border-eal-gold/60 text-eal-gold font-serif font-bold text-xl flex items-center justify-center"><i class="fa-solid fa-language"></i></span>
-                                <p class="text-slate-100 text-sm sm:text-base font-semibold" data-i18n="c.4">Equipo de habla inglesa</p>
-                            </div>
-                            <div class="pt-3 border-t border-eal-gold/30">
-                                <p class="font-serif font-bold text-base sm:text-lg text-eal-gold" data-i18n="c.6">Protegiendo lo que más importa. Brindándole tranquilidad.</p>
+                                <p class="text-slate-100 text-sm sm:text-base font-semibold" data-i18n="c.4">Equipo bilingüe</p>
                             </div>
                         </div>
                     </div>
@@ -621,6 +612,7 @@
                     <div class="reveal bg-eal-navy rounded-2xl p-5 sm:p-6 border-l-4 border-eal-gold shadow-xl flex items-center gap-4">
                         <i class="fa-solid fa-quote-left text-eal-gold text-2xl"></i>
                         <p class="font-serif font-bold text-lg sm:text-xl text-white" data-i18n="c.21">Protegiendo lo que más importa. Brindándole tranquilidad.</p>
+                        <i class="fa-solid fa-quote-right text-eal-gold text-2xl self-end"></i>
                     </div>
                 </div>
             </div>
@@ -803,13 +795,13 @@
                 "c.1": "Conoce a Eduardo",
                 "c.2": "Años de experiencia en la industria de seguros",
                 "c.3": "Actuario y corredor de seguros idóneo",
-                "c.4": "Equipo de habla inglesa",
+                "c.4": "Equipo bilingüe",
                 "c.5": "EAL Seguros",
                 "c.6": "Protegiendo lo que más importa. Brindándole tranquilidad.",
                 "c.7": "Sobre Nosotros",
                 "c.8": "Experiencia en la que",
                 "c.9": "puede confiar.",
-                "c.10": "Servicio con el que puede contar. Acompañamos a personas y familias a tomar decisiones informadas sobre su cobertura de seguros.",
+                "c.10": "Le ayudamos a tomar decisiones informadas sobre sus seguros, con atención personalizada en cada paso.",
                 "c.11": "Atención al Cliente",
                 "c.12": "Confianza y Transparencia",
                 "c.13": "Orientación y Acompañamiento",
@@ -878,13 +870,13 @@
                 "c.1": "Meet Eduardo",
                 "c.2": "Years of experience in the insurance industry",
                 "c.3": "Actuary and licensed insurance broker",
-                "c.4": "English-speaking team",
+                "c.4": "Bilingual team",
                 "c.5": "EAL Seguros",
                 "c.6": "Protecting what matters most. Giving you peace of mind.",
                 "c.7": "About Us",
                 "c.8": "Experience you",
                 "c.9": "can trust.",
-                "c.10": "Service you can count on. We help individuals and families make informed decisions about their insurance coverage.",
+                "c.10": "We help individuals and families make informed insurance decisions, with personalized support every step of the way.",
                 "c.11": "Customer Service",
                 "c.12": "Trust & Transparency",
                 "c.13": "Guidance & Support",
@@ -999,8 +991,8 @@
         // Mensajes de WhatsApp y textos de ejemplo de los formularios en el idioma elegido
         (function () {
             const PH = {
-                es: { name: "Nombre y apellido", phone: "Ej: 6123-4567 o +1 305 555 0100", email: "Correo electrónico", trip: "Ej: Madrid, 10–20 dic" },
-                en: { name: "Full name", phone: "e.g. 6123-4567 or +1 305 555 0100", email: "Email", trip: "e.g. Madrid, Dec 10–20" }
+                es: { name: "Nombre y apellido", phone: "", email: "Correo electrónico", trip: "Ej: Madrid, 10–20 dic" },
+                en: { name: "Full name", phone: "", email: "Email", trip: "e.g. Madrid, Dec 10–20" }
             };
             const WA = [
                 ["Hola Eduardo, quisiera reservar una fecha con usted", "Hello Eduardo, I would like to book a meeting with you"],
@@ -1019,7 +1011,7 @@
                 lang = lang === 'en' ? 'en' : 'es';
                 document.querySelectorAll('[data-i18n-ph]').forEach(el => {
                     const t = PH[lang][el.getAttribute('data-i18n-ph')];
-                    if (t) el.placeholder = t;
+                    if (t !== undefined) el.placeholder = t;
                 });
                 document.querySelectorAll('a[href*="wa.me/"]').forEach(a => {
                     const parts = a.getAttribute('href').split('?text=');

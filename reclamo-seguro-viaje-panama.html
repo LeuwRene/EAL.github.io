@@ -131,8 +131,8 @@
                     colors: {
                         eal: {
                             navy: '#002157',
-                            gold: '#C8961E',
-                            goldHover: '#A87A12',
+                            gold: '#C6A353',
+                            goldHover: '#A98A42',
                             goldLight: '#FBF3DF',
                             yellowBadge: '#D9A92B'
                         }
@@ -202,8 +202,8 @@
         .delay-5 { animation-delay: 0.9s; }
         /* Latido suave de la etiqueta "Dato importante" */
         @keyframes badgePulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(200, 150, 30, 0.55); }
-            50% { transform: scale(1.06); box-shadow: 0 0 0 10px rgba(200, 150, 30, 0); }
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(198, 163, 83, 0.55); }
+            50% { transform: scale(1.06); box-shadow: 0 0 0 10px rgba(198, 163, 83, 0); }
         }
         .badge-pulse { animation: badgePulse 2.4s ease-in-out infinite; }
         @media (prefers-reduced-motion: reduce) {
@@ -215,7 +215,7 @@
         .reveal.visible { opacity: 1; transform: translateY(0); }
         .reveal-d1 { transition-delay: 0.1s; } .reveal-d2 { transition-delay: 0.2s; } .reveal-d3 { transition-delay: 0.3s; }
         .rich strong { color: #002157; font-weight: 700; }
-        .rich-dark strong { color: #C8961E; font-weight: 700; }
+        .rich-dark strong { color: #C6A353; font-weight: 700; }
         .img-zoom { transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
         .group:hover .img-zoom { transform: scale(1.08); }
         @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
@@ -294,7 +294,7 @@
                             </div>
                         </div>
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/Ancon.png" alt="Ancón" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Ancón</span>'"></div>
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/ancon-logo.png" alt="Ancón" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Ancón</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
                                 <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Ancón</span>
                                 <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5073032444" class="hover:text-eal-gold">303-2444</a></span>
@@ -302,7 +302,7 @@
                             </div>
                         </div>
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/assa.png" alt="ASSA" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>ASSA</span>'"></div>
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/assa-logo.png" alt="ASSA" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>ASSA</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
                                 <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">ASSA</span>
                                 <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5073002424" class="hover:text-eal-gold">300-2424</a></span>
@@ -497,9 +497,6 @@
 
                 <!-- COLUMNA IZQUIERDA -->
                 <div class="lg:col-span-6 space-y-6 text-left">
-                    <span class="animate-fade-up delay-1 inline-block px-4 py-1.5 rounded-full bg-eal-gold/20 border border-eal-gold text-eal-gold text-xs font-bold uppercase tracking-widest" data-i18n="claims.badge">
-                        Centro de Reclamos
-                    </span>
 
                     <h1 class="animate-fade-up delay-2 text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight font-serif">
                         <span class="block" data-i18n="claims.t1">Reclamos de</span>
@@ -508,7 +505,7 @@
                     </h1>
 
                     <p class="animate-fade-up delay-3 text-slate-200 text-base sm:text-lg font-medium leading-relaxed max-w-lg" data-i18n="c.6">
-                        ¿Necesitas asistencia durante tu viaje? Conoce cómo utilizar tu seguro y qué hacer en cada situación.
+                        Te explicamos cómo usar tu seguro de viaje en cualquier situación.
                     </p>
 
                     <div class="animate-fade-up delay-4 flex flex-wrap gap-4 pt-2">
@@ -533,11 +530,6 @@
                                 <strong class="text-eal-gold font-bold text-lg" data-i18n="c.2">antes de recibir atención</strong>
                                 <span data-i18n="c.3">para evitar gastos innecesarios.</span>
                             </p>
-                            <div class="pt-3 border-t border-eal-gold/30">
-                                <p class="font-serif font-bold text-base sm:text-lg text-eal-gold" data-i18n="c.4">
-                                    Te acompañamos durante el proceso de asistencia o reembolso.
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -813,7 +805,7 @@
                 "c.3": "para evitar gastos innecesarios.",
                 "c.4": "Te acompañamos durante el proceso de asistencia o reembolso.",
                 "c.5": "Seguro de Viaje.",
-                "c.6": "¿Necesitas asistencia durante tu viaje? Conoce cómo utilizar tu seguro y qué hacer en cada situación.",
+                "c.6": "Te explicamos cómo usar tu seguro de viaje en cualquier situación.",
                 "c.7": "<strong>Contacta a la central de asistencia al viajero</strong> por teléfono o WhatsApp.",
                 "c.8": "<strong>Explica tu situación:</strong> el equipo de asistencia te indicará a dónde acudir y qué pasos seguir.",
                 "c.9": "<strong>Coordinación del servicio:</strong> la central de asistencia coordinará directamente con el proveedor correspondiente.",
@@ -887,7 +879,7 @@
                 "c.3": "to avoid unnecessary expenses.",
                 "c.4": "We support you through the assistance or reimbursement process.",
                 "c.5": "Travel Insurance.",
-                "c.6": "Need assistance during your trip? Learn how to use your insurance and what to do in each situation.",
+                "c.6": "We explain how to use your travel insurance in any situation.",
                 "c.7": "<strong>Contact the traveler assistance center</strong> by phone or WhatsApp.",
                 "c.8": "<strong>Explain your situation:</strong> the assistance team will tell you where to go and what steps to follow.",
                 "c.9": "<strong>Service coordination:</strong> the assistance center will coordinate directly with the corresponding provider.",
@@ -1005,8 +997,8 @@
         // Mensajes de WhatsApp y textos de ejemplo de los formularios en el idioma elegido
         (function () {
             const PH = {
-                es: { name: "Nombre y apellido", phone: "Ej: 6123-4567 o +1 305 555 0100", email: "Correo electrónico", trip: "Ej: Madrid, 10–20 dic" },
-                en: { name: "Full name", phone: "e.g. 6123-4567 or +1 305 555 0100", email: "Email", trip: "e.g. Madrid, Dec 10–20" }
+                es: { name: "Nombre y apellido", phone: "", email: "Correo electrónico", trip: "Ej: Madrid, 10–20 dic" },
+                en: { name: "Full name", phone: "", email: "Email", trip: "e.g. Madrid, Dec 10–20" }
             };
             const WA = [
                 ["Hola Eduardo, quisiera reservar una fecha con usted", "Hello Eduardo, I would like to book a meeting with you"],
@@ -1025,7 +1017,7 @@
                 lang = lang === 'en' ? 'en' : 'es';
                 document.querySelectorAll('[data-i18n-ph]').forEach(el => {
                     const t = PH[lang][el.getAttribute('data-i18n-ph')];
-                    if (t) el.placeholder = t;
+                    if (t !== undefined) el.placeholder = t;
                 });
                 document.querySelectorAll('a[href*="wa.me/"]').forEach(a => {
                     const parts = a.getAttribute('href').split('?text=');

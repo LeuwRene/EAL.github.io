@@ -176,8 +176,8 @@
                     colors: {
                         eal: {
                             navy: '#002157',
-                            gold: '#C8961E',
-                            goldHover: '#A87A12',
+                            gold: '#C6A353',
+                            goldHover: '#A98A42',
                             goldLight: '#FBF3DF',
                             yellowBadge: '#D9A92B'
                         }
@@ -247,8 +247,8 @@
         .delay-5 { animation-delay: 0.9s; }
         /* Latido suave de la etiqueta "Dato importante" */
         @keyframes badgePulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(200, 150, 30, 0.55); }
-            50% { transform: scale(1.06); box-shadow: 0 0 0 10px rgba(200, 150, 30, 0); }
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(198, 163, 83, 0.55); }
+            50% { transform: scale(1.06); box-shadow: 0 0 0 10px rgba(198, 163, 83, 0); }
         }
         .badge-pulse { animation: badgePulse 2.4s ease-in-out infinite; }
         @media (prefers-reduced-motion: reduce) {
@@ -330,7 +330,7 @@
                             </div>
                         </div>
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/Ancon.png" alt="Ancón" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Ancón</span>'"></div>
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/ancon-logo.png" alt="Ancón" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>Ancón</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
                                 <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">Ancón</span>
                                 <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5073032444" class="hover:text-eal-gold">303-2444</a></span>
@@ -338,7 +338,7 @@
                             </div>
                         </div>
                         <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-3 hover:border-eal-gold/50 transition">
-                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/assa.png" alt="ASSA" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>ASSA</span>'"></div>
+                            <div class="w-14 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center p-1.5"><img src="Imagenes/assa-logo.png" alt="ASSA" loading="lazy" class="max-h-7 max-w-full object-contain" onerror="this.outerHTML='<span class=&quot;text-[9px] font-bold text-eal-navy&quot;>ASSA</span>'"></div>
                             <div class="min-w-0 normal-case tracking-normal">
                                 <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide truncate">ASSA</span>
                                 <span class="block text-white font-bold text-xs whitespace-nowrap"><i class="fa-solid fa-phone text-eal-gold text-[9px] mr-1"></i><a href="tel:+5073002424" class="hover:text-eal-gold">300-2424</a></span>
@@ -533,9 +533,6 @@
 
                 <!-- COLUMNA IZQUIERDA -->
                 <div class="lg:col-span-6 space-y-6 text-left">
-                    <span class="animate-fade-up delay-1 inline-block px-4 py-1.5 rounded-full bg-eal-gold/20 border border-eal-gold text-eal-gold text-xs font-bold uppercase tracking-widest" data-i18n="p.1">
-                        Asistencia en tus Viajes
-                    </span>
 
                     <h1 class="animate-fade-up delay-2 text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight font-serif">
                         <span class="block" data-i18n="p.2">Seguro de</span>
@@ -567,11 +564,6 @@
                                 <strong class="text-eal-gold font-bold text-lg" data-i18n="p.7">por mucho menos</strong>
                                 <span data-i18n="p.8">de lo que imaginas.</span>
                             </p>
-                            <div class="pt-3 border-t border-eal-gold/30">
-                                <p class="font-serif font-bold text-base sm:text-lg text-eal-gold" data-i18n="p.9">
-                                    ¡Protege tu viaje antes de despegar!
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -602,11 +594,6 @@
                         </div>
 
                         <h3 class="text-2xl font-bold font-serif text-white mb-2" data-i18n="p.16">Seguro de Viaje</h3>
-                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-5" data-i18n="p.17">
-                            ¡Protege tu viaje por mucho menos de lo que imaginas!
-                        </p>
-
-                        <div class="font-bold text-xs uppercase text-eal-gold mb-3" data-i18n="p.18">Incluye:</div>
                         <ul class="space-y-3 text-xs sm:text-sm text-slate-200 mb-6">
                             <li class="flex items-start gap-2.5">
                                 <i class="fa-solid fa-circle-check text-eal-gold mt-1"></i>
@@ -631,8 +618,7 @@
                         </ul>
                     </div>
 
-                    <div class="pt-4 border-t border-white/10 flex items-center justify-between mt-auto">
-                        <span class="text-xs text-slate-400" data-i18n="plans.fastQuote">Cotización inmediata</span>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-end mt-auto">
                         <a href="#cotizar" onclick="selectPlanInForm('Seguro de Viaje')" class="bg-eal-gold hover:bg-eal-goldHover text-eal-navy font-bold text-xs uppercase px-5 py-2.5 rounded-xl transition" data-i18n="p.19">
                             Cotiza tu seguro
                         </a>
@@ -647,8 +633,7 @@
     <section class="py-12 bg-white border-y border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-10">
-                <h3 class="text-xs font-extrabold tracking-widest text-eal-navy uppercase" data-i18n="benefits.badge">Ventajas Exclusivas EAL</h3>
-                <h4 class="text-2xl sm:text-3xl font-bold font-serif text-eal-navy mt-1" data-i18n="p.30">Por qué contratar tu seguro de viaje con EAL</h4>
+                <h4 class="text-2xl sm:text-3xl font-bold font-serif text-eal-navy mt-1" data-i18n="p.30">Beneficios de tu póliza y ventajas adicionales de asegurar con EAL</h4>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -657,28 +642,24 @@
                         <i class="fa-solid fa-scale-balanced"></i>
                     </div>
                     <h5 class="font-bold text-sm text-eal-navy mb-1" data-i18n="p.22">Comparamos Opciones</h5>
-                    <p class="text-slate-600 text-xs" data-i18n="p.23">Analizamos varias aseguradoras para encontrar el plan que más te conviene.</p>
                 </div>
                 <div class="bg-slate-50 border border-slate-200 p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition">
                     <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-eal-navy text-eal-gold flex items-center justify-center text-xl shadow">
                         <i class="fa-solid fa-phone-volume"></i>
                     </div>
                     <h5 class="font-bold text-sm text-eal-navy mb-1" data-i18n="p.24">Central de Asistencia</h5>
-                    <p class="text-slate-600 text-xs" data-i18n="p.25">Te indican dónde acudir y coordinan tu atención según tu cobertura.</p>
                 </div>
                 <div class="bg-slate-50 border border-slate-200 p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition">
                     <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-eal-navy text-eal-gold flex items-center justify-center text-xl shadow">
                         <i class="fa-solid fa-ship"></i>
                     </div>
                     <h5 class="font-bold text-sm text-eal-navy mb-1" data-i18n="p.26">Cruceros Cubiertos</h5>
-                    <p class="text-slate-600 text-xs" data-i18n="p.27">Tu seguro de viaje también te acompaña en altamar.</p>
                 </div>
                 <div class="bg-slate-50 border border-slate-200 p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition">
                     <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-eal-navy text-eal-gold flex items-center justify-center text-xl shadow">
                         <i class="fa-solid fa-headset"></i>
                     </div>
                     <h5 class="font-bold text-sm text-eal-navy mb-1" data-i18n="p.28">Gestión de Reclamos</h5>
-                    <p class="text-slate-600 text-xs" data-i18n="p.29">Acompañamiento personal de principio a fin con tu aseguradora.</p>
                 </div>
             </div>
         </div>
@@ -781,7 +762,7 @@
                                 </div>
                                 <div>
                                     <label class="block text-xs font-bold text-slate-200 mb-1" data-i18n="form.phone">Celular</label>
-                                    <input type="tel" id="formCelular" required placeholder="Ej: 6123-4567 o +1 305 555 0100" data-i18n-ph="phone"
+                                    <input type="tel" id="formCelular" required placeholder="" data-i18n-ph="phone"
                                            class="w-full bg-white/20 border border-white/30 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-300 focus:outline-none focus:border-eal-gold transition">
                                 </div>
                             </div>
@@ -800,7 +781,7 @@
                             </div>
 
                             <button type="submit" class="w-full bg-eal-gold hover:bg-eal-goldHover text-eal-navy font-extrabold py-3.5 px-6 rounded-xl text-xs uppercase tracking-wider transition shadow-lg mt-2 cursor-pointer flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-paper-plane"></i> <span data-i18n="form.submit">Enviar Cotización</span>
+                                <i class="fa-solid fa-paper-plane"></i> <span data-i18n="form.submit">Solicitar cotización</span>
                             </button>
                         </form>
                     </div>
@@ -916,7 +897,7 @@
                 "form.phone": "Celular",
                 "form.email": "Correo electrónico",
                 "form.planType": "Tipo de plan",
-                "form.submit": "Enviar Cotización",
+                "form.submit": "Solicitar cotización",
                 "hero.importantBadge": "Dato Importante",
                 "footer.about": "Firma corredora de seguros en Panamá comprometida con la protección patrimonial y la paz mental de cada uno de nuestros clientes.",
                 "footer.navTitle": "Navegación",
@@ -954,7 +935,7 @@
                 "p.27": "Tu seguro de viaje también te acompaña en altamar.",
                 "p.28": "Gestión de Reclamos",
                 "p.29": "Acompañamiento personal de principio a fin con tu aseguradora.",
-                "p.30": "Por qué contratar tu seguro de viaje con EAL",
+                "p.30": "Beneficios de tu póliza y ventajas adicionales de asegurar con EAL",
                 "p.31": "¿Cómo se utiliza el Seguro de Viaje?",
                 "p.32": "En caso de necesitar asistencia, debes comunicarte con la Central de Asistencia de tu aseguradora. Ellos te indicarán dónde acudir y coordinarán la atención para que no tengas que pagar de tu bolsillo, según las condiciones de tu cobertura.",
                 "p.33": "¿Cómo funciona la cobertura por pérdida de vuelo?",
@@ -991,7 +972,7 @@
                 "form.phone": "Mobile",
                 "form.email": "Email",
                 "form.planType": "Plan Type",
-                "form.submit": "Send Quote",
+                "form.submit": "Request a Quote",
                 "hero.importantBadge": "Good to Know",
                 "footer.about": "Panamanian insurance brokerage committed to asset protection and peace of mind for all our clients.",
                 "footer.navTitle": "Navigation",
@@ -1029,7 +1010,7 @@
                 "p.27": "Your travel insurance goes with you at sea too.",
                 "p.28": "Claims Management",
                 "p.29": "Personal guidance from start to finish with your insurer.",
-                "p.30": "Why get your travel insurance with EAL",
+                "p.30": "Benefits included in your policy, plus the added advantages of choosing EAL.",
                 "p.31": "How do I use travel insurance?",
                 "p.32": "If you need assistance, contact your insurer's Assistance Center. They will tell you where to go and coordinate care so you don't have to pay out of pocket, according to your coverage terms.",
                 "p.33": "How does missed flight coverage work?",
@@ -1158,8 +1139,8 @@
         // Mensajes de WhatsApp y textos de ejemplo de los formularios en el idioma elegido
         (function () {
             const PH = {
-                es: { name: "Nombre y apellido", phone: "Ej: 6123-4567 o +1 305 555 0100", email: "Correo electrónico", trip: "Ej: Madrid, 10–20 dic" },
-                en: { name: "Full name", phone: "e.g. 6123-4567 or +1 305 555 0100", email: "Email", trip: "e.g. Madrid, Dec 10–20" }
+                es: { name: "Nombre y apellido", phone: "", email: "Correo electrónico", trip: "Ej: Madrid, 10–20 dic" },
+                en: { name: "Full name", phone: "", email: "Email", trip: "e.g. Madrid, Dec 10–20" }
             };
             const WA = [
                 ["Hola Eduardo, quisiera reservar una fecha con usted", "Hello Eduardo, I would like to book a meeting with you"],
@@ -1178,7 +1159,7 @@
                 lang = lang === 'en' ? 'en' : 'es';
                 document.querySelectorAll('[data-i18n-ph]').forEach(el => {
                     const t = PH[lang][el.getAttribute('data-i18n-ph')];
-                    if (t) el.placeholder = t;
+                    if (t !== undefined) el.placeholder = t;
                 });
                 document.querySelectorAll('a[href*="wa.me/"]').forEach(a => {
                     const parts = a.getAttribute('href').split('?text=');
